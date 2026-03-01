@@ -9,6 +9,372 @@
     <title>Nursing Process · deep dive (50+ pages)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ============================================= */
+/* FILE: mobile-app-theme.css                     */
+/* ============================================= */
+/* Add this to the <style> section of ALL your pages */
+/* ============================================= */
+
+/* ===== NATIVE APP VARIABLES ===== */
+:root {
+    --app-bg: #f5f7fa;
+    --app-card-bg: #ffffff;
+    --app-primary: #0b3b55;
+    --app-accent: #fcb424;
+    --app-text: #1a2b3c;
+    --app-text-light: #6b7b8c;
+    --app-border: #e9ecf0;
+    --app-shadow: 0 8px 20px rgba(0,20,40,0.08);
+    --app-shadow-heavy: 0 16px 32px rgba(0,35,70,0.12);
+    --app-radius: 28px;
+    --app-radius-sm: 16px;
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ===== BASE MOBILE APP STYLES ===== */
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: var(--app-bg) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== APP CONTAINER ===== */
+.course-container, .quiz-wrapper, .app {
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    background: var(--app-bg) !important;
+    box-shadow: none !important;
+    padding: var(--safe-area-top) 0 var(--safe-area-bottom) 0 !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== NATIVE HEADER ===== */
+.app-header {
+    background: var(--app-primary);
+    color: white;
+    padding: 1.2rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(11, 59, 85, 0.98);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.app-header h1 {
+    font-size: 1.8rem !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* ===== BOTTOM NAVIGATION (APP STYLE) ===== */
+.app-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 0.8rem 1rem calc(0.8rem + var(--safe-area-bottom));
+    border-top: 1px solid var(--app-border);
+    z-index: 1000;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.02);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--app-text-light);
+    font-size: 0.7rem;
+    transition: all 0.2s;
+    padding: 0.3rem 0.8rem;
+    border-radius: 40px;
+}
+
+.nav-item i {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.nav-item.active {
+    color: var(--app-primary);
+    background: rgba(11, 59, 85, 0.05);
+}
+
+/* ===== CARD STYLES (MOBILE APP) ===== */
+.topic {
+    background: var(--app-card-bg) !important;
+    border-radius: var(--app-radius) !important;
+    margin: 1.2rem 1rem !important;
+    padding: 0 !important;
+    box-shadow: var(--app-shadow) !important;
+    border: 1px solid var(--app-border) !important;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.topic:active {
+    transform: scale(0.98);
+}
+
+.topic h2 {
+    background: white !important;
+    border-radius: 0 !important;
+    padding: 1.2rem 1.5rem !important;
+    margin: 0 !important;
+    font-size: 1.5rem !important;
+    border-bottom: 1px solid var(--app-border) !important;
+    color: var(--app-primary) !important;
+    cursor: pointer;
+    position: relative;
+}
+
+.topic h2::after {
+    content: '\f107';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+    color: var(--app-text-light);
+}
+
+.topic h2.collapsed::after {
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+.topic-content {
+    padding: 1.5rem !important;
+    background: white;
+    transition: max-height 0.3s ease-out;
+    max-height: 2000px;
+    overflow: hidden;
+}
+
+.topic-content.collapsed {
+    max-height: 0 !important;
+    padding: 0 1.5rem !important;
+}
+
+/* ===== BOTTOM SHEET MODAL ===== */
+.bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 32px 32px 0 0;
+    padding: 2rem 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2000;
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.1);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.bottom-sheet.active {
+    transform: translateY(0);
+}
+
+.sheet-handle {
+    width: 40px;
+    height: 4px;
+    background: var(--app-border);
+    border-radius: 4px;
+    margin: -1rem auto 1rem;
+}
+
+/* ===== QUIZ APP STYLES ===== */
+.quiz-container {
+    background: transparent !important;
+    padding: 1rem !important;
+}
+
+.quiz-question {
+    background: var(--app-card-bg) !important;
+    padding: 1.5rem !important;
+    border-radius: var(--app-radius) !important;
+    margin: 1rem 0 !important;
+    box-shadow: var(--app-shadow) !important;
+    font-size: 1.2rem !important;
+}
+
+.quiz-option {
+    background: var(--app-card-bg) !important;
+    border: 2px solid var(--app-border) !important;
+    border-radius: 60px !important;
+    padding: 1.2rem 1.5rem !important;
+    margin: 0.8rem 0 !important;
+    transition: all 0.2s;
+    font-size: 1.1rem !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important;
+}
+
+.quiz-option.selected {
+    border-color: var(--app-primary) !important;
+    background: rgba(11, 59, 85, 0.05) !important;
+    transform: scale(1.01);
+}
+
+.quiz-option.correct {
+    background: #c3e6c3 !important;
+    border-color: #1f7a1f !important;
+    color: #1a4d1a !important;
+}
+
+.quiz-option.incorrect {
+    background: #fad7da !important;
+    border-color: #b52b36 !important;
+    color: #721c24 !important;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar {
+    height: 4px;
+    background: var(--app-border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--app-accent);
+    width: 0%;
+    transition: width 0.3s;
+}
+
+/* ===== PULL TO REFRESH ===== */
+.pull-indicator {
+    text-align: center;
+    padding: 1rem;
+    color: var(--app-text-light);
+    transform: translateY(-100%);
+    transition: transform 0.2s;
+}
+
+/* ===== MOBILE SCROLLING ===== */
+.topic-content {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ===== LOADING SKELETON ===== */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 8px;
+    height: 20px;
+    margin: 0.5rem 0;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ===== TOUCH FEEDBACK ===== */
+.touch-feedback {
+    position: relative;
+    overflow: hidden;
+}
+
+.touch-feedback::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.05);
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.touch-feedback:active::after {
+    opacity: 1;
+}
+
+/* ===== SWIPE ACTIONS ===== */
+.swipeable {
+    transition: transform 0.3s;
+}
+
+.swipe-left {
+    transform: translateX(-20px);
+}
+
+.swipe-right {
+    transform: translateX(20px);
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --app-bg: #1a1e24;
+        --app-card-bg: #2c3138;
+        --app-text: #e9edf2;
+        --app-text-light: #9aa6b2;
+        --app-border: #3a4048;
+    }
+    
+    body {
+        background: var(--app-bg) !important;
+        color: var(--app-text) !important;
+    }
+    
+    .app-header {
+        background: rgba(20, 30, 40, 0.98);
+    }
+    
+    .quiz-option {
+        background: var(--app-card-bg) !important;
+        color: var(--app-text) !important;
+    }
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+    .course-grid {
+        grid-template-columns: 1fr !important;
+        padding: 1rem !important;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
         * {
             margin: 0;
             padding: 0;
@@ -404,6 +770,340 @@
             </table>
         </div>
     </div>
+<script>/* ============================================= */
+/* FILE: mobile-app-interactions.js               */
+/* ============================================= */
+/* Add this before </body> on ALL your pages     */
+/* ============================================= */
 
+(function() {
+    'use strict';
+
+    // ===== APP STATE =====
+    const App = {
+        initialized: false,
+        currentPage: window.location.pathname.split('/').pop() || 'index.html',
+        scrollPosition: 0,
+        darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches
+    };
+
+    // ===== INITIALIZE MOBILE APP FEATURES =====
+    document.addEventListener('DOMContentLoaded', function() {
+        if (App.initialized) return;
+        App.initialized = true;
+
+        createAppHeader();
+        createBottomNav();
+        createProgressBar();
+        initCollapsibleTopics();
+        initPullToRefresh();
+        initSwipeGestures();
+        initTouchFeedback();
+        initBottomSheets();
+        initSafeAreaInsets();
+        preventOverscroll();
+        
+        // Add app class to body
+        document.body.classList.add('mobile-app-mode');
+    });
+
+    // ===== CREATE APP HEADER =====
+    function createAppHeader() {
+        const containers = document.querySelectorAll('.course-container, .quiz-wrapper, .app');
+        containers.forEach(container => {
+            const h1 = container.querySelector('h1');
+            if (h1 && !container.querySelector('.app-header')) {
+                const header = document.createElement('div');
+                header.className = 'app-header';
+                header.innerHTML = h1.outerHTML;
+                h1.remove();
+                container.insertBefore(header, container.firstChild);
+            }
+        });
+    }
+
+    // ===== CREATE BOTTOM NAVIGATION =====
+    function createBottomNav() {
+        const nav = document.createElement('div');
+        nav.className = 'app-nav';
+        
+        const pages = [
+            { name: 'Home', icon: 'home', file: 'index.html' },
+            { name: 'Courses', icon: 'book', file: '#' },
+            { name: 'Quiz', icon: 'question-circle', file: 'quiz-hub.html' },
+            { name: 'Progress', icon: 'chart-line', file: '#' },
+            { name: 'Profile', icon: 'user', file: '#' }
+        ];
+        
+        nav.innerHTML = pages.map(page => {
+            const isActive = App.currentPage === page.file;
+            return `
+                <a href="${page.file}" class="nav-item ${isActive ? 'active' : ''}">
+                    <i class="fas fa-${page.icon}"></i>
+                    <span>${page.name}</span>
+                </a>
+            `;
+        }).join('');
+        
+        document.body.appendChild(nav);
+    }
+
+    // ===== CREATE PROGRESS BAR =====
+    function createProgressBar() {
+        const progressBar = document.createElement('div');
+        progressBar.className = 'progress-bar';
+        progressBar.innerHTML = '<div class="progress-fill"></div>';
+        document.body.insertBefore(progressBar, document.body.firstChild);
+        
+        window.addEventListener('scroll', updateProgressBar);
+        updateProgressBar();
+    }
+
+    function updateProgressBar() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const fill = document.querySelector('.progress-fill');
+        if (fill) fill.style.width = scrolled + '%';
+    }
+
+    // ===== INIT COLLAPSIBLE TOPICS =====
+    function initCollapsibleTopics() {
+        document.querySelectorAll('.topic h2').forEach(header => {
+            header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                this.classList.toggle('collapsed');
+                content.classList.toggle('collapsed');
+                
+                // Save state to localStorage
+                const topicId = this.textContent.trim();
+                const isCollapsed = content.classList.contains('collapsed');
+                localStorage.setItem(`topic_${topicId}`, isCollapsed);
+            });
+            
+            // Restore state
+            const topicId = header.textContent.trim();
+            const wasCollapsed = localStorage.getItem(`topic_${topicId}`) === 'true';
+            if (wasCollapsed) {
+                header.classList.add('collapsed');
+                header.nextElementSibling.classList.add('collapsed');
+            }
+        });
+    }
+
+    // ===== PULL TO REFRESH =====
+    function initPullToRefresh() {
+        let startY = 0;
+        let pulling = false;
+        
+        const pullIndicator = document.createElement('div');
+        pullIndicator.className = 'pull-indicator';
+        pullIndicator.innerHTML = '<i class="fas fa-arrow-down"></i> Pull to refresh';
+        document.body.insertBefore(pullIndicator, document.body.firstChild);
+        
+        window.addEventListener('touchstart', e => {
+            if (window.scrollY === 0) {
+                startY = e.touches[0].clientY;
+                pulling = true;
+            }
+        });
+        
+        window.addEventListener('touchmove', e => {
+            if (!pulling) return;
+            const currentY = e.touches[0].clientY;
+            const diff = currentY - startY;
+            
+            if (diff > 0 && diff < 100) {
+                pullIndicator.style.transform = `translateY(${diff}px)`;
+                if (diff > 60) {
+                    pullIndicator.innerHTML = '<i class="fas fa-sync-alt"></i> Release to refresh';
+                }
+            }
+        });
+        
+        window.addEventListener('touchend', e => {
+            if (pulling) {
+                const currentY = e.changedTouches[0].clientY;
+                const diff = currentY - startY;
+                
+                if (diff > 60) {
+                    pullIndicator.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 500);
+                }
+                
+                pullIndicator.style.transform = 'translateY(-100%)';
+                pulling = false;
+            }
+        });
+    }
+
+    // ===== SWIPE GESTURES =====
+    function initSwipeGestures() {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const minSwipeDistance = 50;
+        
+        window.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        window.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const distance = touchEndX - touchStartX;
+            
+            if (Math.abs(distance) < minSwipeDistance) return;
+            
+            if (distance > 0) {
+                // Swipe right - go back
+                if (document.referrer) {
+                    window.history.back();
+                }
+            } else {
+                // Swipe left - go forward
+                // Optional: show bottom sheet with next topic
+                showBottomSheet('Quick Actions', ['Next Topic', 'Bookmark', 'Share']);
+            }
+        }
+    }
+
+    // ===== TOUCH FEEDBACK =====
+    function initTouchFeedback() {
+        document.querySelectorAll('.btn, .topic, .quiz-option, .nav-item').forEach(el => {
+            el.classList.add('touch-feedback');
+        });
+    }
+
+    // ===== BOTTOM SHEETS =====
+    function initBottomSheets() {
+        // Create bottom sheet container
+        const sheet = document.createElement('div');
+        sheet.className = 'bottom-sheet';
+        sheet.innerHTML = `
+            <div class="sheet-handle"></div>
+            <div class="sheet-content">
+                <h3>Quick Actions</h3>
+                <div class="sheet-actions"></div>
+            </div>
+        `;
+        document.body.appendChild(sheet);
+        
+        // Close on handle click
+        sheet.querySelector('.sheet-handle').addEventListener('click', () => {
+            sheet.classList.remove('active');
+        });
+    }
+
+    function showBottomSheet(title, actions) {
+        const sheet = document.querySelector('.bottom-sheet');
+        const content = sheet.querySelector('.sheet-actions');
+        const titleEl = sheet.querySelector('h3');
+        
+        titleEl.textContent = title;
+        content.innerHTML = actions.map(action => 
+            `<div class="btn" style="margin:0.5rem 0;" onclick="alert('${action}')">${action}</div>`
+        ).join('');
+        
+        sheet.classList.add('active');
+    }
+
+    // ===== SAFE AREA INSETS =====
+    function initSafeAreaInsets() {
+        if (window.navigator.standalone) {
+            document.body.style.paddingTop = 'env(safe-area-inset-top)';
+            document.body.style.paddingBottom = 'env(safe-area-inset-bottom)';
+        }
+    }
+
+    // ===== PREVENT OVERSCROLL =====
+    function preventOverscroll() {
+        document.body.addEventListener('touchmove', e => {
+            if (e.target === document.body) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    }
+
+    // ===== ADD TO HOME SCREEN PROMPT =====
+    window.addEventListener('beforeinstallprompt', e => {
+        e.preventDefault();
+        const promptEvent = e;
+        
+        // Show custom install button
+        const installBtn = document.createElement('button');
+        installBtn.className = 'btn';
+        installBtn.innerHTML = '<i class="fas fa-download"></i> Install App';
+        installBtn.style.position = 'fixed';
+        installBtn.style.bottom = '80px';
+        installBtn.style.right = '20px';
+        installBtn.style.zIndex = '2000';
+        
+        installBtn.addEventListener('click', () => {
+            promptEvent.prompt();
+        });
+        
+        document.body.appendChild(installBtn);
+    });
+
+    // ===== LAZY LOAD IMAGES =====
+    function initLazyLoading() {
+        const images = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    }
+
+    // ===== OFFLINE DETECTION =====
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    
+    function updateOnlineStatus() {
+        const status = navigator.onLine ? 'online' : 'offline';
+        const indicator = document.createElement('div');
+        indicator.className = `offline-indicator ${status}`;
+        indicator.textContent = navigator.onLine ? '📶 Back online' : '📴 Offline mode';
+        
+        if (!navigator.onLine) {
+            document.body.appendChild(indicator);
+            setTimeout(() => indicator.remove(), 3000);
+        }
+    }
+
+    // ===== HAPTIC FEEDBACK (if supported) =====
+    function hapticFeedback() {
+        if (window.navigator.vibrate) {
+            document.querySelectorAll('.btn, .quiz-option').forEach(el => {
+                el.addEventListener('click', () => {
+                    window.navigator.vibrate(10);
+                });
+            });
+        }
+    }
+
+    // ===== SCREENSHOT PREVENTION (optional) =====
+    // Uncomment if needed for exam mode
+    /*
+    document.addEventListener('keydown', e => {
+        if (e.key === 'PrintScreen') {
+            alert('Screenshots are disabled in exam mode');
+            e.preventDefault();
+        }
+    });
+    */
+})();</script>
 </body>
 </html>
