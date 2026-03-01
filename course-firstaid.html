@@ -9,6 +9,55 @@
     <title>First Aid · advanced deep‑dive notes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ===== FIXED APP HEADER - WHITE TEXT ON BLUE ===== */
+.app-header {
+    background: var(--app-primary) !important;  /* dark blue */
+    color: white !important;
+    padding: 1.2rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(11, 59, 85, 0.98) !important;  /* blue with transparency */
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.app-header h1,
+.app-header h1 i,
+.app-header * {
+    color: white !important;  /* FORCE ALL HEADER TEXT TO BE WHITE */
+}
+
+.app-header h1 {
+    font-size: 1.8rem !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Also fix any icons in header */
+.app-header i {
+    background: rgba(255,255,255,0.2) !important;  /* subtle white background for icons */
+    color: white !important;
+    padding: 0.7rem;
+    border-radius: 50%;
+}
+
+/* Fix back button if it's in header */
+.app-header .back,
+.app-header a {
+    color: white !important;
+    background: rgba(255,255,255,0.15) !important;
+}
+
+.app-header .back:hover {
+    background: var(--app-accent) !important;
+    color: var(--app-primary) !important;
+}
         /* ============================================= */
 /* FILE: mobile-app-theme.css                     */
 /* ============================================= */
@@ -1077,4 +1126,5 @@ body {
     */
 })();</script>
 </body>
+
 </html>
