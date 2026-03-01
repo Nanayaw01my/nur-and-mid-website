@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Anatomy · complete systems (10 topics)</title>
+    <title>Anatomy · 7 Systems Deep Dive</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* ===== FIXED APP HEADER - WHITE TEXT ON BLUE ===== */
@@ -46,17 +46,6 @@
             border-radius: 50%;
         }
 
-        .app-header .back,
-        .app-header a {
-            color: white !important;
-            background: rgba(255,255,255,0.15) !important;
-        }
-
-        .app-header .back:hover {
-            background: #fcb424 !important;
-            color: #0b3b55 !important;
-        }
-
         /* ===== NATIVE APP VARIABLES ===== */
         :root {
             --app-bg: #f5f7fa;
@@ -67,41 +56,24 @@
             --app-text-light: #6b7b8c;
             --app-border: #e9ecf0;
             --app-shadow: 0 8px 20px rgba(0,20,40,0.08);
-            --app-shadow-heavy: 0 16px 32px rgba(0,35,70,0.12);
             --app-radius: 28px;
-            --app-radius-sm: 16px;
             --safe-area-top: env(safe-area-inset-top, 0px);
             --safe-area-bottom: env(safe-area-inset-bottom, 0px);
-        }
-
-        /* ===== BASE MOBILE APP STYLES ===== */
-        * {
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            -webkit-font-smoothing: antialiased;
         }
 
         body {
             background: var(--app-bg) !important;
             padding: 0 !important;
             margin: 0 !important;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
         }
 
-        /* ===== APP CONTAINER ===== */
         .course-container {
             max-width: 100% !important;
             margin: 0 !important;
             border-radius: 0 !important;
             background: var(--app-bg) !important;
-            box-shadow: none !important;
             padding: var(--safe-area-top) 0 var(--safe-area-bottom) 0 !important;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
         /* ===== BOTTOM NAVIGATION ===== */
@@ -112,13 +84,11 @@
             right: 0;
             background: rgba(255,255,255,0.98);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-around;
             padding: 0.8rem 1rem calc(0.8rem + var(--safe-area-bottom));
             border-top: 1px solid var(--app-border);
             z-index: 1000;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.02);
         }
 
         .nav-item {
@@ -128,7 +98,6 @@
             text-decoration: none;
             color: var(--app-text-light);
             font-size: 0.7rem;
-            transition: all 0.2s;
             padding: 0.3rem 0.8rem;
             border-radius: 40px;
         }
@@ -143,7 +112,7 @@
             background: rgba(11, 59, 85, 0.05);
         }
 
-        /* ===== CARD STYLES ===== */
+        /* ===== TOPIC CARDS ===== */
         .topic {
             background: var(--app-card-bg) !important;
             border-radius: var(--app-radius) !important;
@@ -152,16 +121,10 @@
             box-shadow: var(--app-shadow) !important;
             border: 1px solid var(--app-border) !important;
             overflow: hidden;
-            transition: transform 0.2s;
-        }
-
-        .topic:active {
-            transform: scale(0.98);
         }
 
         .topic h2 {
             background: white !important;
-            border-radius: 0 !important;
             padding: 1.2rem 1.5rem !important;
             margin: 0 !important;
             font-size: 1.5rem !important;
@@ -191,7 +154,7 @@
             padding: 1.5rem !important;
             background: white;
             transition: max-height 0.3s ease-out;
-            max-height: 2000px;
+            max-height: 5000px;
             overflow: hidden;
         }
 
@@ -218,80 +181,12 @@
             transition: width 0.3s;
         }
 
-        /* ===== PULL TO REFRESH ===== */
-        .pull-indicator {
-            text-align: center;
-            padding: 1rem;
-            color: var(--app-text-light);
-            transform: translateY(-100%);
-            transition: transform 0.2s;
-        }
-
-        /* ===== TOUCH FEEDBACK ===== */
-        .touch-feedback {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .touch-feedback::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.05);
-            opacity: 0;
-            transition: opacity 0.2s;
-            pointer-events: none;
-        }
-
-        .touch-feedback:active::after {
-            opacity: 1;
-        }
-
-        /* ===== DARK MODE SUPPORT ===== */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --app-bg: #1a1e24;
-                --app-card-bg: #2c3138;
-                --app-text: #e9edf2;
-                --app-text-light: #9aa6b2;
-                --app-border: #3a4048;
-            }
-            
-            body {
-                background: var(--app-bg) !important;
-                color: var(--app-text) !important;
-            }
-            
-            .app-header {
-                background: rgba(20, 30, 40, 0.98);
-            }
-            
-            .topic-content {
-                color: var(--app-text) !important;
-            }
-        }
-
-        /* ===== RESPONSIVE ADJUSTMENTS ===== */
-        @media (max-width: 768px) {
-            .course-grid {
-                grid-template-columns: 1fr !important;
-                padding: 1rem !important;
-            }
-            
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
         /* ===== TABLE STYLES ===== */
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
+            background: white;
         }
         th {
             background: var(--app-primary);
@@ -320,349 +215,420 @@
             font-style: italic;
             color: var(--app-primary);
         }
-        .image-placeholder {
-            background: #e1f0fa;
-            padding: 3rem;
-            border-radius: 24px;
-            margin: 1.5rem 0;
-            text-align: center;
-            border: 3px solid var(--app-accent);
-        }
-        .image-placeholder i {
-            font-size: 4rem;
-            color: var(--app-primary);
-            margin-bottom: 1rem;
-        }
-        .image-placeholder p {
-            font-size: 1.3rem;
-            color: var(--app-primary);
-        }
+
         .back {
             display: inline-block;
-            margin-bottom: 2rem;
+            margin: 1rem;
             background: var(--app-primary);
             color: white;
             padding: 0.8rem 2rem;
             border-radius: 40px;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s;
         }
         .back:hover {
             background: var(--app-accent);
             color: var(--app-primary);
+        }
+        h3 {
+            color: var(--app-primary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+        h4 {
+            color: var(--app-text);
+            margin: 1.2rem 0 0.8rem;
+            font-size: 1.1rem;
+        }
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        .clinical-note {
+            background: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 12px;
         }
     </style>
 </head>
 <body>
 <div class="course-container">
     <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Hub</a>
-    <h1><i class="fas fa-heart"></i> Human Anatomy · 10 Complete Systems</h1>
-    <p style="font-size:1.3rem; margin:1rem 1rem 2rem;">Respiratory, Reproductive, Excretory/Urinary, Nervous, Endocrine, Digestive + more</p>
+    <h1><i class="fas fa-heart"></i> Anatomy · 7 Systems Deep Dive</h1>
+    <p style="margin:0 1rem 2rem; font-size:1.2rem;">Respiratory · Reproductive · Urinary · Nervous · Endocrine · Digestive · Excretory</p>
 
-    <!-- TOPIC 1: CELLS & TISSUES (foundation) -->
+    <!-- ===== TOPIC 1: RESPIRATORY SYSTEM ===== -->
     <div class="topic">
-        <h2>1. Cells & Tissues — Microscopic Anatomy</h2>
+        <h2>1. Respiratory System — Detailed Anatomy</h2>
         <div class="topic-content">
-            <h3>Cell Organelles & Functions</h3>
-            <table>
-                <tr><th>Organelle</th><th>Function</th></tr>
-                <tr><td>Nucleus</td><td>DNA storage, transcription</td></tr>
-                <tr><td>Mitochondria</td><td>ATP production</td></tr>
-                <tr><td>Rough ER</td><td>Protein synthesis</td></tr>
-                <tr><td>Smooth ER</td><td>Lipid synthesis, detox</td></tr>
-                <tr><td>Golgi apparatus</td><td>Modification, packaging</td></tr>
-                <tr><td>Lysosomes</td><td>Digestion, autophagy</td></tr>
-            </table>
-            <h3>Four Primary Tissues</h3>
+            <h3>1.1 Upper Respiratory Tract</h3>
+            <p><strong>Nasal Cavity:</strong> Divided by nasal septum; lined with ciliated pseudostratified columnar epithelium with goblet cells (mucus production). Functions: warms, filters, humidifies air. Conchae (superior, middle, inferior) increase surface area. Olfactory epithelium in superior region for smell.</p>
+            <p><strong>Pharynx (throat):</strong> Three parts:</p>
             <ul>
-                <li><strong>Epithelial:</strong> Covering, lining, glands</li>
-                <li><strong>Connective:</strong> Support, bind (bone, blood, fat)</li>
-                <li><strong>Muscle:</strong> Skeletal, cardiac, smooth</li>
-                <li><strong>Nervous:</strong> Neurons, neuroglia</li>
+                <li><strong>Nasopharynx:</strong> Behind nasal cavity; contains pharyngeal tonsils (adenoids) and openings of Eustachian tubes (equalize pressure).</li>
+                <li><strong>Oropharynx:</strong> Behind mouth; contains palatine and lingual tonsils. Common passage for air, food, drink.</li>
+                <li><strong>Laryngopharynx:</strong> Opens into esophagus and larynx; lined by stratified squamous epithelium (protection).</li>
             </ul>
-        </div>
-    </div>
+            <p><strong>Larynx (voice box):</strong> Cartilaginous structure (thyroid, cricoid, epiglottis, arytenoids). Epiglottis prevents aspiration during swallowing. Vocal cords: true (produce sound) and false (vestibular). Innervation: recurrent laryngeal nerve (branch of vagus).</p>
 
-    <!-- TOPIC 2: SKELETAL SYSTEM -->
-    <div class="topic">
-        <h2>2. Skeletal System — Bones & Joints</h2>
-        <div class="topic-content">
-            <h3>Divisions</h3>
+            <h3>1.2 Lower Respiratory Tract</h3>
+            <p><strong>Trachea:</strong> 10-12 cm long, C-shaped cartilaginous rings (open posteriorly for esophageal expansion). Lined by ciliated epithelium and goblet cells (mucus escalator). Bifurcates at carina into right and left main bronchi.</p>
+            <p><strong>Bronchial Tree:</strong></p>
             <ul>
-                <li><strong>Axial (80):</strong> Skull, vertebrae, ribs, sternum</li>
-                <li><strong>Appendicular (126):</strong> Limbs, pectoral & pelvic girdles</li>
+                <li><strong>Right main bronchus:</strong> Shorter, wider, more vertical – common site for aspiration.</li>
+                <li><strong>Left main bronchus:</strong> Longer, narrower, more horizontal.</li>
+                <li>Branch into lobar (secondary) bronchi (3 right, 2 left) → segmental (tertiary) bronchi → bronchioles → terminal bronchioles → respiratory bronchioles → alveolar ducts → alveolar sacs → alveoli.</li>
             </ul>
-            <h3>Joint Types</h3>
-            <ul>
-                <li><strong>Fibrous:</strong> Immovable (skull sutures)</li>
-                <li><strong>Cartilaginous:</strong> Slightly movable (intervertebral discs)</li>
-                <li><strong>Synovial:</strong> Freely movable (knee, shoulder)</li>
-            </ul>
-        </div>
-    </div>
+            <p><strong>Bronchioles:</strong> No cartilage; smooth muscle controls airflow (autonomic: sympathetic dilates, parasympathetic constricts).</p>
 
-    <!-- TOPIC 3: MUSCULAR SYSTEM -->
-    <div class="topic">
-        <h2>3. Muscular System — Movement</h2>
-        <div class="topic-content">
-            <h3>Muscle Types</h3>
+            <h3>1.3 Alveoli — Site of Gas Exchange</h3>
             <ul>
-                <li><strong>Skeletal:</strong> Voluntary, striated</li>
-                <li><strong>Cardiac:</strong> Involuntary, striated, intercalated discs</li>
-                <li><strong>Smooth:</strong> Involuntary, non-striated (viscera)</li>
+                <li><strong>Type I pneumocytes:</strong> Thin squamous cells covering 95% of alveolar surface; site of gas diffusion.</li>
+                <li><strong>Type II pneumocytes:</strong> Cuboidal, secrete pulmonary surfactant (reduces surface tension, prevents alveolar collapse). Proliferate after injury to regenerate epithelium.</li>
+                <li><strong>Alveolar macrophages (dust cells):</strong> Phagocytose debris, pathogens.</li>
             </ul>
-            <h3>Major Muscles</h3>
-            <ul>
-                <li><strong>Deltoid:</strong> Shoulder abduction</li>
-                <li><strong>Pectoralis major:</strong> Chest flexion/adduction</li>
-                <li><strong>Biceps brachii:</strong> Elbow flexion</li>
-                <li><strong>Quadriceps:</strong> Knee extension</li>
-                <li><strong>Hamstrings:</strong> Knee flexion</li>
-            </ul>
-        </div>
-    </div>
+            <p><strong>Respiratory membrane:</strong> Alveolar epithelium → fused basement membrane → capillary endothelium. Thickness 0.5-1 μm; gases diffuse by partial pressure gradients.</p>
 
-    <!-- TOPIC 4: CARDIOVASCULAR SYSTEM -->
-    <div class="topic">
-        <h2>4. Cardiovascular — Heart & Vessels</h2>
-        <div class="topic-content">
-            <h3>Heart Chambers</h3>
-            <ul>
-                <li>Right atrium (receives deoxygenated blood)</li>
-                <li>Right ventricle (pumps to lungs)</li>
-                <li>Left atrium (receives oxygenated blood)</li>
-                <li>Left ventricle (pumps to body)</li>
-            </ul>
-            <h3>Valves</h3>
-            <ul>
-                <li>Tricuspid (right AV), Mitral (left AV)</li>
-                <li>Pulmonary (right ventricular outflow)</li>
-                <li>Aortic (left ventricular outflow)</li>
-            </ul>
             <div class="diagram-box">
                 <pre>
-    Blood flow: RA → tricuspid → RV → pulmonary → lungs → pulmonary veins → LA → mitral → LV → aortic → body
+    ALVEOLUS STRUCTURE:
+        ┌─────────────────┐
+        │   Alveolus      │
+        │  Type I cell    │
+        └──────┬──────────┘
+               │ O₂
+        ┌──────▼──────────┐
+        │ Capillary (RBC) │
+        └──────┬──────────┘
+               │ CO₂
+        ┌──────▼──────────┐
+        │   Alveolus      │
+        └─────────────────┘
+    Surfactant (Type II) reduces surface tension.
                 </pre>
+                <div class="diagram-caption">Fig 1: Alveolar-capillary unit</div>
+            </div>
+
+            <h3>1.4 Pleura & Lung Lobes</h3>
+            <ul>
+                <li><strong>Visceral pleura:</strong> Covers lung surface.</li>
+                <li><strong>Parietal pleura:</strong> Lines thoracic cavity.</li>
+                <li><strong>Pleural cavity:</strong> Thin space with serous fluid (reduces friction).</li>
+                <li><strong>Right lung:</strong> 3 lobes (superior, middle, inferior), 10 segments.</li>
+                <li><strong>Left lung:</strong> 2 lobes (superior, inferior), cardiac notch, lingula, 8-9 segments.</li>
+            </ul>
+
+            <h3>1.5 Blood Supply & Innervation</h3>
+            <ul>
+                <li><strong>Pulmonary circulation:</strong> Deoxygenated blood from RV → pulmonary arteries → capillaries (gas exchange) → pulmonary veins → LA.</li>
+                <li><strong>Bronchial circulation:</strong> Systemic supply to lung tissue (bronchial arteries from aorta).</li>
+                <li><strong>Innervation:</strong> Pulmonary plexus (sympathetic: bronchodilation; parasympathetic: bronchoconstriction).</li>
+            </ul>
+
+            <div class="clinical-note">
+                <strong>🫁 Clinical Correlation:</strong> Pneumothorax (air in pleural cavity) causes lung collapse. Surfactant deficiency (neonatal RDS) leads to alveolar collapse. COPD involves destruction of alveolar walls (emphysema) and chronic bronchitis.
             </div>
         </div>
     </div>
 
-    <!-- TOPIC 5: RESPIRATORY SYSTEM (requested) -->
+    <!-- ===== TOPIC 2: DIGESTIVE SYSTEM ===== -->
     <div class="topic">
-        <h2>5. Respiratory System — Airways & Lungs</h2>
+        <h2>2. Digestive System — From Mouth to Anus</h2>
         <div class="topic-content">
-            <h3>Upper Respiratory Tract</h3>
+            <h3>2.1 Layers of GI Tract (from inside out)</h3>
             <ul>
-                <li>Nasal cavity, pharynx (naso/oro/laryngo), larynx (epiglottis, vocal cords)</li>
+                <li><strong>Mucosa:</strong> Epithelium (varies by region), lamina propria (connective tissue), muscularis mucosae (smooth muscle).</li>
+                <li><strong>Submucosa:</strong> Connective tissue with blood vessels, lymphatics, submucosal plexus (Meissner's).</li>
+                <li><strong>Muscularis externa:</strong> Inner circular, outer longitudinal smooth muscle; myenteric plexus (Auerbach's) between layers.</li>
+                <li><strong>Serosa / Adventitia:</strong> Outer covering (serosa if intraperitoneal, adventitia if retroperitoneal).</li>
             </ul>
-            <h3>Lower Respiratory Tract</h3>
-            <ul>
-                <li>Trachea → bronchi (right main wider, more vertical) → bronchioles → alveolar ducts → alveoli</li>
-            </ul>
-            <h3>Alveoli Structure</h3>
-            <ul>
-                <li><strong>Type I pneumocytes:</strong> thin for gas exchange (95% surface)</li>
-                <li><strong>Type II pneumocytes:</strong> produce surfactant (prevents collapse)</li>
-                <li><strong>Alveolar macrophages:</strong> dust cells – phagocytic</li>
-            </ul>
-            <div class="diagram-box">
-                <pre>
-    ALVEOLUS:
-      Capillary     Alveolus
-      ┌───┐        ┌─────┐
-      │RBC│◄─O₂──►│     │
-      └───┘        │     │
-         │CO₂◄────│     │
-         └────────┴─────┘
-                </pre>
-                <div class="diagram-caption">Gas exchange across alveolar-capillary membrane</div>
-            </div>
-            <h3>Lung Volumes</h3>
-            <ul>
-                <li>Tidal volume (TV): 500 mL</li>
-                <li>Vital capacity (VC): ~4600 mL</li>
-                <li>Total lung capacity (TLC): ~5800 mL</li>
-            </ul>
-        </div>
-    </div>
 
-    <!-- TOPIC 6: DIGESTIVE SYSTEM (requested) -->
-    <div class="topic">
-        <h2>6. Digestive System — From Mouth to Anus</h2>
-        <div class="topic-content">
-            <h3>GI Tract Organs</h3>
+            <h3>2.2 Mouth & Esophagus</h3>
+            <p><strong>Oral cavity:</strong> Lips, cheeks, hard/soft palate, tongue (papillae: filiform, fungiform, circumvallate), teeth (incisors, canines, premolars, molars). Salivary glands: parotid (serous), submandibular (mixed), sublingual (mucous). Saliva contains amylase, lysozyme, IgA.</p>
+            <p><strong>Esophagus:</strong> 25 cm muscular tube; upper 1/3 skeletal muscle, middle mixed, lower 1/3 smooth muscle. Passes through esophageal hiatus (T10). Lower esophageal sphincter (LES) prevents reflux.</p>
+
+            <h3>2.3 Stomach</h3>
+            <p>Regions: cardia, fundus, body, antrum, pylorus. Rugae (folds) allow distension.</p>
+            <p><strong>Cells of gastric glands:</strong></p>
             <ul>
-                <li>Oral cavity, pharynx, esophagus, stomach, small intestine (duodenum, jejunum, ileum), large intestine (cecum, colon, rectum), anus</li>
+                <li><strong>Mucous neck cells:</strong> Mucus.</li>
+                <li><strong>Chief cells:</strong> Pepsinogen (activated to pepsin by HCl).</li>
+                <li><strong>Parietal cells:</strong> HCl (intrinsic factor for B12 absorption).</li>
+                <li><strong>G cells:</strong> Gastrin (hormone stimulates acid secretion).</li>
+                <li><strong>Enterochromaffin-like (ECL) cells:</strong> Histamine (stimulates parietal cells).</li>
             </ul>
-            <h3>Accessory Organs</h3>
+            <p><strong>Gastric juice:</strong> 2-3 L/day, pH 1.5-3.5.</p>
+
+            <h3>2.4 Small Intestine (6-7 m)</h3>
             <ul>
-                <li>Salivary glands, liver, gallbladder, pancreas</li>
+                <li><strong>Duodenum:</strong> First 25 cm, retroperitoneal. Receives bile (common bile duct) and pancreatic juice via major duodenal papilla (hepatopancreatic ampulla of Vater).</li>
+                <li><strong>Jejunum:</strong> Upper 2/5 of remaining; thick wall, many folds (plicae circulares).</li>
+                <li><strong>Ileum:</strong> Lower 3/5; thinner, Peyers patches (lymphoid tissue), absorbs B12 and bile salts.</li>
             </ul>
-            <h3>Digestive Enzymes</h3>
-            <table>
-                <tr><th>Organ</th><th>Enzyme/Secretion</th><th>Function</th></tr>
-                <tr><td>Salivary glands</td><td>Amylase</td><td>Starch → maltose</td></tr>
-                <tr><td>Stomach</td><td>Pepsin (HCl)</td><td>Proteins → peptides</td></tr>
-                <tr><td>Pancreas</td><td>Trypsin, lipase, amylase</td><td>Proteins, fats, carbs</td></tr>
-                <tr><td>Small intestine</td><td>Brush border enzymes</td><td>Final digestion</td></tr>
-                <tr><td>Liver</td><td>Bile (stored in gallbladder)</td><td>Fat emulsification</td></tr>
-            </table>
-            <div class="diagram-box">
-                <pre>
-    VILLUS:
-      Microvilli (brush border)
-      ┌─┐┌─┐┌─┐
-      │ Capillary   │
-      │ Lacteal     │
-      └─────────────┘
-    Nutrients absorbed: amino acids, glucose → blood; fatty acids → lymph
-                </pre>
+            <p><strong>Structural adaptations for absorption:</strong> Plicae circulares, villi (finger-like projections), microvilli (brush border). Each villus contains capillary network and lacteal (lymphatic).</p>
+
+            <h3>2.5 Large Intestine (1.5 m)</h3>
+            <p>Parts: cecum (appendix attached), ascending, transverse, descending, sigmoid colon, rectum, anal canal. Taeniae coli (three bands of longitudinal muscle), haustra (pouches), appendices epiploicae (fat tags).</p>
+            <p><strong>Functions:</strong> Water absorption (900 mL → 100 mL), electrolyte absorption, formation of feces, bacterial flora produce vitamin K and some B vitamins.</p>
+
+            <h3>2.6 Accessory Organs</h3>
+            <ul>
+                <li><strong>Liver:</strong> Largest gland (1.5 kg). Lobules with hepatocytes, portal triads (hepatic artery, portal vein, bile duct). Produces bile (500-1000 mL/day). Stores glycogen, synthesizes proteins, detoxifies.</li>
+                <li><strong>Gallbladder:</strong> Stores and concentrates bile. Contracts in response to CCK.</li>
+                <li><strong>Pancreas:</strong> Exocrine (acini secrete digestive enzymes: trypsin, chymotrypsin, lipase, amylase) and endocrine (islets of Langerhans: insulin β, glucagon α, somatostatin δ).</li>
+            </ul>
+
+            <div class="clinical-note">
+                <strong>🩺 Clinical:</strong> Peptic ulcers (H. pylori, NSAIDs). Appendicitis (inflammation of appendix). Cirrhosis (liver fibrosis). Pancreatitis (autodigestion by enzymes). Celiac disease (villous atrophy from gluten).
             </div>
         </div>
     </div>
 
-    <!-- TOPIC 7: NERVOUS SYSTEM (requested) -->
+    <!-- ===== TOPIC 3: NERVOUS SYSTEM ===== -->
     <div class="topic">
-        <h2>7. Nervous System — Brain, Cord, Nerves</h2>
+        <h2>3. Nervous System — CNS & PNS</h2>
         <div class="topic-content">
-            <h3>Central Nervous System (CNS)</h3>
+            <h3>3.1 Central Nervous System (CNS)</h3>
+            <p><strong>Brain:</strong> ~100 billion neurons. Divided into:</p>
             <ul>
-                <li><strong>Brain:</strong> Cerebrum (lobes: frontal, parietal, temporal, occipital), cerebellum, brainstem (midbrain, pons, medulla)</li>
-                <li><strong>Spinal cord:</strong> Gray matter (horns), white matter (tracts)</li>
+                <li><strong>Cerebrum:</strong> Two hemispheres (corpus callosum connects). Lobes: frontal (motor, executive), parietal (somatosensory), temporal (auditory, memory), occipital (visual). Cortex: gray matter (6 layers); white matter (tracts). Basal ganglia (caudate, putamen, globus pallidus) – motor control.</li>
+                <li><strong>Diencephalon:</strong> Thalamus (relay station), hypothalamus (homeostasis, pituitary control), epithalamus (pineal gland – melatonin).</li>
+                <li><strong>Brainstem:</strong> Midbrain (reflexes, eye movement), pons (bridge, respiratory), medulla oblongata (vital centers: cardiac, respiratory, vasomotor).</li>
+                <li><strong>Cerebellum:</strong> Coordination, balance, fine motor control.</li>
             </ul>
-            <h3>Peripheral Nervous System (PNS)</h3>
+            <p><strong>Spinal cord:</strong> 31 segments (8 cervical, 12 thoracic, 5 lumbar, 5 sacral, 1 coccygeal). Gray matter (anterior horn – motor; posterior horn – sensory; lateral horn – autonomic). White matter tracts (ascending sensory, descending motor).</p>
+
+            <h3>3.2 Meninges & CSF</h3>
             <ul>
-                <li>Cranial nerves (12 pairs)</li>
-                <li>Spinal nerves (31 pairs)</li>
-                <li>Autonomic: sympathetic (fight/flight), parasympathetic (rest/digest)</li>
+                <li><strong>Dura mater:</strong> Tough outer layer; forms dural folds (falx cerebri, tentorium cerebelli).</li>
+                <li><strong>Arachnoid mater:</strong> Middle layer; subarachnoid space contains CSF.</li>
+                <li><strong>Pia mater:</strong> Delicate inner layer adheres to brain/spinal cord.</li>
+                <li><strong>CSF:</strong> Produced by choroid plexus in ventricles; circulates and cushions; 150 mL total, replaced 3x daily.</li>
             </ul>
-            <h3>Cranial Nerves Mnemonic: "Oh Oh Oh To Touch And Feel Very Green Vegetables AH!"</h3>
+
+            <h3>3.3 Peripheral Nervous System (PNS)</h3>
+            <p><strong>Cranial nerves (12 pairs):</strong> See table below.</p>
             <table>
-                <tr><th>#</th><th>Name</th><th>Function</th></tr>
-                <tr><td>I</td><td>Olfactory</td><td>Smell</td></tr>
-                <tr><td>II</td><td>Optic</td><td>Vision</td></tr>
-                <tr><td>III</td><td>Oculomotor</td><td>Eye movement (most)</td></tr>
-                <tr><td>IV</td><td>Trochlear</td><td>Superior oblique</td></tr>
-                <tr><td>V</td><td>Trigeminal</td><td>Facial sensation, mastication</td></tr>
-                <tr><td>VI</td><td>Abducens</td><td>Lateral rectus</td></tr>
-                <tr><td>VII</td><td>Facial</td><td>Facial movement, taste</td></tr>
-                <tr><td>VIII</td><td>Vestibulocochlear</td><td>Hearing, balance</td></tr>
-                <tr><td>IX</td><td>Glossopharyngeal</td><td>Taste, swallowing</td></tr>
-                <tr><td>X</td><td>Vagus</td><td>Parasympathetic, voice</td></tr>
-                <tr><td>XI</td><td>Accessory</td><td>SCM, trapezius</td></tr>
-                <tr><td>XII</td><td>Hypoglossal</td><td>Tongue movement</td></tr>
+                <tr><th>#</th><th>Name</th><th>Function</th><th>Type</th></tr>
+                <tr><td>I</td><td>Olfactory</td><td>Smell</td><td>Sensory</td></tr>
+                <tr><td>II</td><td>Optic</td><td>Vision</td><td>Sensory</td></tr>
+                <tr><td>III</td><td>Oculomotor</td><td>Eye movement (most), pupil constriction, eyelid</td><td>Motor</td></tr>
+                <tr><td>IV</td><td>Trochlear</td><td>Superior oblique (down & in)</td><td>Motor</td></tr>
+                <tr><td>V</td><td>Trigeminal</td><td>Facial sensation, mastication</td><td>Both</td></tr>
+                <tr><td>VI</td><td>Abducens</td><td>Lateral rectus (abducts eye)</td><td>Motor</td></tr>
+                <tr><td>VII</td><td>Facial</td><td>Facial movement, taste (anterior 2/3), lacrimation, salivation</td><td>Both</td></tr>
+                <tr><td>VIII</td><td>Vestibulocochlear</td><td>Hearing, balance</td><td>Sensory</td></tr>
+                <tr><td>IX</td><td>Glossopharyngeal</td><td>Taste (posterior 1/3), swallowing, carotid body/ sinus</td><td>Both</td></tr>
+                <tr><td>X</td><td>Vagus</td><td>Parasympathetic to viscera, voice, swallowing</td><td>Both</td></tr>
+                <tr><td>XI</td><td>Accessory</td><td>SCM, trapezius</td><td>Motor</td></tr>
+                <tr><td>XII</td><td>Hypoglossal</td><td>Tongue movement</td><td>Motor</td></tr>
             </table>
+
+            <p><strong>Spinal nerves:</strong> 31 pairs, each from dorsal (sensory) and ventral (motor) roots. Form plexuses: cervical (C1-4), brachial (C5-T1), lumbar (L1-4), sacral (L4-S4).</p>
+
+            <h3>3.4 Autonomic Nervous System</h3>
+            <ul>
+                <li><strong>Sympathetic:</strong> Thoracolumbar (T1-L2). Neurotransmitter: norepinephrine (postganglionic). Fight or flight: increased HR, bronchodilation, decreased digestion.</li>
+                <li><strong>Parasympathetic:</strong> Craniosacral (CN III, VII, IX, X; S2-4). Neurotransmitter: acetylcholine. Rest and digest: decreased HR, increased GI motility.</li>
+                <li><strong>Enteric:</strong> Intrinsic nerve plexus in gut (can function independently).</li>
+            </ul>
+
+            <div class="clinical-note">
+                <strong>🧠 Clinical:</strong> Stroke (CVA) – deficits correspond to affected artery (MCA: face/arm weakness). Parkinson's (dopamine loss in substantia nigra). Multiple sclerosis (demyelination). Herniated disc compressing spinal nerve.
+            </div>
         </div>
     </div>
 
-    <!-- TOPIC 8: ENDOCRINE SYSTEM (requested) -->
+    <!-- ===== TOPIC 4: ENDOCRINE SYSTEM ===== -->
     <div class="topic">
-        <h2>8. Endocrine System — Hormones & Glands</h2>
+        <h2>4. Endocrine System — Hormonal Control</h2>
         <div class="topic-content">
-            <h3>Major Glands</h3>
+            <h3>4.1 Hypothalamus & Pituitary</h3>
+            <p><strong>Hypothalamus:</strong> Master regulator; produces releasing/inhibiting hormones that control anterior pituitary. Also produces ADH and oxytocin (stored in posterior pituitary).</p>
+            <p><strong>Pituitary gland (hypophysis):</strong></p>
             <ul>
-                <li><strong>Hypothalamus:</strong> Releasing hormones, ADH, oxytocin (storage)</li>
-                <li><strong>Pituitary (anterior):</strong> GH, TSH, ACTH, FSH, LH, prolactin</li>
-                <li><strong>Pituitary (posterior):</strong> ADH, oxytocin (release)</li>
-                <li><strong>Thyroid:</strong> T3/T4 (metabolism), calcitonin (↓Ca)</li>
-                <li><strong>Parathyroid:</strong> PTH (↑Ca)</li>
-                <li><strong>Adrenal cortex:</strong> Cortisol, aldosterone, androgens</li>
-                <li><strong>Adrenal medulla:</strong> Epinephrine, norepinephrine</li>
-                <li><strong>Pancreas (islets):</strong> Insulin (β), glucagon (α), somatostatin (δ)</li>
-                <li><strong>Gonads:</strong> Testes (testosterone), ovaries (estrogen, progesterone)</li>
+                <li><strong>Anterior (adenohypophysis):</strong> GH, TSH, ACTH, FSH, LH, prolactin. Regulated by hypothalamic hormones via hypophyseal portal system.</li>
+                <li><strong>Posterior (neurohypophysis):</strong> Releases ADH (vasopressin) – increases water reabsorption in kidneys; oxytocin – uterine contraction, milk ejection.</li>
             </ul>
-            <h3>Feedback Loops</h3>
+
+            <h3>4.2 Thyroid & Parathyroid</h3>
+            <p><strong>Thyroid gland:</strong> Butterfly shape in neck. Follicles store colloid (thyroglobulin). Produces T3 (triiodothyronine) and T4 (thyroxine) – increase metabolism. Parafollicular (C) cells produce calcitonin (lowers blood Ca²⁺).</p>
+            <p><strong>Parathyroid glands:</strong> 4 small glands on posterior thyroid. Produce PTH (parathyroid hormone) – increases blood Ca²⁺ by bone resorption, kidney reabsorption, activating vitamin D.</p>
+
+            <h3>4.3 Adrenal Glands</h3>
+            <p>Located on top of kidneys. Two regions:</p>
+            <ul>
+                <li><strong>Cortex (outer):</strong> Zona glomerulosa (aldosterone – Na⁺ retention, K⁺ excretion), zona fasciculata (cortisol – stress, metabolism), zona reticularis (androgens).</li>
+                <li><strong>Medulla (inner):</strong> Chromaffin cells secrete epinephrine (80%) and norepinephrine (20%) – sympathetic response.</li>
+            </ul>
+
+            <h3>4.4 Pancreas (Endocrine)</h3>
+            <ul>
+                <li><strong>Islets of Langerhans:</strong> β cells (insulin – lowers blood glucose), α cells (glucagon – raises glucose), δ cells (somatostatin – inhibits both), PP cells (pancreatic polypeptide).</li>
+            </ul>
+
+            <h3>4.5 Other Endocrine Glands</h3>
+            <ul>
+                <li><strong>Pineal gland:</strong> Melatonin – circadian rhythm.</li>
+                <li><strong>Gonads:</strong> Testes (testosterone), ovaries (estrogen, progesterone).</li>
+                <li><strong>Thymus:</strong> Thymosin – T lymphocyte maturation (shrinks after puberty).</li>
+                <li><strong>Kidney:</strong> Renin, erythropoietin (EPO).</li>
+                <li><strong>Heart:</strong> Atrial natriuretic peptide (ANP) – reduces BP.</li>
+            </ul>
+
             <div class="diagram-box">
                 <pre>
+    HORMONE FEEDBACK LOOPS:
     Negative feedback (thyroid):
-    Hypothalamus (TRH) → Pituitary (TSH) → Thyroid (T3/T4) → inhibits TRH/TSH
+    Hypothalamus (TRH) → Pituitary (TSH) → Thyroid (T3/T4) → inhibits TRH, TSH
 
     Positive feedback (oxytocin):
-    Uterine contraction → more oxytocin → stronger contraction
+    Uterine stretch → more oxytocin → stronger contractions
                 </pre>
+            </div>
+
+            <div class="clinical-note">
+                <strong>💊 Clinical:</strong> Diabetes mellitus (insulin deficiency/resistance). Hyperthyroidism (Graves' disease). Cushing's syndrome (excess cortisol). Addison's disease (adrenal insufficiency).
             </div>
         </div>
     </div>
 
-    <!-- TOPIC 9: URINARY / EXCRETORY SYSTEM (requested) -->
+    <!-- ===== TOPIC 5: URINARY (EXCRETORY) SYSTEM ===== -->
     <div class="topic">
-        <h2>9. Urinary (Excretory) System — Kidneys & Nephrons</h2>
+        <h2>5. Urinary (Excretory) System — Kidneys & Nephrons</h2>
         <div class="topic-content">
-            <h3>Kidney Structure</h3>
+            <h3>5.1 Kidney Gross Anatomy</h3>
+            <p>Paired retroperitoneal organs (T12-L3). Hilum: renal artery, vein, ureter. Layers: renal capsule, cortex (outer), medulla (inner pyramids), renal pelvis (funnel to ureter). Calyces (minor → major) collect urine.</p>
+
+            <h3>5.2 Nephron — Functional Unit</h3>
+            <p>Each kidney ~1 million nephrons. Two types: cortical (85%) and juxtamedullary (15% – long loops for concentration).</p>
             <ul>
-                <li>Cortex (outer), medulla (pyramids), renal pelvis, ureter</li>
+                <li><strong>Renal corpuscle:</strong> Glomerulus (capillary tuft) + Bowman's capsule. Filtration membrane: fenestrated endothelium, basement membrane, podocyte foot processes (slit diaphragms).</li>
+                <li><strong>Proximal convoluted tubule (PCT):</strong> Cuboidal cells with microvilli (brush border). Reabsorbs 65% Na⁺, 100% glucose, amino acids, 65% water, HCO₃⁻. Secretes H⁺, NH₃, drugs.</li>
+                <li><strong>Loop of Henle:</strong> Descending thin limb (water permeable, reabsorbs water), ascending thick limb (Na⁺-K⁺-2Cl⁻ cotransport, impermeable to water) – creates medullary osmotic gradient.</li>
+                <li><strong>Distal convoluted tubule (DCT):</strong> Reabsorbs Na⁺ (regulated by aldosterone), secretes K⁺, H⁺. Calcium reabsorption regulated by PTH.</li>
+                <li><strong>Collecting duct:</strong> Principal cells (Na⁺ reabsorption, K⁺ secretion under aldosterone; water reabsorption under ADH), intercalated cells (acid-base).</li>
             </ul>
-            <h3>The Nephron — Functional Unit</h3>
-            <ul>
-                <li><strong>Glomerulus:</strong> Filtration of blood</li>
-                <li><strong>Bowman's capsule:</strong> Collects filtrate</li>
-                <li><strong>Proximal convoluted tubule (PCT):</strong> Reabsorption (glucose, AA, Na⁺, H₂O)</li>
-                <li><strong>Loop of Henle:</strong> Countercurrent multiplier (water & salt reabsorption)</li>
-                <li><strong>Distal convoluted tubule (DCT):</strong> Secretion (K⁺, H⁺), regulated by aldosterone</li>
-                <li><strong>Collecting duct:</strong> ADH-regulated water reabsorption</li>
-            </ul>
+
             <div class="diagram-box">
                 <pre>
     NEPHRON:
-    Glomerulus
-        │
-    Bowman's capsule
-        │
-    PCT ──┐
-          │
-    Loop of Henle (descending & ascending)
-          │
-    DCT ──┘
-        │
-    Collecting duct → urine
+    Glomerulus ── PCT ── Descending loop ── Ascending loop ── DCT ── Collecting duct
+         │          │          │                  │             │         │
+    Bowman's     Reabsorption  Water             Salt          Secretion  Final urine
+    capsule      (65%)         reabsorption      reabsorption   K⁺, H⁺
                 </pre>
-                <div class="diagram-caption">Urine formation: filtration, reabsorption, secretion</div>
+                <div class="diagram-caption">Fig: Nephron segments and functions</div>
             </div>
-            <h3>RAAS (Renin-Angiotensin-Aldosterone System)</h3>
+
+            <h3>5.3 Urine Formation Steps</h3>
+            <ol>
+                <li><strong>Glomerular filtration:</strong> 120 mL/min (180 L/day). Filtrate: water, ions, glucose, urea, etc. No cells, no large proteins.</li>
+                <li><strong>Tubular reabsorption:</strong> 99% of filtrate reabsorbed. 1.5 L urine/day.</li>
+                <li><strong>Tubular secretion:</strong> Active transport of wastes (H⁺, K⁺, drugs) from blood into tubule.</li>
+            </ol>
+
+            <h3>5.4 Juxtaglomerular Apparatus & RAAS</h3>
             <ul>
-                <li>Low BP → renin → angiotensin I → ACE → angiotensin II → vasoconstriction + aldosterone → Na⁺/H₂O retention → BP up</li>
+                <li><strong>Juxtaglomerular cells:</strong> Modified smooth muscle in afferent arteriole – secrete renin in response to low BP, sympathetic stimulation.</li>
+                <li><strong>Macula densa:</strong> DCT cells sensing NaCl – signal JG cells.</li>
+                <li><strong>Renin-angiotensin-aldosterone system (RAAS):</strong> Renin → angiotensin I → ACE (lungs) → angiotensin II → vasoconstriction, aldosterone release, ADH release, thirst → BP up.</li>
             </ul>
+
+            <h3>5.5 Ureters, Bladder, Urethra</h3>
+            <ul>
+                <li><strong>Ureters:</strong> 25-30 cm long, propel urine by peristalsis. Enter bladder obliquely (prevents reflux).</li>
+                <li><strong>Urinary bladder:</strong> Detrusor muscle (smooth). Trigone (triangle between ureters and urethra). Internal urethral sphincter (smooth muscle, autonomic), external urethral sphincter (skeletal, voluntary).</li>
+                <li><strong>Urethra:</strong> Male: 20 cm, prostatic, membranous, penile. Female: 4 cm, external urethral orifice.</li>
+            </ul>
+
+            <div class="clinical-note">
+                <strong>💧 Clinical:</strong> UTI (cystitis, pyelonephritis). Renal calculi (kidney stones). Acute kidney injury (prerenal, renal, postrenal). Diabetic nephropathy. Dialysis for renal failure.
+            </div>
         </div>
     </div>
 
-    <!-- TOPIC 10: REPRODUCTIVE SYSTEM (requested) -->
+    <!-- ===== TOPIC 6: REPRODUCTIVE SYSTEM ===== -->
     <div class="topic">
-        <h2>10. Reproductive System — Male & Female</h2>
+        <h2>6. Reproductive System — Male & Female</h2>
         <div class="topic-content">
-            <h3>Male Anatomy</h3>
+            <h3>6.1 Male Reproductive Anatomy</h3>
             <ul>
-                <li><strong>Testes:</strong> Produce sperm & testosterone (seminiferous tubules, Leydig cells)</li>
-                <li><strong>Epididymis:</strong> Sperm maturation & storage</li>
-                <li><strong>Vas deferens:</strong> Duct for sperm</li>
-                <li><strong>Accessory glands:</strong> Seminal vesicles (fructose), prostate (alkaline fluid), bulbourethral (lubrication)</li>
-                <li><strong>Urethra:</strong> Common passage for urine/semen</li>
+                <li><strong>Testes:</strong> In scrotum (kept 3°C cooler). Tunica albuginea. Seminiferous tubules (spermatogenesis – Sertoli cells support). Interstitial cells (Leydig) produce testosterone.</li>
+                <li><strong>Epididymis:</strong> Head, body, tail on testis; sperm mature and stored (20 days).</li>
+                <li><strong>Vas (ductus) deferens:</strong> 45 cm, passes through inguinal canal, joins seminal vesicle to form ejaculatory duct.</li>
+                <li><strong>Accessory glands:</strong>
+                    <ul>
+                        <li><strong>Seminal vesicles:</strong> Produce 60% semen volume – fructose (energy for sperm), prostaglandins, clotting proteins.</li>
+                        <li><strong>Prostate:</strong> Surrounds urethra; produces thin, milky, alkaline fluid (neutralizes vaginal acidity).</li>
+                        <li><strong>Bulbourethral (Cowper's) glands:</strong> Mucus for lubrication, pre-ejaculate.</li>
+                    </ul>
+                </li>
+                <li><strong>Penis:</strong> Root, body, glans. Corpora cavernosa (2) and corpus spongiosum (1) – erectile tissue.</li>
             </ul>
-            <h3>Female Anatomy</h3>
+
+            <h3>6.2 Female Reproductive Anatomy</h3>
             <ul>
-                <li><strong>Ovaries:</strong> Produce ova, estrogen, progesterone</li>
-                <li><strong>Fallopian tubes:</strong> Site of fertilization; fimbriae capture ovum</li>
-                <li><strong>Uterus:</strong> Perimetrium, myometrium, endometrium</li>
-                <li><strong>Cervix:</strong> Opening to vagina</li>
-                <li><strong>Vagina:</strong> Birth canal, receives penis</li>
-                <li><strong>Mammary glands:</strong> Milk production</li>
+                <li><strong>Ovaries:</strong> Cortex contains follicles at various stages (primordial to Graafian). Oogenesis: 1 ovum/month. Produce estrogen (granulosa cells) and progesterone (corpus luteum).</li>
+                <li><strong>Fallopian tubes (uterine tubes):</strong> Fimbriae capture ovum. Site of fertilization (usually ampulla). Cilia and peristalsis move ovum/zygote.</li>
+                <li><strong>Uterus:</strong> Pear-shaped, 7-8 cm. Layers: perimetrium (outer), myometrium (thick smooth muscle), endometrium (functional layer shed in menstruation, basal layer regenerates).</li>
+                <li><strong>Cervix:</strong> Lower part, opens into vagina. Cervical mucus changes with cycle.</li>
+                <li><strong>Vagina:</strong> 8-10 cm, birth canal, acidic (lactobacilli). Hymen (thin membrane).</li>
+                <li><strong>External genitalia (vulva):</strong> Mons pubis, labia majora/minora, clitoris, vestibule, Bartholin's glands (mucus).</li>
+                <li><strong>Mammary glands:</strong> Modified sweat glands; lobules (alveoli) produce milk; lactiferous ducts open at nipple.</li>
             </ul>
-            <h3>Menstrual Cycle</h3>
+
+            <h3>6.3 Menstrual Cycle (28 days average)</h3>
             <table>
-                <tr><th>Phase</th><th>Days</th><th>Events</th></tr>
-                <tr><td>Menstrual</td><td>1-5</td><td>Endometrium shed</td></tr>
-                <tr><td>Follicular</td><td>6-14</td><td>FSH stimulates follicle; endometrium thickens</td></tr>
-                <tr><td>Ovulation</td><td>14</td><td>LH surge → ovum release</td></tr>
-                <tr><td>Luteal</td><td>15-28</td><td>Progesterone from corpus luteum; if no fertilization, degeneration</td></tr>
+                <tr><th>Phase</th><th>Days</th><th>Hormones</th><th>Ovarian</th><th>Endometrial</th></tr>
+                <tr><td>Follicular</td><td>1-13</td><td>FSH rises → follicle growth; estrogen increases</td><td>Follicle matures</td><td>Proliferative (thickens)</td></tr>
+                <tr><td>Ovulation</td><td>14</td><td>LH surge</td><td>Egg released</td><td>-</td></tr>
+                <tr><td>Luteal</td><td>15-28</td><td>LH → corpus luteum → progesterone, estrogen</td><td>Corpus luteum</td><td>Secretory (prep for implantation)</td></tr>
+                <tr><td>Menstrual</td><td>1-5</td><td>Low estrogen/progesterone</td><td>-</td><td>Functional layer shed</td></tr>
             </table>
+
+            <h3>6.4 Gametogenesis</h3>
+            <ul>
+                <li><strong>Spermatogenesis:</strong> In seminiferous tubules; spermatogonia (2n) → primary spermatocyte (2n) → meiosis I → secondary spermatocyte (n) → meiosis II → spermatids (n) → sperm (spermiogenesis). Takes 64 days. Millions daily.</li>
+                <li><strong>Oogenesis:</strong> Begins in fetal life; primary oocytes arrested in prophase I until puberty. Each month one completes meiosis I → secondary oocyte + polar body. Meiosis II completed only if fertilized.</li>
+            </ul>
+
+            <div class="clinical-note">
+                <strong>👶 Clinical:</strong> BPH (benign prostatic hyperplasia). Testicular torsion. PID (pelvic inflammatory disease). Endometriosis. Breast cancer screening. Infertility investigations.
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TOPIC 7: EXCRETORY SYSTEM (additional notes) ===== -->
+    <div class="topic">
+        <h2>7. Excretory System — Waste Removal</h2>
+        <div class="topic-content">
+            <p><em>Note: The urinary system is the primary excretory route. Other excretory organs include:</em></p>
+            <ul>
+                <li><strong>Skin:</strong> Sweat glands excrete water, salts, urea (minor).</li>
+                <li><strong>Lungs:</strong> Excrete CO₂, water vapor.</li>
+                <li><strong>Liver:</strong> Excretes bile pigments (bilirubin) and toxins into feces.</li>
+                <li><strong>Large intestine:</strong> Excretes undigested fiber, bacteria, some ions.</li>
+            </ul>
+            <h3>7.1 Urea Cycle & Nitrogen Excretion</h3>
+            <p>Protein metabolism produces ammonia (toxic). Liver converts ammonia to urea (ornithine cycle). Urea travels via blood to kidneys for excretion.</p>
+            <h3>7.2 Acid-Base Balance by Kidneys</h3>
+            <p>Kidneys regulate blood pH by excreting H⁺ and reabsorbing HCO₃⁻. In acidosis: more H⁺ excreted as NH₄⁺, titratable acids; more HCO₃⁻ reabsorbed.</p>
+            <div class="clinical-note">
+                <strong>🧪 Clinical:</strong> Uremia (elevated urea in renal failure). Hepatic encephalopathy (failure to detoxify ammonia). Sweat chloride test for cystic fibrosis.
+            </div>
         </div>
     </div>
 </div>
 
-<!-- ===== BOTTOM NAVIGATION ===== -->
+<!-- ===== BOTTOM NAVIGATION & SCRIPTS ===== -->
 <script>
     (function() {
-        // Bottom nav
+        // Bottom navigation
         const nav = document.createElement('div');
         nav.className = 'app-nav';
         const pages = [
