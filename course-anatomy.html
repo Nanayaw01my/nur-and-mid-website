@@ -1,0 +1,614 @@
+<!-- ============================================= -->
+<!-- FILE: course-anatomy.html (ANATOMY)           -->
+<!-- ============================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomy · complete visual notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background: #eef4fa;
+            padding: 1rem;
+        }
+        .course-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 48px;
+            padding: 2.5rem;
+            box-shadow: 0 28px 48px #aac2df;
+        }
+        h1 {
+            color: #0b3b55;
+            border-left: 16px solid #fcb424;
+            padding-left: 1.5rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .topic {
+            margin: 3rem 0;
+            border-bottom: 2px solid #e0eef9;
+            padding-bottom: 2rem;
+        }
+        .topic h2 {
+            background: #f5f9ff;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            color: #0a4b70;
+            font-size: 2rem;
+            border-left: 8px solid #fcb424;
+        }
+        .topic-content {
+            padding: 1.5rem;
+            font-size: 1.18rem;
+            line-height: 1.8;
+            color: #1a2b3c;
+        }
+        .topic-content h3 {
+            color: #0b3b55;
+            margin: 2.5rem 0 1rem;
+            font-size: 1.6rem;
+            border-bottom: 2px solid #fcb424;
+            padding-bottom: 0.3rem;
+        }
+        .topic-content h4 {
+            color: #14658c;
+            margin: 1.8rem 0 0.8rem;
+            font-size: 1.3rem;
+        }
+        ul, ol {
+            margin-left: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        strong {
+            color: #0b3b55;
+        }
+        .diagram-box {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 24px;
+            margin: 2rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            border: 2px dashed #0b3b55;
+            overflow-x: auto;
+        }
+        .diagram-caption {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #14658c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th {
+            background: #0b3b55;
+            color: white;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        td {
+            padding: 0.8rem;
+            border: 1px solid #c0d9f0;
+        }
+        .back {
+            display: inline-block;
+            margin-bottom: 2rem;
+            background: #0b3b55;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .back:hover {
+            background: #fcb424;
+            color: #0b3b55;
+        }
+        .image-placeholder {
+            background: #e1f0fa;
+            padding: 3rem;
+            border-radius: 24px;
+            margin: 1.5rem 0;
+            text-align: center;
+            border: 3px solid #fcb424;
+        }
+        .image-placeholder i {
+            font-size: 4rem;
+            color: #0b3b55;
+            margin-bottom: 1rem;
+        }
+        .image-placeholder p {
+            font-size: 1.3rem;
+            color: #0a4b70;
+        }
+    </style>
+</head>
+<body>
+<div class="course-container">
+    <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Hub</a>
+    <h1><i class="fas fa-heart"></i> Human Anatomy · Complete Visual Notes</h1>
+    <p style="font-size:1.3rem; margin-bottom:3rem;">Expanded with diagrams and visual representations — 60+ pages equivalent</p>
+
+    <!-- ========== TOPIC 1: CELLS & TISSUES ========== -->
+    <div class="topic">
+        <h2>1. Cells & Tissues — Microscopic Anatomy</h2>
+        <div class="topic-content">
+            <h3>1.1 Cell Organelles & Functions</h3>
+            <table>
+                <tr><th>Organelle</th><th>Structure</th><th>Function</th></tr>
+                <tr><td>Nucleus</td><td>Double membrane, nucleolus</td><td>DNA storage, transcription</td></tr>
+                <tr><td>Mitochondria</td><td>Double membrane, cristae</td><td>ATP production (cellular respiration)</td></tr>
+                <tr><td>Rough ER</td><td>Ribosomes on surface</td><td>Protein synthesis & processing</td></tr>
+                <tr><td>Smooth ER</td><td>No ribosomes</td><td>Lipid synthesis, detoxification</td></tr>
+                <tr><td>Golgi apparatus</td><td>Flattened sacs</td><td>Modification, packaging, secretion</td></tr>
+                <tr><td>Lysosomes</td><td>Vesicles with enzymes</td><td>Intracellular digestion, autophagy</td></tr>
+                <tr><td>Cell membrane</td><td>Phospholipid bilayer</td><td>Selective permeability, transport</td></tr>
+            </table>
+
+            <h3>1.2 Membrane Transport — Visual Summary</h3>
+            <div class="diagram-box">
+                <pre>
+    PASSIVE TRANSPORT (no ATP)                 ACTIVE TRANSPORT (requires ATP)
+    ┌─────────────────────────┐               ┌─────────────────────────┐
+    │ Diffusion:  ○→○→○→○      │               │ Sodium-Potassium Pump:  │
+    │            high→low      │               │    3 Na⁺ out, 2 K⁺ in   │
+    │ Facilitated:  ██████     │               │    ATP → ADP + Pi       │
+    │            carrier protein               │                         │
+    │ Osmosis:  H₂O → H₂O      │               │ Vesicular transport:    │
+    │            through AQP   │               │ Endocytosis (phago/pino)│
+    └─────────────────────────┘               │ Exocytosis             │
+                                              └─────────────────────────┘
+                </pre>
+                <div class="diagram-caption">Fig 1.1: Comparison of membrane transport mechanisms</div>
+            </div>
+
+            <h3>1.3 Four Primary Tissue Types</h3>
+            <ul>
+                <li><strong>Epithelial:</strong> Covering, lining, glandular. Simple (single layer) vs stratified (multiple). Shapes: squamous, cuboidal, columnar.</li>
+                <li><strong>Connective:</strong> Loose (areolar, adipose), dense (tendons, ligaments), specialized (bone, cartilage, blood).</li>
+                <li><strong>Muscle:</strong> Skeletal (striated, voluntary), Cardiac (striated, involuntary), Smooth (non-striated, involuntary).</li>
+                <li><strong>Nervous:</strong> Neurons (conduct impulses), Neuroglia (support).</li>
+            </ul>
+
+            <div class="image-placeholder">
+                <i class="fas fa-microscope"></i>
+                <p><strong>HISTOLOGY SLIDE:</strong> Simple columnar epithelium with goblet cells — small intestine</p>
+                <p>▢▢▢▢▢▢▢▢▢▢▢▢▢▢▢  <br> ○○○○●○○○●○○○●○○  <br> (Goblet cells shown as circles)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 2: SKELETAL SYSTEM ========== -->
+    <div class="topic">
+        <h2>2. Skeletal System — Structure & Joints</h2>
+        <div class="topic-content">
+            <h3>2.1 Divisions: Axial vs Appendicular</h3>
+            <ul>
+                <li><strong>Axial (80 bones):</strong> Skull, vertebral column (33 vertebrae), rib cage (12 pairs). Protects brain, spinal cord, heart, lungs.</li>
+                <li><strong>Appendicular (126 bones):</strong> Upper/lower limbs, pectoral girdle (clavicle, scapula), pelvic girdle (hip bones).</li>
+            </ul>
+
+            <h3>2.2 Bone Types & Classification</h3>
+            <table>
+                <tr><th>Type</th><th>Example</th><th>Function</th></tr>
+                <tr><td>Long</td><td>Femur, humerus</td><td>Leverage, weight-bearing</td></tr>
+                <tr><td>Short</td><td>Carpals, tarsals</td><td>Stability, shock absorption</td></tr>
+                <tr><td>Flat</td><td>Skull bones, sternum</td><td>Protection, muscle attachment</td></tr>
+                <tr><td>Irregular</td><td>Vertebrae, facial bones</td><td>Complex shapes, protection</td></tr>
+                <tr><td>Sesamoid</td><td>Patella</td><td>Protect tendons from wear</td></tr>
+            </table>
+
+            <h3>2.3 Joint Classification</h3>
+            <ul>
+                <li><strong>Fibrous (synarthroses):</strong> Immovable. Sutures of skull, gomphosis (tooth socket).</li>
+                <li><strong>Cartilaginous (amphiarthroses):</strong> Slightly movable. Intervertebral discs, pubic symphysis.</li>
+                <li><strong>Synovial (diarthroses):</strong> Freely movable. Types: ball-and-socket (hip/shoulder), hinge (elbow/knee), pivot (atlantoaxial), condyloid (wrist), saddle (thumb), gliding (carpals).</li>
+            </ul>
+
+            <div class="diagram-box">
+                <pre>
+    SYNOVIAL JOINT STRUCTURE:
+    ┌─────────────────────────────────────┐
+    │  Bone ────██████████████████──── Bone │
+    │          ╱  Articular cartilage  ╲    │
+    │         (    Synovial cavity      )   │
+    │          ╲  Synovial membrane    ╱    │
+    │           ── Joint capsule ────       │
+    │              Ligaments                │
+    └─────────────────────────────────────┘
+                </pre>
+                <div class="diagram-caption">Fig 2.1: Components of a synovial joint</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 3: MUSCULAR SYSTEM ========== -->
+    <div class="topic">
+        <h2>3. Muscular System — From Micro to Macro</h2>
+        <div class="topic-content">
+            <h3>3.1 Sliding Filament Theory</h3>
+            <div class="diagram-box">
+                <pre>
+    SARCOMERE (relaxed):
+    ─── Z line ──── I band ──── A band ──── I band ──── Z line ───
+                    Thin (actin)    Thick (myosin)
+    
+    SARCOMERE (contracted):
+    ─── Z ── I ──── A band ──── I ── Z ───
+        Actin slides over myosin
+                </pre>
+                <div class="diagram-caption">Fig 3.1: Sarcomere shortening during contraction</div>
+            </div>
+            <ul>
+                <li>Nerve impulse → ACh release → depolarization → Ca²⁺ release from SR → Ca²⁺ binds troponin → tropomyosin shifts → myosin heads bind actin → power stroke → sliding.</li>
+                <li>ATP required for detachment and re-cocking.</li>
+            </ul>
+
+            <h3>3.2 Major Muscles (Surface Anatomy)</h3>
+            <table>
+                <tr><th>Region</th><th>Muscle</th><th>Action</th></tr>
+                <tr><td>Shoulder</td><td>Deltoid</td><td>Arm abduction</td></tr>
+                <tr><td>Chest</td><td>Pectoralis major</td><td>Arm flexion, adduction</td></tr>
+                <tr><td>Back</td><td>Latissimus dorsi</td><td>Arm extension, adduction</td></tr>
+                <tr><td>Arm</td><td>Biceps brachii</td><td>Elbow flexion, supination</td></tr>
+                <tr><td>Arm</td><td>Triceps brachii</td><td>Elbow extension</td></tr>
+                <tr><td>Thigh</td><td>Quadriceps</td><td>Knee extension</td></tr>
+                <tr><td>Thigh</td><td>Hamstrings</td><td>Knee flexion</td></tr>
+                <tr><td>Calf</td><td>Gastrocnemius</td><td>Plantarflexion</td></tr>
+            </table>
+
+            <div class="image-placeholder">
+                <i class="fas fa-dumbbell"></i>
+                <p><strong>MUSCLE ANATOMY:</strong> Cross-section of skeletal muscle showing fascicles, perimysium, endomysium</p>
+                <p>██████  <-- Epimysium<br>  ┌─────┐ <-- Fascicle<br>  │○○○○○│ <-- Muscle fibers<br>  └─────┘</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 4: CARDIOVASCULAR ========== -->
+    <div class="topic">
+        <h2>4. Cardiovascular System — Heart & Vessels</h2>
+        <div class="topic-content">
+            <h3>4.1 Heart Chambers & Valves</h3>
+            <div class="diagram-box">
+                <pre>
+                    SUPERIOR VENA CAVA
+                           │
+                    ┌──────▼──────┐
+                    │ RIGHT ATRIUM│◄───── from body
+                    │  (tricuspid)│
+                    └──────▼──────┘
+                    │ RIGHT VENT. │─────► to lungs (pulmonary artery)
+                    │ (pulmonic)  │
+                    └─────────────┘
+    
+                    PULMONARY VEINS
+                           │
+                    ┌──────▼──────┐
+                    │ LEFT ATRIUM │◄───── from lungs
+                    │  (mitral)   │
+                    └──────▼──────┘
+                    │ LEFT VENT.  │─────► to body (aorta)
+                    │  (aortic)   │
+                    └─────────────┘
+                </pre>
+                <div class="diagram-caption">Fig 4.1: Blood flow through the heart</div>
+            </div>
+            <ul>
+                <li><strong>Right side:</strong> Deoxygenated blood → RA (tricuspid) → RV (pulmonic) → pulmonary artery → lungs.</li>
+                <li><strong>Left side:</strong> Oxygenated blood from lungs → pulmonary veins → LA (mitral) → LV (aortic) → aorta.</li>
+            </ul>
+
+            <h3>4.2 Coronary Circulation</h3>
+            <ul>
+                <li><strong>Right coronary artery:</strong> Supplies right atrium, right ventricle, SA/AV nodes (in most).</li>
+                <li><strong>Left main coronary artery:</strong> Branches into:
+                    <ul>
+                        <li>Left anterior descending (LAD): anterior wall, septum.</li>
+                        <li>Left circumflex (LCx): lateral/posterior wall.</li>
+                    </ul>
+                </li>
+                <li><strong>Cardiac veins:</strong> Drain into coronary sinus → right atrium.</li>
+            </ul>
+
+            <h3>4.3 Cardiac Cycle & Conduction</h3>
+            <ul>
+                <li><strong>Conduction pathway:</strong> SA node (pacemaker) → AV node (delay) → Bundle of His → Purkinje fibers.</li>
+                <li><strong>ECG waves:</strong> P wave (atrial depolarization), QRS (ventricular depolarization), T wave (ventricular repolarization).</li>
+                <li><strong>Cycle phases:</strong> Systole (contraction/ejection), Diastole (relaxation/filling).</li>
+            </ul>
+
+            <div class="diagram-box">
+                <pre>
+    ECG TRACING:
+        R
+       /\
+    P/  \    T
+    /    \  /
+           \/
+        Q   S
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 5: RESPIRATORY ========== -->
+    <div class="topic">
+        <h2>5. Respiratory System — Airways & Alveoli</h2>
+        <div class="topic-content">
+            <h3>5.1 Upper & Lower Respiratory Tract</h3>
+            <ul>
+                <li><strong>Upper:</strong> Nasal cavity, pharynx (nasopharynx, oropharynx, laryngopharynx), larynx (epiglottis, vocal cords).</li>
+                <li><strong>Lower:</strong> Trachea → carina → right/left main bronchi → bronchioles → terminal bronchioles → respiratory bronchioles → alveolar ducts → alveoli.</li>
+            </ul>
+
+            <h3>5.2 Alveoli — Site of Gas Exchange</h3>
+            <div class="diagram-box">
+                <pre>
+    ALVEOLUS:
+                     O₂
+          Capillary ◄─────┐
+          ┌───┐           │
+          │RBC│◄─O₂       │ Type I pneumocyte
+          └───┘           │ (thin for diffusion)
+              │           │
+              └─────CO₂   │ Type II pneumocyte
+                          │ (surfactant)
+                ┌─────────────────┐
+                │   Alveolus      │
+                └─────────────────┘
+                </pre>
+                <div class="diagram-caption">Fig 5.1: Alveolar structure and gas exchange</div>
+            </div>
+            <ul>
+                <li><strong>Type I cells:</strong> 95% surface area, thin for diffusion.</li>
+                <li><strong>Type II cells:</strong> Produce surfactant (reduces surface tension, prevents collapse).</li>
+                <li><strong>Alveolar macrophages:</strong> Dust cells — phagocytose debris.</li>
+            </ul>
+
+            <h3>5.3 Lung Volumes & Capacities</h3>
+            <table>
+                <tr><th>Volume</th><th>Definition</th><th>Average (adult)</th></tr>
+                <tr><td>Tidal volume (TV)</td><td>Air per normal breath</td><td>500 mL</td></tr>
+                <tr><td>Inspiratory reserve (IRV)</td><td>Extra air after normal inhale</td><td>3000 mL</td></tr>
+                <tr><td>Expiratory reserve (ERV)</td><td>Extra air after normal exhale</td><td>1100 mL</td></tr>
+                <tr><td>Residual volume (RV)</td><td>Air left after max exhale</td><td>1200 mL</td></tr>
+                <tr><td>Vital capacity (VC)</td><td>TV + IRV + ERV</td><td>4600 mL</td></tr>
+                <tr><td>Total lung capacity (TLC)</td><td>VC + RV</td><td>5800 mL</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 6: NERVOUS SYSTEM ========== -->
+    <div class="topic">
+        <h2>6. Nervous System — Brain, Spinal Cord, Nerves</h2>
+        <div class="topic-content">
+            <h3>6.1 Brain Lobes & Functions</h3>
+            <ul>
+                <li><strong>Frontal:</strong> Executive function, motor (precentral gyrus), speech (Broca's area — left).</li>
+                <li><strong>Parietal:</strong> Somatosensory (postcentral gyrus), spatial perception.</li>
+                <li><strong>Temporal:</strong> Auditory, memory (hippocampus), language comprehension (Wernicke's).</li>
+                <li><strong>Occipital:</strong> Visual processing.</li>
+                <li><strong>Cerebellum:</strong> Coordination, balance.</li>
+                <li><strong>Brainstem:</strong> Midbrain, pons, medulla — vital centers (respiratory, cardiac).</li>
+            </ul>
+
+            <h3>6.2 Cranial Nerves — 12 Pairs</h3>
+            <div class="diagram-box">
+                <pre>
+    I   Olfactory       ── Smell
+    II  Optic           ── Vision
+    III Oculomotor      ── Eye movement (most)
+    IV  Trochlear       ── Superior oblique
+    V   Trigeminal      ── Facial sensation, mastication
+    VI  Abducens        ── Lateral rectus
+    VII Facial          ── Facial movement, taste (anterior 2/3)
+    VIII Vestibulocochlear ── Hearing & balance
+    IX  Glossopharyngeal ── Taste (posterior 1/3), swallowing
+    X   Vagus           ── Parasympathetic, voice, swallowing
+    XI  Accessory       ── SCM, trapezius
+    XII Hypoglossal     ── Tongue movement
+                </pre>
+                <div class="diagram-caption">Fig 6.1: Cranial nerves and functions</div>
+            </div>
+
+            <h3>6.3 Autonomic Nervous System</h3>
+            <table>
+                <tr><th>Division</th><th>Origin</th><th>Neurotransmitter</th><th>Function</th></tr>
+                <tr><td>Sympathetic</td><td>Thoracolumbar (T1-L2)</td><td>Norepinephrine</td><td>Fight or flight</td></tr>
+                <tr><td>Parasympathetic</td><td>Craniosacral (CN III, VII, IX, X, S2-4)</td><td>Acetylcholine</td><td>Rest and digest</td></tr>
+            </table>
+
+            <div class="image-placeholder">
+                <i class="fas fa-brain"></i>
+                <p><strong>BRAIN ANATOMY:</strong> Cross-section showing basal ganglia, thalamus, hypothalamus, corpus callosum</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 7: ENDOCRINE ========== -->
+    <div class="topic">
+        <h2>7. Endocrine System — Glands & Hormones</h2>
+        <div class="topic-content">
+            <h3>7.1 Major Endocrine Glands</h3>
+            <ul>
+                <li><strong>Hypothalamus:</strong> Releasing/inhibiting hormones, ADH, oxytocin (stored in posterior pituitary).</li>
+                <li><strong>Pituitary (anterior):</strong> GH, TSH, ACTH, FSH, LH, prolactin.</li>
+                <li><strong>Pituitary (posterior):</strong> ADH, oxytocin (released).</li>
+                <li><strong>Thyroid:</strong> T3/T4 (metabolism), calcitonin (lowers Ca²⁺).</li>
+                <li><strong>Parathyroid:</strong> PTH (raises Ca²⁺).</li>
+                <li><strong>Adrenal cortex:</strong> Cortisol, aldosterone, androgens.</li>
+                <li><strong>Adrenal medulla:</strong> Epinephrine, norepinephrine.</li>
+                <li><strong>Pancreas (islets):</strong> Insulin (β cells), glucagon (α cells), somatostatin (δ cells).</li>
+                <li><strong>Gonads:</strong> Testes (testosterone), ovaries (estrogen, progesterone).</li>
+            </ul>
+
+            <h3>7.2 Feedback Loops</h3>
+            <div class="diagram-box">
+                <pre>
+    NEGATIVE FEEDBACK (e.g., Thyroid):
+    ┌─────────┐      ┌─────────┐      ┌─────────┐
+    │Hypothal.│─────►│Pituitary│─────►│Thyroid  │
+    │ TRH     │      │ TSH     │      │ T3/T4   │
+    └─────────┘      └─────────┘      └─────────┘
+         ▲                                    │
+         └─────────── inhibits ───────────────┘
+    
+    POSITIVE FEEDBACK (e.g., Oxytocin during labor):
+    Uterine contraction ──► more oxytocin ──► stronger contraction
+                </pre>
+                <div class="diagram-caption">Fig 7.1: Feedback mechanisms</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 8: DIGESTIVE ========== -->
+    <div class="topic">
+        <h2>8. Digestive System — From Mouth to Anus</h2>
+        <div class="topic-content">
+            <h3>8.1 GI Tract Organs & Accessory Organs</h3>
+            <ul>
+                <li><strong>Alimentary canal:</strong> Oral cavity, pharynx, esophagus, stomach, small intestine (duodenum, jejunum, ileum), large intestine (cecum, colon, rectum), anus.</li>
+                <li><strong>Accessory:</strong> Salivary glands, liver, gallbladder, pancreas.</li>
+            </ul>
+
+            <h3>8.2 Digestion & Absorption</h3>
+            <table>
+                <tr><th>Organ</th><th>Secretion/Enzyme</th><th>Substrate</th><th>Product</th></tr>
+                <tr><td>Mouth</td><td>Salivary amylase</td><td>Starch</td><td>Maltose</td></tr>
+                <tr><td>Stomach</td><td>Pepsin (HCl)</td><td>Proteins</td><td>Peptides</td></tr>
+                <tr><td>Pancreas</td><td>Trypsin, chymotrypsin, lipase, amylase</td><td>Proteins, fats, carbs</td><td>AA, fatty acids, sugars</td></tr>
+                <tr><td>Small intestine</td><td>Brush border enzymes (lactase, sucrase, peptidases)</td><td>Disaccharides, peptides</td><td>Monosaccharides, AA</td></tr>
+                <tr><td>Liver</td><td>Bile (stored in gallbladder)</td><td>Fats</td><td>Emulsification</td></tr>
+            </table>
+
+            <div class="diagram-box">
+                <pre>
+    SMALL INTESTINE VILLUS:
+        ┌──────┐
+        │      │  Microvilli (brush border)
+        ├──────┤
+        │ Cap  │  Capillary network
+        ├──────┤
+        │ Lact │  Lacteal (lymphatic)
+        └──────┘
+        Nutrients absorbed into blood/lymph
+                </pre>
+                <div class="diagram-caption">Fig 8.1: Intestinal villus structure</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 9: URINARY ========== -->
+    <div class="topic">
+        <h2>9. Urinary System — Kidney & Nephron</h2>
+        <div class="topic-content">
+            <h3>9.1 Kidney Structure</h3>
+            <ul>
+                <li><strong>External:</strong> Renal capsule, hilum (renal artery, vein, ureter).</li>
+                <li><strong>Internal:</strong> Cortex (outer), medulla (pyramids), renal pelvis, calyces.</li>
+            </ul>
+
+            <h3>9.2 Nephron — Functional Unit</h3>
+            <div class="diagram-box">
+                <pre>
+    NEPHRON:
+    ┌──────────────┐
+    │ Glomerulus   │  Filtration
+    │ (Bowman's cap)│
+    └──────┬───────┘
+           │ Proximal convoluted tubule (PCT)
+           │   (reabsorption: glucose, AA, Na⁺, H₂O)
+           │
+    ┌──────▼──────┐
+    │ Loop of Henle│  Countercurrent multiplier
+    │ (descending │  (H₂O reabsorption)
+    │  ascending) │  (Na⁺, Cl⁻ reabsorption)
+    └──────┬──────┘
+           │ Distal convoluted tubule (DCT)
+           │   (secretion: K⁺, H⁺; regulated by aldosterone)
+           │
+    ┌──────▼──────┐
+    │Collecting duct│ ADH regulates H₂O reabsorption
+    └──────────────┘
+                </pre>
+                <div class="diagram-caption">Fig 9.1: Nephron and urine formation</div>
+            </div>
+
+            <h3>9.3 Urine Formation Steps</h3>
+            <ol>
+                <li><strong>Glomerular filtration:</strong> Blood pressure forces water/solutes through filtration membrane into Bowman's capsule (filtrate).</li>
+                <li><strong>Tubular reabsorption:</strong> Essential substances (glucose, amino acids, ions, water) moved from tubule to blood.</li>
+                <li><strong>Tubular secretion:</strong> Waste products (H⁺, K⁺, drugs) moved from blood to tubule.</li>
+            </ol>
+
+            <h3>9.4 RAAS (Renin-Angiotensin-Aldosterone System)</h3>
+            <ul>
+                <li>Low BP → Renin released from juxtaglomerular cells → converts angiotensinogen → angiotensin I → ACE (lungs) → angiotensin II → vasoconstriction + aldosterone release (Na⁺/H₂O retention) → BP increases.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 10: REPRODUCTIVE ========== -->
+    <div class="topic">
+        <h2>10. Reproductive System — Male & Female</h2>
+        <div class="topic-content">
+            <h3>10.1 Male Anatomy</h3>
+            <ul>
+                <li><strong>Testes:</strong> Produce sperm and testosterone (in seminiferous tubules, interstitial cells).</li>
+                <li><strong>Epididymis:</strong> Sperm maturation and storage.</li>
+                <li><strong>Vas deferens:</strong> Duct for sperm transport.</li>
+                <li><strong>Accessory glands:</strong> Seminal vesicles (fructose, prostaglandins), prostate (alkaline fluid), bulbourethral (lubrication).</li>
+                <li><strong>Urethra:</strong> Common passage for urine and semen.</li>
+            </ul>
+
+            <h3>10.2 Female Anatomy</h3>
+            <ul>
+                <li><strong>Ovaries:</strong> Produce ova, estrogen, progesterone.</li>
+                <li><strong>Fallopian tubes:</strong> Site of fertilization; fimbriae capture ovum.</li>
+                <li><strong>Uterus:</strong> Layers: perimetrium, myometrium (smooth muscle), endometrium (shed in menstruation).</li>
+                <li><strong>Cervix:</strong> Opening to vagina.</li>
+                <li><strong>Vagina:</strong> Birth canal, receives penis.</li>
+                <li><strong>Mammary glands:</strong> Produce milk (lactation).</li>
+            </ul>
+
+            <h3>10.3 Menstrual Cycle</h3>
+            <table>
+                <tr><th>Phase</th><th>Days</th><th>Hormonal events</th><th>Uterine changes</th></tr>
+                <tr><td>Menstrual</td><td>1-5</td><td>Low estrogen/progesterone</td><td>Endometrium shed</td></tr>
+                <tr><td>Follicular</td><td>6-14</td><td>FSH stimulates follicle growth; rising estrogen</td><td>Endometrium thickens</td></tr>
+                <tr><td>Ovulation</td><td>14</td><td>LH surge triggers release of ovum</td><td>-</td></tr>
+                <tr><td>Luteal</td><td>15-28</td><td>Corpus luteum secretes progesterone</td><td>Endometrium secretory; if no fertilization, corpus luteum degenerates</td></tr>
+            </table>
+
+            <div class="image-placeholder">
+                <i class="fas fa-female"></i>
+                <p><strong>FEMALE REPRODUCTIVE:</strong> Uterus, ovaries, fallopian tubes, cervix, vagina</p>
+            </div>
+            <div class="image-placeholder">
+                <i class="fas fa-male"></i>
+                <p><strong>MALE REPRODUCTIVE:</strong> Testes, epididymis, vas deferens, prostate, penis</p>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+</body>
+</html>

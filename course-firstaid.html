@@ -1,0 +1,379 @@
+<!-- ============================================= -->
+<!-- FILE: course-firstaid.html (FIRST AID)        -->
+<!-- ============================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Aid · advanced deep‑dive notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background: #f0f4fa;
+            padding: 1.5rem;
+        }
+        .course-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 48px;
+            padding: 2.5rem;
+            box-shadow: 0 30px 50px #b6cce5;
+        }
+        h1 {
+            color: #0b3b55;
+            border-left: 16px solid #fcb424;
+            padding-left: 1.5rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        .topic {
+            margin: 3rem 0;
+            border-bottom: 2px dashed #c9ddf5;
+            padding-bottom: 2rem;
+        }
+        .topic h2 {
+            background: #f0f6ff;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            color: #0a4b70;
+            font-size: 2.2rem;
+            border: 1px solid #b9d2f0;
+        }
+        .topic-content {
+            padding: 1.8rem;
+            font-size: 1.2rem;
+            line-height: 1.85;
+            color: #1a2b3c;
+        }
+        .topic-content h3 {
+            color: #0f5880;
+            margin: 2.5rem 0 1rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #fcb424;
+            padding-bottom: 0.4rem;
+            display: inline-block;
+        }
+        .topic-content h4 {
+            color: #1d4e6f;
+            margin: 1.8rem 0 0.6rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        ul, ol {
+            margin-left: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        li {
+            margin: 0.6rem 0;
+        }
+        strong {
+            color: #003153;
+        }
+        .badge {
+            background: #14658c;
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        .back {
+            display: inline-block;
+            margin-bottom: 2rem;
+            background: #0b3b55;
+            color: white;
+            padding: 0.8rem 2.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .back:hover {
+            background: #fcb424;
+            color: #0b3b55;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th, td {
+            border: 1px solid #b0c9e8;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        th {
+            background: #e1ecfe;
+        }
+    </style>
+</head>
+<body>
+<div class="course-container">
+    <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Hub</a>
+    <h1><i class="fas fa-kit-medical"></i> Advanced First Aid · 40+ pages (provider level)</h1>
+
+    <!-- ========== TOPIC 1 : CPR & AED ========== -->
+    <div class="topic">
+        <h2>1. CPR & AED <span class="badge">2025 AHA/ERC guidelines</span></h2>
+        <div class="topic-content">
+            <h3>1.1 Adult Basic Life Support (BLS) sequence</h3>
+            <p><strong>Scene safety:</strong> ensure no danger to rescuer or victim. Check responsiveness: tap and shout. If unresponsive, activate emergency response (or send someone) and get AED.</p>
+            <p><strong>Breathing check:</strong> look for chest rise for ≤10 seconds. If not breathing or only gasping, start CPR.</p>
+            <p><strong>Chest compressions:</strong></p>
+            <ul>
+                <li><strong>Hand placement:</strong> lower half of sternum (center of chest).</li>
+                <li><strong>Depth:</strong> at least 5 cm (2 inches), not exceeding 6 cm.</li>
+                <li><strong>Rate:</strong> 100‑120 per minute.</li>
+                <li><strong>Recoil:</strong> allow full chest recoil (do not lean).</li>
+                <li><strong>Ratio:</strong> 30 compressions : 2 ventilations (with advanced airway, continuous compressions 1 breath q6s).</li>
+                <li><strong>Minimise interruptions:</strong> keep pauses <10 seconds.</li>
+            </ul>
+            <p><strong>Ventilations:</strong> head tilt‑chin lift, pinch nose, give 1 second per breath (visible chest rise). Avoid excessive ventilation (increases intrathoracic pressure, reduces venous return).</p>
+            <p><strong>Cycles:</strong> continue 30:2 until AED arrives, victim moves, or EMS takes over.</p>
+
+            <h3>1.2 AED operation</h3>
+            <ul>
+                <li>Turn on AED.</li>
+                <li>Attach pads: upper right (below clavicle), lower left (midaxillary, left of nipple). For children, use pediatric pads/attenuator if available; if not, use adult pads (avoid overlap).</li>
+                <li>Ensure no one touches victim during analysis.</li>
+                <li>If shock advised: clear again, press shock button, immediately resume CPR (starting with compressions).</li>
+                <li>If no shock advised: immediately resume CPR.</li>
+                <li>Follow prompts; do not turn off AED.</li>
+            </ul>
+
+            <h3>1.3 Child & infant modifications</h3>
+            <table>
+                <tr><th>Parameter</th><th>Child (1 year to puberty)</th><th>Infant (<1 year)</th></tr>
+                <tr><td>Compression method</td><td>One or two hands (heel of hand)</td><td>Two fingers (single rescuer) or two thumbs (two rescuers – encircling hands)</td></tr>
+                <tr><td>Depth</td><td>At least 1/3 AP diameter (~5 cm)</td><td>At least 1/3 AP diameter (~4 cm)</td></tr>
+                <tr><td>Ratio (single rescuer)</td><td>30:2</td><td>30:2</td></tr>
+                <tr><td>Ratio (two rescuers)</td><td>15:2</td><td>15:2</td></tr>
+                <tr><td>Ventilation technique</td><td>Mouth-to-mouth (or mask)</td><td>Mouth-to-mouth-and-nose</td></tr>
+            </table>
+            <p><strong>Pediatric AED:</strong> Use pediatric pads/attenuator if child <8 years or <25 kg. If none, use adult pads (anterior‑posterior placement).</p>
+
+            <h3>1.4 Opioid‑associated emergency</h3>
+            <p>If unresponsive and likely opioid overdose: give naloxone (intranasal/IM) but do not delay CPR. Rescue breathing is critical – opioids cause respiratory arrest before cardiac arrest.</p>
+
+            <h3>1.5 Special considerations</h3>
+            <ul>
+                <li><strong>Pregnancy:</strong> manual left uterine displacement (LUD) to relieve aortocaval compression. Prioritize high‑quality compressions.</li>
+                <li><strong>Drowning:</strong> give 2 initial rescue breaths before starting compressions.</li>
+                <li><strong>Trauma:</strong> immobilize spine if mechanism suggests; jaw thrust instead of head tilt.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 2 : CHOKING ========== -->
+    <div class="topic">
+        <h2>2. Choking (Foreign Body Airway Obstruction) <span class="badge">FBAO</span></h2>
+        <div class="topic-content">
+            <h3>2.1 Recognition</h3>
+            <p><strong>Universal sign:</strong> hands clutching throat. Inability to speak, cough silently, high‑pitched sounds, cyanosis, progressive loss of consciousness.</p>
+
+            <h3>2.2 Conscious adult/child (>1 year)</h3>
+            <ul>
+                <li>Ask “Are you choking?” If nods yes and cannot speak, intervene.</li>
+                <li><strong>Abdominal thrusts (Heimlich):</strong> stand behind, fist between umbilicus and xiphoid, grasp fist, inward‑upward thrusts. Repeat until object expelled or victim unconscious.</li>
+                <li>If pregnant or obese: use chest thrusts (hand on lower sternum).</li>
+            </ul>
+
+            <h3>2.3 Unconscious adult/child</h3>
+            <ul>
+                <li>Lower to ground, activate EMS, begin CPR (30:2).</li>
+                <li>Each time airway opens, look for object; if visible, remove with finger sweep (blind sweeps contraindicated).</li>
+            </ul>
+
+            <h3>2.4 Infant (<1 year) – conscious</h3>
+            <ul>
+                <li><strong>Back blows:</strong> 5 firm blows between shoulder blades (head lower than trunk).</li>
+                <li><strong>Chest thrusts:</strong> 5 thrusts on sternum (two fingers, same as compressions).</li>
+                <li>Alternate cycles until object expelled or unconscious.</li>
+            </ul>
+            <p><strong>Infant – unconscious:</strong> begin CPR (30:2) – compressions may dislodge object.</p>
+
+            <h3>2.5 Self‑treatment</h3>
+            <p>Use a chair back or counter edge to perform abdominal thrusts on oneself.</p>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 3 : WOUNDS & BLEEDING ========== -->
+    <div class="topic">
+        <h2>3. Wounds & Hemorrhage Control <span class="badge">Stop the Bleed</span></h2>
+        <div class="topic-content">
+            <h3>3.1 Types of wounds</h3>
+            <ul>
+                <li><strong>Abrasion:</strong> superficial, epidermal loss.</li>
+                <li><strong>Laceration:</strong> tear/ cut (clean vs contaminated).</li>
+                <li><strong>Puncture:</strong> deep, high infection risk (tetanus).</li>
+                <li><strong>Avulsion:</strong> tissue partially/fully torn off.</li>
+                <li><strong>Amputation:</strong> complete separation.</li>
+            </ul>
+
+            <h3>3.2 External hemorrhage control – stepwise</h3>
+            <ol>
+                <li><strong>Direct pressure:</strong> sterile gauze/cloth, firm pressure. If bleeding soaks through, apply additional dressing – do not remove initial.</li>
+                <li><strong>Elevation:</strong> above heart if no fracture.</li>
+                <li><strong>Pressure points:</strong> if direct pressure insufficient – brachial (arm), femoral (groin).</li>
+                <li><strong>Hemostatic dressings:</strong> (e.g., QuikClot) for severe bleeding not controlled by pressure – pack into wound, hold pressure.</li>
+                <li><strong>Tourniquet (extremity):</strong> place 5‑7 cm proximal to wound (not over joint), tighten until bleeding stops, note time. Do not remove until surgical care. Commercial tourniquets (CAT, SOFTT) preferred over improvised.</li>
+            </ol>
+            <p><strong>Junctional hemorrhage:</strong> neck, groin, axilla – cannot use tourniquet; use hemostatic gauze + direct pressure.</p>
+
+            <h3>3.3 Wound care & infection prevention</h3>
+            <ul>
+                <li>Irrigate with clean water or saline (high pressure).</li>
+                <li>Remove visible debris; do not scrub.</li>
+                <li>Approximate edges (steristrips) for linear wounds.</li>
+                <li>Cover with sterile dressing; change if saturated.</li>
+                <li>Assess tetanus status: booster if >5 years (dirty wound) or >10 years (clean).</li>
+            </ul>
+
+            <h3>3.4 Internal bleeding – recognition</h3>
+            <p>Signs: tender, swollen, bruised areas (e.g., fractured femur), shock symptoms (pale, tachycardia, hypotension, altered mental status). Treat for shock: supine, maintain warmth, urgent transport.</p>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 4 : FRACTURES & DISLOCATIONS ========== -->
+    <div class="topic">
+        <h2>4. Fractures & Dislocations <span class="badge">orthopedic first aid</span></h2>
+        <div class="topic-content">
+            <h3>4.1 Fracture types</h3>
+            <ul>
+                <li><strong>Closed:</strong> skin intact.</li>
+                <li><strong>Open (compound):</strong> bone protrudes or wound communicates with fracture – high infection risk, cover with sterile moist dressing.</li>
+                <li><strong>Complicated:</strong> associated neurovascular injury.</li>
+            </ul>
+
+            <h3>4.2 Assessment – neurovascular (CSM)</h3>
+            <p><strong>Circulation:</strong> pulse, capillary refill, color, temperature distal to injury.<br>
+            <strong>Sensation:</strong> ask about numbness, tingling; test light touch.<br>
+            <strong>Motor:</strong> ability to move digits.</p>
+
+            <h3>4.3 Splinting principles</h3>
+            <ul>
+                <li>Splint injury in position found (do not attempt to reduce).</li>
+                <li>Splint includes joint above and below.</li>
+                <li>Pad splint well (especially bony prominences).</li>
+                <li>Check neurovascular before and after splinting.</li>
+                <li>Improvised splints: cardboard, folded magazine, pillow (for ankle).</li>
+            </ul>
+
+            <h3>4.4 Specific dislocations</h3>
+            <p><strong>Shoulder:</strong> arm held slightly abducted, support in most comfortable position. Check axillary nerve (deltoid contraction, sensation over deltoid).</p>
+            <p><strong>Finger:</strong> buddy tape to adjacent finger.</p>
+            <p><strong>Knee:</strong> extremely high risk of vascular injury – check distal pulses meticulously; immobilize in position found.</p>
+
+            <h3>4.5 Pelvic fracture</h3>
+            <p>Suspect in high‑energy trauma, pain on palpation, or unstable pelvis. Bind pelvis with sheet or commercial pelvic binder to reduce volume and hemorrhage.</p>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 5 : BURNS ========== -->
+    <div class="topic">
+        <h2>5. Burns <span class="badge">thermal, chemical, electrical</span></h2>
+        <div class="topic-content">
+            <h3>5.1 Burn depth classification</h3>
+            <ul>
+                <li><strong>Superficial (1st degree):</strong> erythema, pain, no blisters (e.g., sunburn).</li>
+                <li><strong>Partial thickness (2nd degree):</strong> blisters, moist, very painful.</li>
+                <li><strong>Full thickness (3rd degree):</strong> white/charred, leathery, painless (nerve destruction).</li>
+            </ul>
+
+            <h3>5.2 Rule of nines (adult)</h3>
+            <ul>
+                <li>Head & neck: 9%</li>
+                <li>Each arm: 9% (total 18%)</li>
+                <li>Anterior trunk: 18%</li>
+                <li>Posterior trunk: 18%</li>
+                <li>Each leg: 18% (total 36%)</li>
+                <li>Perineum: 1%</li>
+            </ul>
+            <p><strong>Child modification:</strong> head 18%, legs 14% each (relative to body proportions).</p>
+
+            <h3>5.3 Immediate burn care</h3>
+            <ul>
+                <li><strong>Stop burning:</strong> remove from heat source; smother flames (stop, drop, roll).</li>
+                <li><strong>Cooling:</strong> cool running water (10‑20°C) for 20 minutes – within 3 hours post‑burn. <em>Do not use ice (causes vasoconstriction, deepens injury).</em></li>
+                <li><strong>Remove:</strong> clothing and jewelry (unless stuck).</li>
+                <li><strong>Cover:</strong> cling film (plastic wrap) loosely – reduces pain, prevents contamination. Do not wrap circumferentially (risk of constriction).</li>
+                <li><strong>Blisters:</strong> do not burst – intact blister protects from infection.</li>
+                <li><strong>Hypothermia prevention:</strong> especially in large burns.</li>
+            </ul>
+
+            <h3>5.4 Chemical burns</h3>
+            <ul>
+                <li>Brush off dry powder (e.g., lime) <em>before</em> irrigation.</li>
+                <li>Irrigate copiously with water for at least 20 minutes (60 minutes for alkali).</li>
+                <li>Remove contaminated clothing carefully.</li>
+            </ul>
+
+            <h3>5.5 Electrical burns</h3>
+            <ul>
+                <li>Ensure power off before approaching.</li>
+                <li>Entry and exit wounds may be small, but deep tissue destruction (muscle, nerve) can be severe – monitor for cardiac arrhythmias, rhabdomyolysis.</li>
+            </ul>
+
+            <h3>5.6 When to refer to burn centre</h3>
+            <p>Partial thickness >10% BSA, full thickness, face/hands/feet/genitalia/perineum, circumferential, inhalation injury, chemical/electrical.</p>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 6 : MEDICAL EMERGENCIES ========== -->
+    <div class="topic">
+        <h2>6. Medical Emergencies <span class="badge">recognition & first aid</span></h2>
+        <div class="topic-content">
+            <h3>6.1 Stroke – FAST‑H</h3>
+            <p><strong>F</strong>ace: drooping<br>
+            <strong>A</strong>rm: weakness<br>
+            <strong>S</strong>peech: slurred/confused<br>
+            <strong>T</strong>ime: last known well<br>
+            <strong>H</strong>emorrhage: sudden severe headache (consider haemorrhagic).</p>
+            <p><strong>Action:</strong> call EMS immediately, note time of onset. Keep patient NPO, lay on side if vomiting.</p>
+
+            <h3>6.2 Seizure</h3>
+            <ul>
+                <li>Protect from injury (remove hazards, cushion head).</li>
+                <li>Do not restrain or put anything in mouth.</li>
+                <li>Time seizure – if >5 minutes or repeated without recovery, call EMS (status epilepticus).</li>
+                <li>After seizure (postictal), place in recovery position, check airway, reorient.</li>
+            </ul>
+
+            <h3>6.3 Anaphylaxis</h3>
+            <p><strong>Signs:</strong> sudden onset, urticaria, angioedema (lips/tongue), wheeze/stridor, hypotension, gastrointestinal symptoms.</p>
+            <p><strong>First aid:</strong></p>
+            <ul>
+                <li>Call EMS immediately.</li>
+                <li><strong>Epinephrine auto‑injector (IM):</strong> adult dose 0.3 mg, child 0.15 mg (if weight 15‑30 kg). Inject into mid‑anterolateral thigh (can be through clothing).</li>
+                <li>Repeat after 5‑15 minutes if no improvement.</li>
+                <li>Lay patient supine (or in position of comfort if respiratory distress); elevate legs if hypotensive.</li>
+            </ul>
+
+            <h3>6.4 Hypoglycemia (diabetic emergency)</h3>
+            <p><strong>Signs:</strong> altered mental status, diaphoresis, tachycardia, hunger, confusion, seizure.</p>
+            <p><strong>If conscious and able to swallow:</strong> oral glucose (15‑20g) – glucose tablets, sugary drink, honey, candy.</p>
+            <p><strong>If unconscious / unable to swallow:</strong> call EMS; place in recovery position; do not give oral anything. Glucagon injection (IM/subcut) if trained and available.</p>
+
+            <h3>6.5 Heart attack (ACS)</h3>
+            <p><strong>Signs:</strong> chest pain/pressure (may radiate to jaw/arm), shortness of breath, nausea, diaphoresis. Atypical in women/elderly/diabetics.</p>
+            <p><strong>Action:</strong> call EMS, have patient rest. If aspirin available and not allergic, give 160‑325 mg chewed. If nitroglycerin prescribed, assist.</p>
+
+            <h3>6.6 Opioid overdose</h3>
+            <p><strong>Signs:</strong> unresponsive, pinpoint pupils, respiratory depression, cyanosis.</p>
+            <p><strong>Action:</strong> call EMS, give naloxone (if available), start rescue breathing/CPR.</p>
+        </div>
+    </div>
+
+     
+</div>
+</body>
+</html>

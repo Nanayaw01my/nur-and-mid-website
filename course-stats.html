@@ -1,0 +1,396 @@
+<!-- ============================================= -->
+<!-- FILE: course-stats.html (STATISTICS)          -->
+<!-- ============================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics for Nursing Research · deep‑dive notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background: #edf3f0;
+            padding: 1.5rem;
+        }
+        .course-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 48px;
+            padding: 2.5rem;
+            box-shadow: 0 30px 50px #a3c6b9;
+        }
+        h1 {
+            color: #0b4b3b;
+            border-left: 16px solid #24b48b;
+            padding-left: 1.5rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        .topic {
+            margin: 3rem 0;
+            border-bottom: 2px dashed #b0d9cc;
+            padding-bottom: 2rem;
+        }
+        .topic h2 {
+            background: #e2f3ed;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            color: #0a5c47;
+            font-size: 2.2rem;
+            border: 1px solid #8fc7b7;
+        }
+        .topic-content {
+            padding: 1.8rem;
+            font-size: 1.2rem;
+            line-height: 1.85;
+            color: #1a2e26;
+        }
+        .topic-content h3 {
+            color: #0f7057;
+            margin: 2.5rem 0 1rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #24b48b;
+            padding-bottom: 0.4rem;
+            display: inline-block;
+        }
+        .topic-content h4 {
+            color: #1d5f4c;
+            margin: 1.8rem 0 0.6rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        ul, ol {
+            margin-left: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        li {
+            margin: 0.6rem 0;
+        }
+        strong {
+            color: #0d4f3e;
+        }
+        .badge {
+            background: #1a8c6f;
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        .back {
+            display: inline-block;
+            margin-bottom: 2rem;
+            background: #0b4b3b;
+            color: white;
+            padding: 0.8rem 2.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .back:hover {
+            background: #24b48b;
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th, td {
+            border: 1px solid #9cc2b5;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        th {
+            background: #d2eee4;
+        }
+        .formula {
+            background: #f2fbf8;
+            padding: 0.8rem 1.2rem;
+            border-radius: 30px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            border: 1px solid #24b48b;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="course-container">
+    <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Hub</a>
+    <h1><i class="fas fa-chart-line"></i> Statistics for Nursing Research · 40+ pages (graduate level)</h1>
+
+    <!-- ========== TOPIC 1 : DESCRIPTIVE STATISTICS ========== -->
+    <div class="topic">
+        <h2>1. Descriptive Statistics <span class="badge">summarizing data</span></h2>
+        <div class="topic-content">
+            <h3>1.1 Measures of Central Tendency</h3>
+            <ul>
+                <li><strong>Mean (μ or x̄):</strong> arithmetic average. Sensitive to outliers. Formula: Σx / n.</li>
+                <li><strong>Median:</strong> middle value when data ordered. Robust to outliers. Use for skewed distributions (e.g., length of stay).</li>
+                <li><strong>Mode:</strong> most frequent value. Useful for nominal data (e.g., blood type).</li>
+            </ul>
+            <p><strong>Nursing example:</strong> In a study of pain scores (0‑10) post‑op: mean 4.2, median 3.5, mode 2 (bimodal distribution).</p>
+
+            <h3>1.2 Measures of Dispersion (Variability)</h3>
+            <ul>
+                <li><strong>Range:</strong> maximum – minimum. Simple but unstable.</li>
+                <li><strong>Interquartile range (IQR):</strong> Q3 – Q1 (middle 50%). Used with median for skewed data.</li>
+                <li><strong>Variance (σ² or s²):</strong> average squared deviation from mean. Formula: Σ(xᵢ – x̄)² / (n‑1) for sample.</li>
+                <li><strong>Standard deviation (SD, s):</strong> square root of variance. Same units as original data. For normally distributed data, ≈68% within 1 SD, 95% within 2 SD.</li>
+            </ul>
+
+            <h3>1.3 Frequency Distributions & Visualizations</h3>
+            <ul>
+                <li><strong>Histogram:</strong> continuous data, bars touch. Assess shape: normal, skewed (left/right), bimodal, uniform.</li>
+                <li><strong>Boxplot (box & whisker):</strong> shows median, IQR, range, outliers (points >1.5×IQR).</li>
+                <li><strong>Bar chart:</strong> categorical data (frequencies).</li>
+                <li><strong>Pie chart:</strong> proportions – use sparingly (hard to compare).</li>
+                <li><strong>Stem‑and‑leaf:</strong> retains individual values.</li>
+            </ul>
+
+            <h3>1.4 Shape of Distribution</h3>
+            <ul>
+                <li><strong>Skewness:</strong> left (negative) – mean < median; right (positive) – mean > median.</li>
+                <li><strong>Kurtosis:</strong> peakedness – leptokurtic (heavy tails), platykurtic (light tails), mesokurtic (normal).</li>
+                <li><strong>Normality tests:</strong> Shapiro‑Wilk, Kolmogorov‑Smirnov (p >0.05 suggests normal).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 2 : INFERENTIAL STATISTICS ========== -->
+    <div class="topic">
+        <h2>2. Inferential Statistics <span class="badge">drawing conclusions</span></h2>
+        <div class="topic-content">
+            <h3>2.1 Hypothesis Testing Framework</h3>
+            <ul>
+                <li><strong>Null hypothesis (H₀):</strong> no effect/difference (e.g., mean BP equal between groups).</li>
+                <li><strong>Alternative hypothesis (H₁ or Hₐ):</strong> there is an effect (two‑tailed: different; one‑tailed: greater/less).</li>
+                <li><strong>Type I error (α):</strong> rejecting true H₀ (false positive). Usually set α = 0.05.</li>
+                <li><strong>Type II error (β):</strong> failing to reject false H₀ (false negative). Power = 1 – β (want ≥0.80).</li>
+                <li><strong>p‑value:</strong> probability of obtaining observed results (or more extreme) if H₀ is true. If p < α, reject H₀.</li>
+            </ul>
+
+            <h3>2.2 Confidence Intervals (CI)</h3>
+            <p>Range of plausible values for population parameter. 95% CI means: if we repeated study 100 times, 95 intervals would contain true value.</p>
+            <p><strong>Interpretation:</strong> CI that does not cross null value (e.g., 0 for difference, 1 for ratio) indicates statistical significance.</p>
+
+            <h3>2.3 Parametric Tests</h3>
+            <p><em>Assume normality, homogeneity of variance, independence.</em></p>
+            <ul>
+                <li><strong>One‑sample t‑test:</strong> compares sample mean to known population mean. Formula: t = (x̄ – μ) / (s/√n).</li>
+                <li><strong>Independent samples t‑test:</strong> compares means of two independent groups. Assumes equal variances (Levene's test). If unequal, use Welch's t‑test.</li>
+                <li><strong>Paired t‑test:</strong> compares means of same group at two times (e.g., pre‑test/post‑test).</li>
+                <li><strong>One‑way ANOVA:</strong> compares means of ≥3 groups. F = between‑group variance / within‑group variance. Post‑hoc tests (Tukey, Bonferroni) if significant.</li>
+                <li><strong>Repeated measures ANOVA:</strong> same subjects measured multiple times.</li>
+                <li><strong>Two‑way ANOVA:</strong> two independent variables (factors) – tests main effects and interaction.</li>
+            </ul>
+
+            <h3>2.4 Non‑parametric Tests (distribution‑free)</h3>
+            <p>Used when assumptions violated, ordinal data, or small samples.</p>
+            <ul>
+                <li><strong>Mann‑Whitney U:</strong> independent groups (alternative to independent t‑test).</li>
+                <li><strong>Wilcoxon signed‑rank:</strong> paired data (alternative to paired t‑test).</li>
+                <li><strong>Kruskal‑Wallis H:</strong> one‑way ANOVA alternative.</li>
+                <li><strong>Friedman test:</strong> repeated measures ANOVA alternative.</li>
+                <li><strong>Chi‑square (χ²):</strong> tests association between categorical variables. Also goodness‑of‑fit. Expected frequency ≥5 per cell. Yates' continuity correction for 2×2 tables.</li>
+                <li><strong>Fisher's exact test:</strong> for 2×2 when expected <5.</li>
+            </ul>
+
+            <h3>2.5 Choosing the Right Test</h3>
+            <table>
+                <tr><th>Outcome variable</th><th>Predictor (groups)</th><th>Parametric</th><th>Non‑parametric</th></tr>
+                <tr><td>Continuous</td><td>2 independent</td><td>Independent t‑test</td><td>Mann‑Whitney U</td></tr>
+                <tr><td>Continuous</td><td>2 paired</td><td>Paired t‑test</td><td>Wilcoxon signed‑rank</td></tr>
+                <tr><td>Continuous</td><td>3+ independent</td><td>ANOVA</td><td>Kruskal‑Wallis</td></tr>
+                <tr><td>Categorical</td><td>Categorical</td><td>Chi‑square</td><td>Fisher's exact</td></tr>
+                <tr><td>Continuous</td><td>Continuous</td><td>Pearson correlation</td><td>Spearman rho</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 3 : SPSS BASICS ========== -->
+    <div class="topic">
+        <h2>3. SPSS Basics <span class="badge">data analysis in nursing research</span></h2>
+        <div class="topic-content">
+            <h3>3.1 Data Entry & Variable View</h3>
+            <ul>
+                <li><strong>Variable View:</strong> define variables: Name (no spaces), Type (numeric, string), Label (description), Values (coding e.g., 1=Male, 2=Female), Measure (scale, ordinal, nominal).</li>
+                <li><strong>Data View:</strong> enter data in rows (cases) and columns (variables).</li>
+                <li><strong>Missing values:</strong> define as 999 or leave blank; system missing is period.</li>
+            </ul>
+
+            <h3>3.2 Running Descriptives</h3>
+            <ul>
+                <li><strong>Analyze → Descriptive Statistics → Frequencies:</strong> for categorical variables (frequencies, bar charts).</li>
+                <li><strong>Analyze → Descriptive Statistics → Descriptives:</strong> for continuous (mean, SD, min, max, skewness, kurtosis).</li>
+                <li><strong>Analyze → Descriptive Statistics → Explore:</strong> detailed stats, boxplots, normality tests (Shapiro‑Wilk).</li>
+                <li><strong>Analyze → Compare Means → Means:</strong> group means and ANOVA table.</li>
+            </ul>
+
+            <h3>3.3 Interpreting SPSS Output</h3>
+            <ul>
+                <li><strong>p‑value (Sig.):</strong> if <0.05, statistically significant.</li>
+                <li><strong>Levene's test:</strong> if p <0.05, equal variances not assumed (use Welch t‑test row).</li>
+                <li><strong>ANOVA table:</strong> F statistic, df, Sig. Post‑hoc: multiple comparisons.</li>
+                <li><strong>Chi‑square:</strong> Pearson Chi‑Square value, df, Asymptotic Sig. (2‑sided).</li>
+                <li><strong>Correlation:</strong> Pearson's r (strength: 0‑0.3 weak, 0.3‑0.7 moderate, >0.7 strong), Sig. (2‑tailed).</li>
+            </ul>
+
+            <h3>3.4 Creating Graphs in SPSS</h3>
+            <ul>
+                <li><strong>Graphs → Chart Builder:</strong> drag variables, choose chart type (histogram, boxplot, bar, scatter).</li>
+                <li><strong>Graphs → Legacy Dialogs:</strong> simpler interface.</li>
+                <li><strong>Editing:</strong> double‑click chart to open Chart Editor – add titles, change colors, adjust scales.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 4 : CORRELATION & REGRESSION ========== -->
+    <div class="topic">
+        <h2>4. Correlation & Regression <span class="badge">relationships & prediction</span></h2>
+        <div class="topic-content">
+            <h3>4.1 Pearson Product‑Moment Correlation (r)</h3>
+            <p>Measures linear relationship between two continuous variables. Range ‑1 to +1. Assumptions: linearity, bivariate normality, no outliers.</p>
+            <p><strong>Interpretation:</strong> r = 0.8 strong positive; r = ‑0.5 moderate negative; r = 0 no linear relationship.</p>
+            <p><strong>Coefficient of determination (R²):</strong> proportion of variance shared. r=0.5 → R²=0.25 → 25% variance explained.</p>
+
+            <h3>4.2 Spearman's Rank Correlation (ρ)</h3>
+            <p>Non‑parametric alternative. Uses ranks. For ordinal data or when assumptions violated.</p>
+
+            <h3>4.3 Simple Linear Regression</h3>
+            <p>Predicts continuous outcome (Y) from one predictor (X). Equation: Y = b₀ + b₁X + ε.</p>
+            <ul>
+                <li><strong>b₀ (intercept):</strong> predicted Y when X=0.</li>
+                <li><strong>b₁ (slope):</strong> change in Y per 1‑unit increase in X.</li>
+                <li><strong>R²:</strong> % variance in Y explained by X.</li>
+                <li><strong>ANOVA for regression:</strong> tests if model significantly predicts Y (p <0.05).</li>
+                <li><strong>Residuals:</strong> should be normally distributed, homoscedastic (constant variance).</li>
+            </ul>
+
+            <h3>4.4 Multiple Linear Regression</h3>
+            <p>Several predictors (X₁, X₂…). Adjusted R² penalizes for many predictors. Check multicollinearity (Variance Inflation Factor, VIF <10).</p>
+            <p><strong>Nursing example:</strong> predicting length of hospital stay from age, comorbidities, admission acuity, social support.</p>
+
+            <h3>4.5 Logistic Regression</h3>
+            <p>For binary outcome (e.g., readmitted yes/no). Reports odds ratios (OR) and 95% CI. Goodness‑of‑fit: Hosmer‑Lemeshow test.</p>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 5 : EFFECT SIZES ========== -->
+    <div class="topic">
+        <h2>5. Effect Sizes <span class="badge">practical significance</span></h2>
+        <div class="topic-content">
+            <h3>5.1 Why Effect Sizes?</h3>
+            <p>p‑values depend on sample size. Effect size quantifies magnitude of effect, independent of n. Essential for meta‑analysis and power analysis.</p>
+
+            <h3>5.2 Cohen's d (for t‑tests)</h3>
+            <p>d = (mean₁ – mean₂) / pooled SD. Interpretation (Cohen): small 0.2, medium 0.5, large 0.8.</p>
+            <p><strong>Formula pooled SD:</strong> √[(s₁² + s₂²) / 2].</p>
+
+            <h3>5.3 Eta‑squared (η²) for ANOVA</h3>
+            <p>η² = SS_between / SS_total. Proportion of variance explained. Small 0.01, medium 0.06, large 0.14.</p>
+            <p><strong>Partial η²:</strong> for factorial ANOVA (effect size adjusted for other factors).</p>
+
+            <h3>5.4 Cohen's w / Cramér's V for Chi‑square</h3>
+            <p><strong>Cramér's V:</strong> for contingency tables (0‑1). Small 0.1, medium 0.3, large 0.5.</p>
+
+            <h3>5.5 Odds Ratio (OR) & Relative Risk (RR)</h3>
+            <p><strong>OR:</strong> odds of outcome in exposed / odds in unexposed. OR=1 no effect; >1 increased risk; <1 protective. Used in case‑control studies.</p>
+            <p><strong>RR:</strong> risk in exposed / risk in unexposed. Used in cohort studies.</p>
+
+            <h3>5.6 Number Needed to Treat (NNT)</h3>
+            <p>NNT = 1 / absolute risk reduction (ARR). Number of patients needed to treat to prevent one adverse outcome. Ideal NNT low (e.g., 2‑10).</p>
+        </div>
+    </div>
+
+    <!-- ========== TOPIC 6 : PRESENTING DATA (APA STYLE) ========== -->
+    <div class="topic">
+        <h2>6. Presenting Data – APA 7th Edition <span class="badge">tables & figures</span></h2>
+        <div class="topic-content">
+            <h3>6.1 General APA Guidelines</h3>
+            <ul>
+                <li>Double‑space, serif font (Times New Roman 12).</li>
+                <li>Margins 1 inch.</li>
+                <li>Page numbers top right.</li>
+            </ul>
+
+            <h3>6.2 Tables</h3>
+            <ul>
+                <li>Table number (bold) above table: <em>Table 1</em></li>
+                <li>Title (italic, title case): <em>Demographic Characteristics of Study Participants</em></li>
+                <li>Horizontal lines only (no vertical lines).</li>
+                <li>Clear column headings, units specified.</li>
+                <li>Notes below for abbreviations, significance levels: *p < .05. **p < .01.</li>
+            </ul>
+            <p><strong>Example table:</strong></p>
+            <table style="width:70%">
+                <tr><th>Variable</th><th>Intervention (n=50)</th><th>Control (n=48)</th></tr>
+                <tr><td>Age, mean (SD)</td><td>52.3 (12.1)</td><td>51.8 (13.4)</td></tr>
+                <tr><td>Female, n (%)</td><td>32 (64)</td><td>30 (62.5)</td></tr>
+            </table>
+
+            <h3>6.3 Figures</h3>
+            <ul>
+                <li>Figure number below figure: <em>Figure 1. Mean Pain Scores Over Time by Group</em></li>
+                <li>Axes clearly labeled, legend if needed.</li>
+                <li>Use high contrast, avoid 3D effects.</li>
+                <li>Error bars = SD or 95% CI (specify in caption).</li>
+            </ul>
+
+            <h3>6.4 Reporting Statistics in Text</h3>
+            <ul>
+                <li>t(38) = 2.24, p = .031, d = 0.71</li>
+                <li>F(2, 87) = 5.67, p = .005, η² = 0.12</li>
+                <li>χ²(1, N=120) = 4.83, p = .028, V = 0.20</li>
+                <li>r(45) = .42, p = .003, 95% CI [.16, .63]</li>
+                <li>OR = 2.5, 95% CI [1.3, 4.8]</li>
+            </ul>
+
+            <h3>6.5 Common Mistakes</h3>
+            <ul>
+                <li>Confusing statistical significance with clinical significance (always report effect size).</li>
+                <li>Not checking assumptions before running tests.</li>
+                <li>Over‑interpreting non‑significant results (absence of evidence ≠ evidence of absence).</li>
+                <li>Using parametric tests for small, non‑normal samples.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========== BONUS : POWER ANALYSIS ========== -->
+    <div class="topic">
+        <h2>7. Power Analysis & Sample Size Calculation <span class="badge">planning studies</span></h2>
+        <div class="topic-content">
+            <h3>7.1 Key Concepts</h3>
+            <p><strong>Power (1‑β):</strong> probability of detecting an effect if it truly exists. Usually set at 0.80.</p>
+            <p><strong>Effect size:</strong> expected magnitude (based on pilot, prior research, or clinical judgment).</p>
+            <p><strong>α (significance level):</strong> usually 0.05.</p>
+            <p><strong>Sample size:</strong> larger n increases power.</p>
+
+            <h3>7.2 Software for Power Analysis</h3>
+            <ul>
+                <li><strong>G*Power (free):</strong> t‑tests, ANOVA, correlation, regression, χ².</li>
+                <li><strong>PASS, nQuery:</strong> commercial.</li>
+                <li><strong>SPSS:</strong> no built‑in power, but can compute post‑hoc.</li>
+            </ul>
+
+            <h3>7.3 Example using G*Power</h3>
+            <p>Independent t‑test, two‑tailed, α=0.05, power=0.80, medium effect (d=0.5) → required n=64 per group (total 128).</p>
+        </div>
+    </div>
+
+ 
+</div>
+</body>
+</html>
