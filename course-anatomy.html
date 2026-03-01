@@ -9,6 +9,69 @@
     <title>Anatomy · 7 Systems Deep Dive</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ===== COMPLETE MOBILE TABLE SOLUTION ===== */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    border-radius: 16px;
+    background: linear-gradient(to right, white 30%, rgba(255,255,255,0.5)),
+                linear-gradient(to left, white 30%, rgba(255,255,255,0.5)) 100% 0;
+    background-repeat: no-repeat;
+    background-size: 40px 100%, 40px 100%;
+    background-attachment: scroll, scroll;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px; /* adjust based on your table */
+    background: white;
+}
+
+.table-wrapper th {
+    background: var(--app-primary);
+    color: white;
+    padding: 1rem;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.table-wrapper td {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--app-border);
+    font-size: 0.95rem;
+}
+
+/* Zebra striping for readability */
+.table-wrapper tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Show scroll indicators on mobile */
+@media (max-width: 768px) {
+    .table-wrapper {
+        background: 
+            linear-gradient(to right, white 30%, rgba(255,255,255,0)),
+            linear-gradient(to left, white 30%, rgba(255,255,255,0)) 100% 0,
+            radial-gradient(farthest-side at 0% 50%, rgba(0,0,0,0.2), transparent),
+            radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,0.2), transparent) 100% 0;
+        background-repeat: no-repeat;
+        background-size: 40px 100%, 40px 100%, 20px 100%, 20px 100%;
+        background-attachment: local, local, scroll, scroll;
+    }
+}
+
+/* Small screens - further optimize */
+@media (max-width: 480px) {
+    .table-wrapper th,
+    .table-wrapper td {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
         /* ===== FIXED APP HEADER - WHITE TEXT ON BLUE ===== */
         .app-header {
             background: #0b3b55 !important;
@@ -673,3 +736,4 @@
 </script>
 </body>
 </html>
+
