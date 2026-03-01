@@ -5,491 +5,306 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anatomy · complete visual notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Anatomy · complete systems (10 topics)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* ===== FIXED APP HEADER - WHITE TEXT ON BLUE ===== */
-.app-header {
-    background: var(--app-primary) !important;  /* dark blue */
-    color: white !important;
-    padding: 1.2rem 1.5rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: rgba(11, 59, 85, 0.98) !important;  /* blue with transparency */
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
+        .app-header {
+            background: #0b3b55 !important;
+            color: white !important;
+            padding: 1.2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(11, 59, 85, 0.98) !important;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
 
-.app-header h1,
-.app-header h1 i,
-.app-header * {
-    color: white !important;  /* FORCE ALL HEADER TEXT TO BE WHITE */
-}
+        .app-header h1,
+        .app-header h1 i,
+        .app-header * {
+            color: white !important;
+        }
 
-.app-header h1 {
-    font-size: 1.8rem !important;
-    border-left: none !important;
-    padding-left: 0 !important;
-    margin: 0 !important;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
+        .app-header h1 {
+            font-size: 1.8rem !important;
+            border-left: none !important;
+            padding-left: 0 !important;
+            margin: 0 !important;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
 
-/* Also fix any icons in header */
-.app-header i {
-    background: rgba(255,255,255,0.2) !important;  /* subtle white background for icons */
-    color: white !important;
-    padding: 0.7rem;
-    border-radius: 50%;
-}
+        .app-header i {
+            background: rgba(255,255,255,0.2) !important;
+            color: white !important;
+            padding: 0.7rem;
+            border-radius: 50%;
+        }
 
-/* Fix back button if it's in header */
-.app-header .back,
-.app-header a {
-    color: white !important;
-    background: rgba(255,255,255,0.15) !important;
-}
+        .app-header .back,
+        .app-header a {
+            color: white !important;
+            background: rgba(255,255,255,0.15) !important;
+        }
 
-.app-header .back:hover {
-    background: var(--app-accent) !important;
-    color: var(--app-primary) !important;
-}
-        /* ============================================= */
-/* FILE: mobile-app-theme.css                     */
-/* ============================================= */
-/* Add this to the <style> section of ALL your pages */
-/* ============================================= */
+        .app-header .back:hover {
+            background: #fcb424 !important;
+            color: #0b3b55 !important;
+        }
 
-/* ===== NATIVE APP VARIABLES ===== */
-:root {
-    --app-bg: #f5f7fa;
-    --app-card-bg: #ffffff;
-    --app-primary: #0b3b55;
-    --app-accent: #fcb424;
-    --app-text: #1a2b3c;
-    --app-text-light: #6b7b8c;
-    --app-border: #e9ecf0;
-    --app-shadow: 0 8px 20px rgba(0,20,40,0.08);
-    --app-shadow-heavy: 0 16px 32px rgba(0,35,70,0.12);
-    --app-radius: 28px;
-    --app-radius-sm: 16px;
-    --safe-area-top: env(safe-area-inset-top, 0px);
-    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
-}
+        /* ===== NATIVE APP VARIABLES ===== */
+        :root {
+            --app-bg: #f5f7fa;
+            --app-card-bg: #ffffff;
+            --app-primary: #0b3b55;
+            --app-accent: #fcb424;
+            --app-text: #1a2b3c;
+            --app-text-light: #6b7b8c;
+            --app-border: #e9ecf0;
+            --app-shadow: 0 8px 20px rgba(0,20,40,0.08);
+            --app-shadow-heavy: 0 16px 32px rgba(0,35,70,0.12);
+            --app-radius: 28px;
+            --app-radius-sm: 16px;
+            --safe-area-top: env(safe-area-inset-top, 0px);
+            --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+        }
 
-/* ===== BASE MOBILE APP STYLES ===== */
-* {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-font-smoothing: antialiased;
-}
-
-body {
-    background: var(--app-bg) !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* ===== APP CONTAINER ===== */
-.course-container, .quiz-wrapper, .app {
-    max-width: 100% !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
-    background: var(--app-bg) !important;
-    box-shadow: none !important;
-    padding: var(--safe-area-top) 0 var(--safe-area-bottom) 0 !important;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* ===== NATIVE HEADER ===== */
-.app-header {
-    background: var(--app-primary);
-    color: white;
-    padding: 1.2rem 1.5rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: rgba(11, 59, 85, 0.98);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.app-header h1 {
-    font-size: 1.8rem !important;
-    border-left: none !important;
-    padding-left: 0 !important;
-    margin: 0 !important;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-/* ===== BOTTOM NAVIGATION (APP STYLE) ===== */
-.app-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255,255,255,0.98);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: space-around;
-    padding: 0.8rem 1rem calc(0.8rem + var(--safe-area-bottom));
-    border-top: 1px solid var(--app-border);
-    z-index: 1000;
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.02);
-}
-
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: var(--app-text-light);
-    font-size: 0.7rem;
-    transition: all 0.2s;
-    padding: 0.3rem 0.8rem;
-    border-radius: 40px;
-}
-
-.nav-item i {
-    font-size: 1.5rem;
-    margin-bottom: 0.2rem;
-}
-
-.nav-item.active {
-    color: var(--app-primary);
-    background: rgba(11, 59, 85, 0.05);
-}
-
-/* ===== CARD STYLES (MOBILE APP) ===== */
-.topic {
-    background: var(--app-card-bg) !important;
-    border-radius: var(--app-radius) !important;
-    margin: 1.2rem 1rem !important;
-    padding: 0 !important;
-    box-shadow: var(--app-shadow) !important;
-    border: 1px solid var(--app-border) !important;
-    overflow: hidden;
-    transition: transform 0.2s;
-}
-
-.topic:active {
-    transform: scale(0.98);
-}
-
-.topic h2 {
-    background: white !important;
-    border-radius: 0 !important;
-    padding: 1.2rem 1.5rem !important;
-    margin: 0 !important;
-    font-size: 1.5rem !important;
-    border-bottom: 1px solid var(--app-border) !important;
-    color: var(--app-primary) !important;
-    cursor: pointer;
-    position: relative;
-}
-
-.topic h2::after {
-    content: '\f107';
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.3s;
-    color: var(--app-text-light);
-}
-
-.topic h2.collapsed::after {
-    transform: translateY(-50%) rotate(-90deg);
-}
-
-.topic-content {
-    padding: 1.5rem !important;
-    background: white;
-    transition: max-height 0.3s ease-out;
-    max-height: 2000px;
-    overflow: hidden;
-}
-
-.topic-content.collapsed {
-    max-height: 0 !important;
-    padding: 0 1.5rem !important;
-}
-
-/* ===== BOTTOM SHEET MODAL ===== */
-.bottom-sheet {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    border-radius: 32px 32px 0 0;
-    padding: 2rem 1.5rem;
-    transform: translateY(100%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 2000;
-    box-shadow: 0 -8px 32px rgba(0,0,0,0.1);
-    max-height: 80vh;
-    overflow-y: auto;
-}
-
-.bottom-sheet.active {
-    transform: translateY(0);
-}
-
-.sheet-handle {
-    width: 40px;
-    height: 4px;
-    background: var(--app-border);
-    border-radius: 4px;
-    margin: -1rem auto 1rem;
-}
-
-/* ===== QUIZ APP STYLES ===== */
-.quiz-container {
-    background: transparent !important;
-    padding: 1rem !important;
-}
-
-.quiz-question {
-    background: var(--app-card-bg) !important;
-    padding: 1.5rem !important;
-    border-radius: var(--app-radius) !important;
-    margin: 1rem 0 !important;
-    box-shadow: var(--app-shadow) !important;
-    font-size: 1.2rem !important;
-}
-
-.quiz-option {
-    background: var(--app-card-bg) !important;
-    border: 2px solid var(--app-border) !important;
-    border-radius: 60px !important;
-    padding: 1.2rem 1.5rem !important;
-    margin: 0.8rem 0 !important;
-    transition: all 0.2s;
-    font-size: 1.1rem !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important;
-}
-
-.quiz-option.selected {
-    border-color: var(--app-primary) !important;
-    background: rgba(11, 59, 85, 0.05) !important;
-    transform: scale(1.01);
-}
-
-.quiz-option.correct {
-    background: #c3e6c3 !important;
-    border-color: #1f7a1f !important;
-    color: #1a4d1a !important;
-}
-
-.quiz-option.incorrect {
-    background: #fad7da !important;
-    border-color: #b52b36 !important;
-    color: #721c24 !important;
-}
-
-/* ===== PROGRESS BAR ===== */
-.progress-bar {
-    height: 4px;
-    background: var(--app-border);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1001;
-}
-
-.progress-fill {
-    height: 100%;
-    background: var(--app-accent);
-    width: 0%;
-    transition: width 0.3s;
-}
-
-/* ===== PULL TO REFRESH ===== */
-.pull-indicator {
-    text-align: center;
-    padding: 1rem;
-    color: var(--app-text-light);
-    transform: translateY(-100%);
-    transition: transform 0.2s;
-}
-
-/* ===== MOBILE SCROLLING ===== */
-.topic-content {
-    -webkit-overflow-scrolling: touch;
-}
-
-/* ===== LOADING SKELETON ===== */
-.skeleton {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-    border-radius: 8px;
-    height: 20px;
-    margin: 0.5rem 0;
-}
-
-@keyframes loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-/* ===== TOUCH FEEDBACK ===== */
-.touch-feedback {
-    position: relative;
-    overflow: hidden;
-}
-
-.touch-feedback::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.05);
-    opacity: 0;
-    transition: opacity 0.2s;
-    pointer-events: none;
-}
-
-.touch-feedback:active::after {
-    opacity: 1;
-}
-
-/* ===== SWIPE ACTIONS ===== */
-.swipeable {
-    transition: transform 0.3s;
-}
-
-.swipe-left {
-    transform: translateX(-20px);
-}
-
-.swipe-right {
-    transform: translateX(20px);
-}
-
-/* ===== DARK MODE SUPPORT ===== */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --app-bg: #1a1e24;
-        --app-card-bg: #2c3138;
-        --app-text: #e9edf2;
-        --app-text-light: #9aa6b2;
-        --app-border: #3a4048;
-    }
-    
-    body {
-        background: var(--app-bg) !important;
-        color: var(--app-text) !important;
-    }
-    
-    .app-header {
-        background: rgba(20, 30, 40, 0.98);
-    }
-    
-    .quiz-option {
-        background: var(--app-card-bg) !important;
-        color: var(--app-text) !important;
-    }
-}
-
-/* ===== RESPONSIVE ADJUSTMENTS ===== */
-@media (max-width: 768px) {
-    .course-grid {
-        grid-template-columns: 1fr !important;
-        padding: 1rem !important;
-    }
-    
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
-}
+        /* ===== BASE MOBILE APP STYLES ===== */
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-font-smoothing: antialiased;
         }
+
         body {
-            background: #eef4fa;
-            padding: 1rem;
+            background: var(--app-bg) !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
+
+        /* ===== APP CONTAINER ===== */
         .course-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 48px;
-            padding: 2.5rem;
-            box-shadow: 0 28px 48px #aac2df;
+            max-width: 100% !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            background: var(--app-bg) !important;
+            box-shadow: none !important;
+            padding: var(--safe-area-top) 0 var(--safe-area-bottom) 0 !important;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        h1 {
-            color: #0b3b55;
-            border-left: 16px solid #fcb424;
-            padding-left: 1.5rem;
-            font-size: 3rem;
-            margin-bottom: 1rem;
+
+        /* ===== BOTTOM NAVIGATION ===== */
+        .app-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.8rem 1rem calc(0.8rem + var(--safe-area-bottom));
+            border-top: 1px solid var(--app-border);
+            z-index: 1000;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.02);
         }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--app-text-light);
+            font-size: 0.7rem;
+            transition: all 0.2s;
+            padding: 0.3rem 0.8rem;
+            border-radius: 40px;
+        }
+
+        .nav-item i {
+            font-size: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .nav-item.active {
+            color: var(--app-primary);
+            background: rgba(11, 59, 85, 0.05);
+        }
+
+        /* ===== CARD STYLES ===== */
         .topic {
-            margin: 3rem 0;
-            border-bottom: 2px solid #e0eef9;
-            padding-bottom: 2rem;
+            background: var(--app-card-bg) !important;
+            border-radius: var(--app-radius) !important;
+            margin: 1.2rem 1rem !important;
+            padding: 0 !important;
+            box-shadow: var(--app-shadow) !important;
+            border: 1px solid var(--app-border) !important;
+            overflow: hidden;
+            transition: transform 0.2s;
         }
+
+        .topic:active {
+            transform: scale(0.98);
+        }
+
         .topic h2 {
-            background: #f5f9ff;
-            padding: 1rem 2rem;
-            border-radius: 60px;
-            color: #0a4b70;
-            font-size: 2rem;
-            border-left: 8px solid #fcb424;
+            background: white !important;
+            border-radius: 0 !important;
+            padding: 1.2rem 1.5rem !important;
+            margin: 0 !important;
+            font-size: 1.5rem !important;
+            border-bottom: 1px solid var(--app-border) !important;
+            color: var(--app-primary) !important;
+            cursor: pointer;
+            position: relative;
         }
+
+        .topic h2::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+            color: var(--app-text-light);
+        }
+
+        .topic h2.collapsed::after {
+            transform: translateY(-50%) rotate(-90deg);
+        }
+
         .topic-content {
-            padding: 1.5rem;
-            font-size: 1.18rem;
-            line-height: 1.8;
-            color: #1a2b3c;
+            padding: 1.5rem !important;
+            background: white;
+            transition: max-height 0.3s ease-out;
+            max-height: 2000px;
+            overflow: hidden;
         }
-        .topic-content h3 {
-            color: #0b3b55;
-            margin: 2.5rem 0 1rem;
-            font-size: 1.6rem;
-            border-bottom: 2px solid #fcb424;
-            padding-bottom: 0.3rem;
+
+        .topic-content.collapsed {
+            max-height: 0 !important;
+            padding: 0 1.5rem !important;
         }
-        .topic-content h4 {
-            color: #14658c;
-            margin: 1.8rem 0 0.8rem;
-            font-size: 1.3rem;
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-bar {
+            height: 4px;
+            background: var(--app-border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
         }
-        ul, ol {
-            margin-left: 2.5rem;
-            margin-bottom: 1.2rem;
+
+        .progress-fill {
+            height: 100%;
+            background: var(--app-accent);
+            width: 0%;
+            transition: width 0.3s;
         }
-        li {
-            margin: 0.5rem 0;
+
+        /* ===== PULL TO REFRESH ===== */
+        .pull-indicator {
+            text-align: center;
+            padding: 1rem;
+            color: var(--app-text-light);
+            transform: translateY(-100%);
+            transition: transform 0.2s;
         }
-        strong {
-            color: #0b3b55;
+
+        /* ===== TOUCH FEEDBACK ===== */
+        .touch-feedback {
+            position: relative;
+            overflow: hidden;
         }
+
+        .touch-feedback::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.05);
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+
+        .touch-feedback:active::after {
+            opacity: 1;
+        }
+
+        /* ===== DARK MODE SUPPORT ===== */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --app-bg: #1a1e24;
+                --app-card-bg: #2c3138;
+                --app-text: #e9edf2;
+                --app-text-light: #9aa6b2;
+                --app-border: #3a4048;
+            }
+            
+            body {
+                background: var(--app-bg) !important;
+                color: var(--app-text) !important;
+            }
+            
+            .app-header {
+                background: rgba(20, 30, 40, 0.98);
+            }
+            
+            .topic-content {
+                color: var(--app-text) !important;
+            }
+        }
+
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 768px) {
+            .course-grid {
+                grid-template-columns: 1fr !important;
+                padding: 1rem !important;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ===== TABLE STYLES ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th {
+            background: var(--app-primary);
+            color: white;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        td {
+            padding: 0.8rem;
+            border: 1px solid var(--app-border);
+        }
+
+        /* ===== DIAGRAM BOX ===== */
         .diagram-box {
             background: #f9f9f9;
             padding: 2rem;
@@ -497,33 +312,35 @@ body {
             margin: 2rem 0;
             text-align: center;
             font-family: 'Courier New', monospace;
-            border: 2px dashed #0b3b55;
+            border: 2px dashed var(--app-primary);
             overflow-x: auto;
         }
         .diagram-caption {
             margin-top: 1rem;
             font-style: italic;
-            color: #14658c;
+            color: var(--app-primary);
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .image-placeholder {
+            background: #e1f0fa;
+            padding: 3rem;
+            border-radius: 24px;
             margin: 1.5rem 0;
+            text-align: center;
+            border: 3px solid var(--app-accent);
         }
-        th {
-            background: #0b3b55;
-            color: white;
-            padding: 0.8rem;
-            text-align: left;
+        .image-placeholder i {
+            font-size: 4rem;
+            color: var(--app-primary);
+            margin-bottom: 1rem;
         }
-        td {
-            padding: 0.8rem;
-            border: 1px solid #c0d9f0;
+        .image-placeholder p {
+            font-size: 1.3rem;
+            color: var(--app-primary);
         }
         .back {
             display: inline-block;
             margin-bottom: 2rem;
-            background: #0b3b55;
+            background: var(--app-primary);
             color: white;
             padding: 0.8rem 2rem;
             border-radius: 40px;
@@ -532,556 +349,322 @@ body {
             transition: all 0.2s;
         }
         .back:hover {
-            background: #fcb424;
-            color: #0b3b55;
-        }
-        .image-placeholder {
-            background: #e1f0fa;
-            padding: 3rem;
-            border-radius: 24px;
-            margin: 1.5rem 0;
-            text-align: center;
-            border: 3px solid #fcb424;
-        }
-        .image-placeholder i {
-            font-size: 4rem;
-            color: #0b3b55;
-            margin-bottom: 1rem;
-        }
-        .image-placeholder p {
-            font-size: 1.3rem;
-            color: #0a4b70;
+            background: var(--app-accent);
+            color: var(--app-primary);
         }
     </style>
 </head>
 <body>
 <div class="course-container">
     <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Hub</a>
-    <h1><i class="fas fa-heart"></i> Human Anatomy · Complete Visual Notes</h1>
-    <p style="font-size:1.3rem; margin-bottom:3rem;">Expanded with diagrams and visual representations — 60+ pages equivalent</p>
+    <h1><i class="fas fa-heart"></i> Human Anatomy · 10 Complete Systems</h1>
+    <p style="font-size:1.3rem; margin:1rem 1rem 2rem;">Respiratory, Reproductive, Excretory/Urinary, Nervous, Endocrine, Digestive + more</p>
 
-    <!-- ========== TOPIC 1: CELLS & TISSUES ========== -->
+    <!-- TOPIC 1: CELLS & TISSUES (foundation) -->
     <div class="topic">
         <h2>1. Cells & Tissues — Microscopic Anatomy</h2>
         <div class="topic-content">
-            <h3>1.1 Cell Organelles & Functions</h3>
+            <h3>Cell Organelles & Functions</h3>
             <table>
-                <tr><th>Organelle</th><th>Structure</th><th>Function</th></tr>
-                <tr><td>Nucleus</td><td>Double membrane, nucleolus</td><td>DNA storage, transcription</td></tr>
-                <tr><td>Mitochondria</td><td>Double membrane, cristae</td><td>ATP production (cellular respiration)</td></tr>
-                <tr><td>Rough ER</td><td>Ribosomes on surface</td><td>Protein synthesis & processing</td></tr>
-                <tr><td>Smooth ER</td><td>No ribosomes</td><td>Lipid synthesis, detoxification</td></tr>
-                <tr><td>Golgi apparatus</td><td>Flattened sacs</td><td>Modification, packaging, secretion</td></tr>
-                <tr><td>Lysosomes</td><td>Vesicles with enzymes</td><td>Intracellular digestion, autophagy</td></tr>
-                <tr><td>Cell membrane</td><td>Phospholipid bilayer</td><td>Selective permeability, transport</td></tr>
+                <tr><th>Organelle</th><th>Function</th></tr>
+                <tr><td>Nucleus</td><td>DNA storage, transcription</td></tr>
+                <tr><td>Mitochondria</td><td>ATP production</td></tr>
+                <tr><td>Rough ER</td><td>Protein synthesis</td></tr>
+                <tr><td>Smooth ER</td><td>Lipid synthesis, detox</td></tr>
+                <tr><td>Golgi apparatus</td><td>Modification, packaging</td></tr>
+                <tr><td>Lysosomes</td><td>Digestion, autophagy</td></tr>
             </table>
-
-            <h3>1.2 Membrane Transport — Visual Summary</h3>
-            <div class="diagram-box">
-                <pre>
-    PASSIVE TRANSPORT (no ATP)                 ACTIVE TRANSPORT (requires ATP)
-    ┌─────────────────────────┐               ┌─────────────────────────┐
-    │ Diffusion:  ○→○→○→○      │               │ Sodium-Potassium Pump:  │
-    │            high→low      │               │    3 Na⁺ out, 2 K⁺ in   │
-    │ Facilitated:  ██████     │               │    ATP → ADP + Pi       │
-    │            carrier protein               │                         │
-    │ Osmosis:  H₂O → H₂O      │               │ Vesicular transport:    │
-    │            through AQP   │               │ Endocytosis (phago/pino)│
-    └─────────────────────────┘               │ Exocytosis             │
-                                              └─────────────────────────┘
-                </pre>
-                <div class="diagram-caption">Fig 1.1: Comparison of membrane transport mechanisms</div>
-            </div>
-
-            <h3>1.3 Four Primary Tissue Types</h3>
+            <h3>Four Primary Tissues</h3>
             <ul>
-                <li><strong>Epithelial:</strong> Covering, lining, glandular. Simple (single layer) vs stratified (multiple). Shapes: squamous, cuboidal, columnar.</li>
-                <li><strong>Connective:</strong> Loose (areolar, adipose), dense (tendons, ligaments), specialized (bone, cartilage, blood).</li>
-                <li><strong>Muscle:</strong> Skeletal (striated, voluntary), Cardiac (striated, involuntary), Smooth (non-striated, involuntary).</li>
-                <li><strong>Nervous:</strong> Neurons (conduct impulses), Neuroglia (support).</li>
+                <li><strong>Epithelial:</strong> Covering, lining, glands</li>
+                <li><strong>Connective:</strong> Support, bind (bone, blood, fat)</li>
+                <li><strong>Muscle:</strong> Skeletal, cardiac, smooth</li>
+                <li><strong>Nervous:</strong> Neurons, neuroglia</li>
             </ul>
-
-            <div class="image-placeholder">
-                <i class="fas fa-microscope"></i>
-                <p><strong>HISTOLOGY SLIDE:</strong> Simple columnar epithelium with goblet cells — small intestine</p>
-                <p>▢▢▢▢▢▢▢▢▢▢▢▢▢▢▢  <br> ○○○○●○○○●○○○●○○  <br> (Goblet cells shown as circles)</p>
-            </div>
         </div>
     </div>
 
-    <!-- ========== TOPIC 2: SKELETAL SYSTEM ========== -->
+    <!-- TOPIC 2: SKELETAL SYSTEM -->
     <div class="topic">
-        <h2>2. Skeletal System — Structure & Joints</h2>
+        <h2>2. Skeletal System — Bones & Joints</h2>
         <div class="topic-content">
-            <h3>2.1 Divisions: Axial vs Appendicular</h3>
+            <h3>Divisions</h3>
             <ul>
-                <li><strong>Axial (80 bones):</strong> Skull, vertebral column (33 vertebrae), rib cage (12 pairs). Protects brain, spinal cord, heart, lungs.</li>
-                <li><strong>Appendicular (126 bones):</strong> Upper/lower limbs, pectoral girdle (clavicle, scapula), pelvic girdle (hip bones).</li>
+                <li><strong>Axial (80):</strong> Skull, vertebrae, ribs, sternum</li>
+                <li><strong>Appendicular (126):</strong> Limbs, pectoral & pelvic girdles</li>
             </ul>
-
-            <h3>2.2 Bone Types & Classification</h3>
-            <table>
-                <tr><th>Type</th><th>Example</th><th>Function</th></tr>
-                <tr><td>Long</td><td>Femur, humerus</td><td>Leverage, weight-bearing</td></tr>
-                <tr><td>Short</td><td>Carpals, tarsals</td><td>Stability, shock absorption</td></tr>
-                <tr><td>Flat</td><td>Skull bones, sternum</td><td>Protection, muscle attachment</td></tr>
-                <tr><td>Irregular</td><td>Vertebrae, facial bones</td><td>Complex shapes, protection</td></tr>
-                <tr><td>Sesamoid</td><td>Patella</td><td>Protect tendons from wear</td></tr>
-            </table>
-
-            <h3>2.3 Joint Classification</h3>
+            <h3>Joint Types</h3>
             <ul>
-                <li><strong>Fibrous (synarthroses):</strong> Immovable. Sutures of skull, gomphosis (tooth socket).</li>
-                <li><strong>Cartilaginous (amphiarthroses):</strong> Slightly movable. Intervertebral discs, pubic symphysis.</li>
-                <li><strong>Synovial (diarthroses):</strong> Freely movable. Types: ball-and-socket (hip/shoulder), hinge (elbow/knee), pivot (atlantoaxial), condyloid (wrist), saddle (thumb), gliding (carpals).</li>
+                <li><strong>Fibrous:</strong> Immovable (skull sutures)</li>
+                <li><strong>Cartilaginous:</strong> Slightly movable (intervertebral discs)</li>
+                <li><strong>Synovial:</strong> Freely movable (knee, shoulder)</li>
             </ul>
-
-            <div class="diagram-box">
-                <pre>
-    SYNOVIAL JOINT STRUCTURE:
-    ┌─────────────────────────────────────┐
-    │  Bone ────██████████████████──── Bone │
-    │          ╱  Articular cartilage  ╲    │
-    │         (    Synovial cavity      )   │
-    │          ╲  Synovial membrane    ╱    │
-    │           ── Joint capsule ────       │
-    │              Ligaments                │
-    └─────────────────────────────────────┘
-                </pre>
-                <div class="diagram-caption">Fig 2.1: Components of a synovial joint</div>
-            </div>
         </div>
     </div>
 
-    <!-- ========== TOPIC 3: MUSCULAR SYSTEM ========== -->
+    <!-- TOPIC 3: MUSCULAR SYSTEM -->
     <div class="topic">
-        <h2>3. Muscular System — From Micro to Macro</h2>
+        <h2>3. Muscular System — Movement</h2>
         <div class="topic-content">
-            <h3>3.1 Sliding Filament Theory</h3>
-            <div class="diagram-box">
-                <pre>
-    SARCOMERE (relaxed):
-    ─── Z line ──── I band ──── A band ──── I band ──── Z line ───
-                    Thin (actin)    Thick (myosin)
-    
-    SARCOMERE (contracted):
-    ─── Z ── I ──── A band ──── I ── Z ───
-        Actin slides over myosin
-                </pre>
-                <div class="diagram-caption">Fig 3.1: Sarcomere shortening during contraction</div>
-            </div>
+            <h3>Muscle Types</h3>
             <ul>
-                <li>Nerve impulse → ACh release → depolarization → Ca²⁺ release from SR → Ca²⁺ binds troponin → tropomyosin shifts → myosin heads bind actin → power stroke → sliding.</li>
-                <li>ATP required for detachment and re-cocking.</li>
+                <li><strong>Skeletal:</strong> Voluntary, striated</li>
+                <li><strong>Cardiac:</strong> Involuntary, striated, intercalated discs</li>
+                <li><strong>Smooth:</strong> Involuntary, non-striated (viscera)</li>
             </ul>
-
-            <h3>3.2 Major Muscles (Surface Anatomy)</h3>
-            <table>
-                <tr><th>Region</th><th>Muscle</th><th>Action</th></tr>
-                <tr><td>Shoulder</td><td>Deltoid</td><td>Arm abduction</td></tr>
-                <tr><td>Chest</td><td>Pectoralis major</td><td>Arm flexion, adduction</td></tr>
-                <tr><td>Back</td><td>Latissimus dorsi</td><td>Arm extension, adduction</td></tr>
-                <tr><td>Arm</td><td>Biceps brachii</td><td>Elbow flexion, supination</td></tr>
-                <tr><td>Arm</td><td>Triceps brachii</td><td>Elbow extension</td></tr>
-                <tr><td>Thigh</td><td>Quadriceps</td><td>Knee extension</td></tr>
-                <tr><td>Thigh</td><td>Hamstrings</td><td>Knee flexion</td></tr>
-                <tr><td>Calf</td><td>Gastrocnemius</td><td>Plantarflexion</td></tr>
-            </table>
-
-            <div class="image-placeholder">
-                <i class="fas fa-dumbbell"></i>
-                <p><strong>MUSCLE ANATOMY:</strong> Cross-section of skeletal muscle showing fascicles, perimysium, endomysium</p>
-                <p>██████  <-- Epimysium<br>  ┌─────┐ <-- Fascicle<br>  │○○○○○│ <-- Muscle fibers<br>  └─────┘</p>
-            </div>
+            <h3>Major Muscles</h3>
+            <ul>
+                <li><strong>Deltoid:</strong> Shoulder abduction</li>
+                <li><strong>Pectoralis major:</strong> Chest flexion/adduction</li>
+                <li><strong>Biceps brachii:</strong> Elbow flexion</li>
+                <li><strong>Quadriceps:</strong> Knee extension</li>
+                <li><strong>Hamstrings:</strong> Knee flexion</li>
+            </ul>
         </div>
     </div>
 
-    <!-- ========== TOPIC 4: CARDIOVASCULAR ========== -->
+    <!-- TOPIC 4: CARDIOVASCULAR SYSTEM -->
     <div class="topic">
-        <h2>4. Cardiovascular System — Heart & Vessels</h2>
+        <h2>4. Cardiovascular — Heart & Vessels</h2>
         <div class="topic-content">
-            <h3>4.1 Heart Chambers & Valves</h3>
+            <h3>Heart Chambers</h3>
+            <ul>
+                <li>Right atrium (receives deoxygenated blood)</li>
+                <li>Right ventricle (pumps to lungs)</li>
+                <li>Left atrium (receives oxygenated blood)</li>
+                <li>Left ventricle (pumps to body)</li>
+            </ul>
+            <h3>Valves</h3>
+            <ul>
+                <li>Tricuspid (right AV), Mitral (left AV)</li>
+                <li>Pulmonary (right ventricular outflow)</li>
+                <li>Aortic (left ventricular outflow)</li>
+            </ul>
             <div class="diagram-box">
                 <pre>
-                    SUPERIOR VENA CAVA
-                           │
-                    ┌──────▼──────┐
-                    │ RIGHT ATRIUM│◄───── from body
-                    │  (tricuspid)│
-                    └──────▼──────┘
-                    │ RIGHT VENT. │─────► to lungs (pulmonary artery)
-                    │ (pulmonic)  │
-                    └─────────────┘
-    
-                    PULMONARY VEINS
-                           │
-                    ┌──────▼──────┐
-                    │ LEFT ATRIUM │◄───── from lungs
-                    │  (mitral)   │
-                    └──────▼──────┘
-                    │ LEFT VENT.  │─────► to body (aorta)
-                    │  (aortic)   │
-                    └─────────────┘
-                </pre>
-                <div class="diagram-caption">Fig 4.1: Blood flow through the heart</div>
-            </div>
-            <ul>
-                <li><strong>Right side:</strong> Deoxygenated blood → RA (tricuspid) → RV (pulmonic) → pulmonary artery → lungs.</li>
-                <li><strong>Left side:</strong> Oxygenated blood from lungs → pulmonary veins → LA (mitral) → LV (aortic) → aorta.</li>
-            </ul>
-
-            <h3>4.2 Coronary Circulation</h3>
-            <ul>
-                <li><strong>Right coronary artery:</strong> Supplies right atrium, right ventricle, SA/AV nodes (in most).</li>
-                <li><strong>Left main coronary artery:</strong> Branches into:
-                    <ul>
-                        <li>Left anterior descending (LAD): anterior wall, septum.</li>
-                        <li>Left circumflex (LCx): lateral/posterior wall.</li>
-                    </ul>
-                </li>
-                <li><strong>Cardiac veins:</strong> Drain into coronary sinus → right atrium.</li>
-            </ul>
-
-            <h3>4.3 Cardiac Cycle & Conduction</h3>
-            <ul>
-                <li><strong>Conduction pathway:</strong> SA node (pacemaker) → AV node (delay) → Bundle of His → Purkinje fibers.</li>
-                <li><strong>ECG waves:</strong> P wave (atrial depolarization), QRS (ventricular depolarization), T wave (ventricular repolarization).</li>
-                <li><strong>Cycle phases:</strong> Systole (contraction/ejection), Diastole (relaxation/filling).</li>
-            </ul>
-
-            <div class="diagram-box">
-                <pre>
-    ECG TRACING:
-        R
-       /\
-    P/  \    T
-    /    \  /
-           \/
-        Q   S
+    Blood flow: RA → tricuspid → RV → pulmonary → lungs → pulmonary veins → LA → mitral → LV → aortic → body
                 </pre>
             </div>
         </div>
     </div>
 
-    <!-- ========== TOPIC 5: RESPIRATORY ========== -->
+    <!-- TOPIC 5: RESPIRATORY SYSTEM (requested) -->
     <div class="topic">
-        <h2>5. Respiratory System — Airways & Alveoli</h2>
+        <h2>5. Respiratory System — Airways & Lungs</h2>
         <div class="topic-content">
-            <h3>5.1 Upper & Lower Respiratory Tract</h3>
+            <h3>Upper Respiratory Tract</h3>
             <ul>
-                <li><strong>Upper:</strong> Nasal cavity, pharynx (nasopharynx, oropharynx, laryngopharynx), larynx (epiglottis, vocal cords).</li>
-                <li><strong>Lower:</strong> Trachea → carina → right/left main bronchi → bronchioles → terminal bronchioles → respiratory bronchioles → alveolar ducts → alveoli.</li>
+                <li>Nasal cavity, pharynx (naso/oro/laryngo), larynx (epiglottis, vocal cords)</li>
             </ul>
-
-            <h3>5.2 Alveoli — Site of Gas Exchange</h3>
+            <h3>Lower Respiratory Tract</h3>
+            <ul>
+                <li>Trachea → bronchi (right main wider, more vertical) → bronchioles → alveolar ducts → alveoli</li>
+            </ul>
+            <h3>Alveoli Structure</h3>
+            <ul>
+                <li><strong>Type I pneumocytes:</strong> thin for gas exchange (95% surface)</li>
+                <li><strong>Type II pneumocytes:</strong> produce surfactant (prevents collapse)</li>
+                <li><strong>Alveolar macrophages:</strong> dust cells – phagocytic</li>
+            </ul>
             <div class="diagram-box">
                 <pre>
     ALVEOLUS:
-                     O₂
-          Capillary ◄─────┐
-          ┌───┐           │
-          │RBC│◄─O₂       │ Type I pneumocyte
-          └───┘           │ (thin for diffusion)
-              │           │
-              └─────CO₂   │ Type II pneumocyte
-                          │ (surfactant)
-                ┌─────────────────┐
-                │   Alveolus      │
-                └─────────────────┘
+      Capillary     Alveolus
+      ┌───┐        ┌─────┐
+      │RBC│◄─O₂──►│     │
+      └───┘        │     │
+         │CO₂◄────│     │
+         └────────┴─────┘
                 </pre>
-                <div class="diagram-caption">Fig 5.1: Alveolar structure and gas exchange</div>
+                <div class="diagram-caption">Gas exchange across alveolar-capillary membrane</div>
             </div>
+            <h3>Lung Volumes</h3>
             <ul>
-                <li><strong>Type I cells:</strong> 95% surface area, thin for diffusion.</li>
-                <li><strong>Type II cells:</strong> Produce surfactant (reduces surface tension, prevents collapse).</li>
-                <li><strong>Alveolar macrophages:</strong> Dust cells — phagocytose debris.</li>
+                <li>Tidal volume (TV): 500 mL</li>
+                <li>Vital capacity (VC): ~4600 mL</li>
+                <li>Total lung capacity (TLC): ~5800 mL</li>
             </ul>
+        </div>
+    </div>
 
-            <h3>5.3 Lung Volumes & Capacities</h3>
+    <!-- TOPIC 6: DIGESTIVE SYSTEM (requested) -->
+    <div class="topic">
+        <h2>6. Digestive System — From Mouth to Anus</h2>
+        <div class="topic-content">
+            <h3>GI Tract Organs</h3>
+            <ul>
+                <li>Oral cavity, pharynx, esophagus, stomach, small intestine (duodenum, jejunum, ileum), large intestine (cecum, colon, rectum), anus</li>
+            </ul>
+            <h3>Accessory Organs</h3>
+            <ul>
+                <li>Salivary glands, liver, gallbladder, pancreas</li>
+            </ul>
+            <h3>Digestive Enzymes</h3>
             <table>
-                <tr><th>Volume</th><th>Definition</th><th>Average (adult)</th></tr>
-                <tr><td>Tidal volume (TV)</td><td>Air per normal breath</td><td>500 mL</td></tr>
-                <tr><td>Inspiratory reserve (IRV)</td><td>Extra air after normal inhale</td><td>3000 mL</td></tr>
-                <tr><td>Expiratory reserve (ERV)</td><td>Extra air after normal exhale</td><td>1100 mL</td></tr>
-                <tr><td>Residual volume (RV)</td><td>Air left after max exhale</td><td>1200 mL</td></tr>
-                <tr><td>Vital capacity (VC)</td><td>TV + IRV + ERV</td><td>4600 mL</td></tr>
-                <tr><td>Total lung capacity (TLC)</td><td>VC + RV</td><td>5800 mL</td></tr>
+                <tr><th>Organ</th><th>Enzyme/Secretion</th><th>Function</th></tr>
+                <tr><td>Salivary glands</td><td>Amylase</td><td>Starch → maltose</td></tr>
+                <tr><td>Stomach</td><td>Pepsin (HCl)</td><td>Proteins → peptides</td></tr>
+                <tr><td>Pancreas</td><td>Trypsin, lipase, amylase</td><td>Proteins, fats, carbs</td></tr>
+                <tr><td>Small intestine</td><td>Brush border enzymes</td><td>Final digestion</td></tr>
+                <tr><td>Liver</td><td>Bile (stored in gallbladder)</td><td>Fat emulsification</td></tr>
+            </table>
+            <div class="diagram-box">
+                <pre>
+    VILLUS:
+      Microvilli (brush border)
+      ┌─┐┌─┐┌─┐
+      │ Capillary   │
+      │ Lacteal     │
+      └─────────────┘
+    Nutrients absorbed: amino acids, glucose → blood; fatty acids → lymph
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOPIC 7: NERVOUS SYSTEM (requested) -->
+    <div class="topic">
+        <h2>7. Nervous System — Brain, Cord, Nerves</h2>
+        <div class="topic-content">
+            <h3>Central Nervous System (CNS)</h3>
+            <ul>
+                <li><strong>Brain:</strong> Cerebrum (lobes: frontal, parietal, temporal, occipital), cerebellum, brainstem (midbrain, pons, medulla)</li>
+                <li><strong>Spinal cord:</strong> Gray matter (horns), white matter (tracts)</li>
+            </ul>
+            <h3>Peripheral Nervous System (PNS)</h3>
+            <ul>
+                <li>Cranial nerves (12 pairs)</li>
+                <li>Spinal nerves (31 pairs)</li>
+                <li>Autonomic: sympathetic (fight/flight), parasympathetic (rest/digest)</li>
+            </ul>
+            <h3>Cranial Nerves Mnemonic: "Oh Oh Oh To Touch And Feel Very Green Vegetables AH!"</h3>
+            <table>
+                <tr><th>#</th><th>Name</th><th>Function</th></tr>
+                <tr><td>I</td><td>Olfactory</td><td>Smell</td></tr>
+                <tr><td>II</td><td>Optic</td><td>Vision</td></tr>
+                <tr><td>III</td><td>Oculomotor</td><td>Eye movement (most)</td></tr>
+                <tr><td>IV</td><td>Trochlear</td><td>Superior oblique</td></tr>
+                <tr><td>V</td><td>Trigeminal</td><td>Facial sensation, mastication</td></tr>
+                <tr><td>VI</td><td>Abducens</td><td>Lateral rectus</td></tr>
+                <tr><td>VII</td><td>Facial</td><td>Facial movement, taste</td></tr>
+                <tr><td>VIII</td><td>Vestibulocochlear</td><td>Hearing, balance</td></tr>
+                <tr><td>IX</td><td>Glossopharyngeal</td><td>Taste, swallowing</td></tr>
+                <tr><td>X</td><td>Vagus</td><td>Parasympathetic, voice</td></tr>
+                <tr><td>XI</td><td>Accessory</td><td>SCM, trapezius</td></tr>
+                <tr><td>XII</td><td>Hypoglossal</td><td>Tongue movement</td></tr>
             </table>
         </div>
     </div>
 
-    <!-- ========== TOPIC 6: NERVOUS SYSTEM ========== -->
+    <!-- TOPIC 8: ENDOCRINE SYSTEM (requested) -->
     <div class="topic">
-        <h2>6. Nervous System — Brain, Spinal Cord, Nerves</h2>
+        <h2>8. Endocrine System — Hormones & Glands</h2>
         <div class="topic-content">
-            <h3>6.1 Brain Lobes & Functions</h3>
+            <h3>Major Glands</h3>
             <ul>
-                <li><strong>Frontal:</strong> Executive function, motor (precentral gyrus), speech (Broca's area — left).</li>
-                <li><strong>Parietal:</strong> Somatosensory (postcentral gyrus), spatial perception.</li>
-                <li><strong>Temporal:</strong> Auditory, memory (hippocampus), language comprehension (Wernicke's).</li>
-                <li><strong>Occipital:</strong> Visual processing.</li>
-                <li><strong>Cerebellum:</strong> Coordination, balance.</li>
-                <li><strong>Brainstem:</strong> Midbrain, pons, medulla — vital centers (respiratory, cardiac).</li>
+                <li><strong>Hypothalamus:</strong> Releasing hormones, ADH, oxytocin (storage)</li>
+                <li><strong>Pituitary (anterior):</strong> GH, TSH, ACTH, FSH, LH, prolactin</li>
+                <li><strong>Pituitary (posterior):</strong> ADH, oxytocin (release)</li>
+                <li><strong>Thyroid:</strong> T3/T4 (metabolism), calcitonin (↓Ca)</li>
+                <li><strong>Parathyroid:</strong> PTH (↑Ca)</li>
+                <li><strong>Adrenal cortex:</strong> Cortisol, aldosterone, androgens</li>
+                <li><strong>Adrenal medulla:</strong> Epinephrine, norepinephrine</li>
+                <li><strong>Pancreas (islets):</strong> Insulin (β), glucagon (α), somatostatin (δ)</li>
+                <li><strong>Gonads:</strong> Testes (testosterone), ovaries (estrogen, progesterone)</li>
             </ul>
-
-            <h3>6.2 Cranial Nerves — 12 Pairs</h3>
+            <h3>Feedback Loops</h3>
             <div class="diagram-box">
                 <pre>
-    I   Olfactory       ── Smell
-    II  Optic           ── Vision
-    III Oculomotor      ── Eye movement (most)
-    IV  Trochlear       ── Superior oblique
-    V   Trigeminal      ── Facial sensation, mastication
-    VI  Abducens        ── Lateral rectus
-    VII Facial          ── Facial movement, taste (anterior 2/3)
-    VIII Vestibulocochlear ── Hearing & balance
-    IX  Glossopharyngeal ── Taste (posterior 1/3), swallowing
-    X   Vagus           ── Parasympathetic, voice, swallowing
-    XI  Accessory       ── SCM, trapezius
-    XII Hypoglossal     ── Tongue movement
+    Negative feedback (thyroid):
+    Hypothalamus (TRH) → Pituitary (TSH) → Thyroid (T3/T4) → inhibits TRH/TSH
+
+    Positive feedback (oxytocin):
+    Uterine contraction → more oxytocin → stronger contraction
                 </pre>
-                <div class="diagram-caption">Fig 6.1: Cranial nerves and functions</div>
-            </div>
-
-            <h3>6.3 Autonomic Nervous System</h3>
-            <table>
-                <tr><th>Division</th><th>Origin</th><th>Neurotransmitter</th><th>Function</th></tr>
-                <tr><td>Sympathetic</td><td>Thoracolumbar (T1-L2)</td><td>Norepinephrine</td><td>Fight or flight</td></tr>
-                <tr><td>Parasympathetic</td><td>Craniosacral (CN III, VII, IX, X, S2-4)</td><td>Acetylcholine</td><td>Rest and digest</td></tr>
-            </table>
-
-            <div class="image-placeholder">
-                <i class="fas fa-brain"></i>
-                <p><strong>BRAIN ANATOMY:</strong> Cross-section showing basal ganglia, thalamus, hypothalamus, corpus callosum</p>
             </div>
         </div>
     </div>
 
-    <!-- ========== TOPIC 7: ENDOCRINE ========== -->
+    <!-- TOPIC 9: URINARY / EXCRETORY SYSTEM (requested) -->
     <div class="topic">
-        <h2>7. Endocrine System — Glands & Hormones</h2>
+        <h2>9. Urinary (Excretory) System — Kidneys & Nephrons</h2>
         <div class="topic-content">
-            <h3>7.1 Major Endocrine Glands</h3>
+            <h3>Kidney Structure</h3>
             <ul>
-                <li><strong>Hypothalamus:</strong> Releasing/inhibiting hormones, ADH, oxytocin (stored in posterior pituitary).</li>
-                <li><strong>Pituitary (anterior):</strong> GH, TSH, ACTH, FSH, LH, prolactin.</li>
-                <li><strong>Pituitary (posterior):</strong> ADH, oxytocin (released).</li>
-                <li><strong>Thyroid:</strong> T3/T4 (metabolism), calcitonin (lowers Ca²⁺).</li>
-                <li><strong>Parathyroid:</strong> PTH (raises Ca²⁺).</li>
-                <li><strong>Adrenal cortex:</strong> Cortisol, aldosterone, androgens.</li>
-                <li><strong>Adrenal medulla:</strong> Epinephrine, norepinephrine.</li>
-                <li><strong>Pancreas (islets):</strong> Insulin (β cells), glucagon (α cells), somatostatin (δ cells).</li>
-                <li><strong>Gonads:</strong> Testes (testosterone), ovaries (estrogen, progesterone).</li>
+                <li>Cortex (outer), medulla (pyramids), renal pelvis, ureter</li>
             </ul>
-
-            <h3>7.2 Feedback Loops</h3>
-            <div class="diagram-box">
-                <pre>
-    NEGATIVE FEEDBACK (e.g., Thyroid):
-    ┌─────────┐      ┌─────────┐      ┌─────────┐
-    │Hypothal.│─────►│Pituitary│─────►│Thyroid  │
-    │ TRH     │      │ TSH     │      │ T3/T4   │
-    └─────────┘      └─────────┘      └─────────┘
-         ▲                                    │
-         └─────────── inhibits ───────────────┘
-    
-    POSITIVE FEEDBACK (e.g., Oxytocin during labor):
-    Uterine contraction ──► more oxytocin ──► stronger contraction
-                </pre>
-                <div class="diagram-caption">Fig 7.1: Feedback mechanisms</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== TOPIC 8: DIGESTIVE ========== -->
-    <div class="topic">
-        <h2>8. Digestive System — From Mouth to Anus</h2>
-        <div class="topic-content">
-            <h3>8.1 GI Tract Organs & Accessory Organs</h3>
+            <h3>The Nephron — Functional Unit</h3>
             <ul>
-                <li><strong>Alimentary canal:</strong> Oral cavity, pharynx, esophagus, stomach, small intestine (duodenum, jejunum, ileum), large intestine (cecum, colon, rectum), anus.</li>
-                <li><strong>Accessory:</strong> Salivary glands, liver, gallbladder, pancreas.</li>
+                <li><strong>Glomerulus:</strong> Filtration of blood</li>
+                <li><strong>Bowman's capsule:</strong> Collects filtrate</li>
+                <li><strong>Proximal convoluted tubule (PCT):</strong> Reabsorption (glucose, AA, Na⁺, H₂O)</li>
+                <li><strong>Loop of Henle:</strong> Countercurrent multiplier (water & salt reabsorption)</li>
+                <li><strong>Distal convoluted tubule (DCT):</strong> Secretion (K⁺, H⁺), regulated by aldosterone</li>
+                <li><strong>Collecting duct:</strong> ADH-regulated water reabsorption</li>
             </ul>
-
-            <h3>8.2 Digestion & Absorption</h3>
-            <table>
-                <tr><th>Organ</th><th>Secretion/Enzyme</th><th>Substrate</th><th>Product</th></tr>
-                <tr><td>Mouth</td><td>Salivary amylase</td><td>Starch</td><td>Maltose</td></tr>
-                <tr><td>Stomach</td><td>Pepsin (HCl)</td><td>Proteins</td><td>Peptides</td></tr>
-                <tr><td>Pancreas</td><td>Trypsin, chymotrypsin, lipase, amylase</td><td>Proteins, fats, carbs</td><td>AA, fatty acids, sugars</td></tr>
-                <tr><td>Small intestine</td><td>Brush border enzymes (lactase, sucrase, peptidases)</td><td>Disaccharides, peptides</td><td>Monosaccharides, AA</td></tr>
-                <tr><td>Liver</td><td>Bile (stored in gallbladder)</td><td>Fats</td><td>Emulsification</td></tr>
-            </table>
-
-            <div class="diagram-box">
-                <pre>
-    SMALL INTESTINE VILLUS:
-        ┌──────┐
-        │      │  Microvilli (brush border)
-        ├──────┤
-        │ Cap  │  Capillary network
-        ├──────┤
-        │ Lact │  Lacteal (lymphatic)
-        └──────┘
-        Nutrients absorbed into blood/lymph
-                </pre>
-                <div class="diagram-caption">Fig 8.1: Intestinal villus structure</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== TOPIC 9: URINARY ========== -->
-    <div class="topic">
-        <h2>9. Urinary System — Kidney & Nephron</h2>
-        <div class="topic-content">
-            <h3>9.1 Kidney Structure</h3>
-            <ul>
-                <li><strong>External:</strong> Renal capsule, hilum (renal artery, vein, ureter).</li>
-                <li><strong>Internal:</strong> Cortex (outer), medulla (pyramids), renal pelvis, calyces.</li>
-            </ul>
-
-            <h3>9.2 Nephron — Functional Unit</h3>
             <div class="diagram-box">
                 <pre>
     NEPHRON:
-    ┌──────────────┐
-    │ Glomerulus   │  Filtration
-    │ (Bowman's cap)│
-    └──────┬───────┘
-           │ Proximal convoluted tubule (PCT)
-           │   (reabsorption: glucose, AA, Na⁺, H₂O)
-           │
-    ┌──────▼──────┐
-    │ Loop of Henle│  Countercurrent multiplier
-    │ (descending │  (H₂O reabsorption)
-    │  ascending) │  (Na⁺, Cl⁻ reabsorption)
-    └──────┬──────┘
-           │ Distal convoluted tubule (DCT)
-           │   (secretion: K⁺, H⁺; regulated by aldosterone)
-           │
-    ┌──────▼──────┐
-    │Collecting duct│ ADH regulates H₂O reabsorption
-    └──────────────┘
+    Glomerulus
+        │
+    Bowman's capsule
+        │
+    PCT ──┐
+          │
+    Loop of Henle (descending & ascending)
+          │
+    DCT ──┘
+        │
+    Collecting duct → urine
                 </pre>
-                <div class="diagram-caption">Fig 9.1: Nephron and urine formation</div>
+                <div class="diagram-caption">Urine formation: filtration, reabsorption, secretion</div>
             </div>
-
-            <h3>9.3 Urine Formation Steps</h3>
-            <ol>
-                <li><strong>Glomerular filtration:</strong> Blood pressure forces water/solutes through filtration membrane into Bowman's capsule (filtrate).</li>
-                <li><strong>Tubular reabsorption:</strong> Essential substances (glucose, amino acids, ions, water) moved from tubule to blood.</li>
-                <li><strong>Tubular secretion:</strong> Waste products (H⁺, K⁺, drugs) moved from blood to tubule.</li>
-            </ol>
-
-            <h3>9.4 RAAS (Renin-Angiotensin-Aldosterone System)</h3>
+            <h3>RAAS (Renin-Angiotensin-Aldosterone System)</h3>
             <ul>
-                <li>Low BP → Renin released from juxtaglomerular cells → converts angiotensinogen → angiotensin I → ACE (lungs) → angiotensin II → vasoconstriction + aldosterone release (Na⁺/H₂O retention) → BP increases.</li>
+                <li>Low BP → renin → angiotensin I → ACE → angiotensin II → vasoconstriction + aldosterone → Na⁺/H₂O retention → BP up</li>
             </ul>
         </div>
     </div>
 
-    <!-- ========== TOPIC 10: REPRODUCTIVE ========== -->
+    <!-- TOPIC 10: REPRODUCTIVE SYSTEM (requested) -->
     <div class="topic">
         <h2>10. Reproductive System — Male & Female</h2>
         <div class="topic-content">
-            <h3>10.1 Male Anatomy</h3>
+            <h3>Male Anatomy</h3>
             <ul>
-                <li><strong>Testes:</strong> Produce sperm and testosterone (in seminiferous tubules, interstitial cells).</li>
-                <li><strong>Epididymis:</strong> Sperm maturation and storage.</li>
-                <li><strong>Vas deferens:</strong> Duct for sperm transport.</li>
-                <li><strong>Accessory glands:</strong> Seminal vesicles (fructose, prostaglandins), prostate (alkaline fluid), bulbourethral (lubrication).</li>
-                <li><strong>Urethra:</strong> Common passage for urine and semen.</li>
+                <li><strong>Testes:</strong> Produce sperm & testosterone (seminiferous tubules, Leydig cells)</li>
+                <li><strong>Epididymis:</strong> Sperm maturation & storage</li>
+                <li><strong>Vas deferens:</strong> Duct for sperm</li>
+                <li><strong>Accessory glands:</strong> Seminal vesicles (fructose), prostate (alkaline fluid), bulbourethral (lubrication)</li>
+                <li><strong>Urethra:</strong> Common passage for urine/semen</li>
             </ul>
-
-            <h3>10.2 Female Anatomy</h3>
+            <h3>Female Anatomy</h3>
             <ul>
-                <li><strong>Ovaries:</strong> Produce ova, estrogen, progesterone.</li>
-                <li><strong>Fallopian tubes:</strong> Site of fertilization; fimbriae capture ovum.</li>
-                <li><strong>Uterus:</strong> Layers: perimetrium, myometrium (smooth muscle), endometrium (shed in menstruation).</li>
-                <li><strong>Cervix:</strong> Opening to vagina.</li>
-                <li><strong>Vagina:</strong> Birth canal, receives penis.</li>
-                <li><strong>Mammary glands:</strong> Produce milk (lactation).</li>
+                <li><strong>Ovaries:</strong> Produce ova, estrogen, progesterone</li>
+                <li><strong>Fallopian tubes:</strong> Site of fertilization; fimbriae capture ovum</li>
+                <li><strong>Uterus:</strong> Perimetrium, myometrium, endometrium</li>
+                <li><strong>Cervix:</strong> Opening to vagina</li>
+                <li><strong>Vagina:</strong> Birth canal, receives penis</li>
+                <li><strong>Mammary glands:</strong> Milk production</li>
             </ul>
-
-            <h3>10.3 Menstrual Cycle</h3>
+            <h3>Menstrual Cycle</h3>
             <table>
-                <tr><th>Phase</th><th>Days</th><th>Hormonal events</th><th>Uterine changes</th></tr>
-                <tr><td>Menstrual</td><td>1-5</td><td>Low estrogen/progesterone</td><td>Endometrium shed</td></tr>
-                <tr><td>Follicular</td><td>6-14</td><td>FSH stimulates follicle growth; rising estrogen</td><td>Endometrium thickens</td></tr>
-                <tr><td>Ovulation</td><td>14</td><td>LH surge triggers release of ovum</td><td>-</td></tr>
-                <tr><td>Luteal</td><td>15-28</td><td>Corpus luteum secretes progesterone</td><td>Endometrium secretory; if no fertilization, corpus luteum degenerates</td></tr>
+                <tr><th>Phase</th><th>Days</th><th>Events</th></tr>
+                <tr><td>Menstrual</td><td>1-5</td><td>Endometrium shed</td></tr>
+                <tr><td>Follicular</td><td>6-14</td><td>FSH stimulates follicle; endometrium thickens</td></tr>
+                <tr><td>Ovulation</td><td>14</td><td>LH surge → ovum release</td></tr>
+                <tr><td>Luteal</td><td>15-28</td><td>Progesterone from corpus luteum; if no fertilization, degeneration</td></tr>
             </table>
-
-            <div class="image-placeholder">
-                <i class="fas fa-female"></i>
-                <p><strong>FEMALE REPRODUCTIVE:</strong> Uterus, ovaries, fallopian tubes, cervix, vagina</p>
-            </div>
-            <div class="image-placeholder">
-                <i class="fas fa-male"></i>
-                <p><strong>MALE REPRODUCTIVE:</strong> Testes, epididymis, vas deferens, prostate, penis</p>
-            </div>
         </div>
     </div>
-
-    
 </div>
-<script>/* ============================================= */
-/* FILE: mobile-app-interactions.js               */
-/* ============================================= */
-/* Add this before </body> on ALL your pages     */
-/* ============================================= */
 
-(function() {
-    'use strict';
-
-    // ===== APP STATE =====
-    const App = {
-        initialized: false,
-        currentPage: window.location.pathname.split('/').pop() || 'index.html',
-        scrollPosition: 0,
-        darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches
-    };
-
-    // ===== INITIALIZE MOBILE APP FEATURES =====
-    document.addEventListener('DOMContentLoaded', function() {
-        if (App.initialized) return;
-        App.initialized = true;
-
-        createAppHeader();
-        createBottomNav();
-        createProgressBar();
-        initCollapsibleTopics();
-        initPullToRefresh();
-        initSwipeGestures();
-        initTouchFeedback();
-        initBottomSheets();
-        initSafeAreaInsets();
-        preventOverscroll();
-        
-        // Add app class to body
-        document.body.classList.add('mobile-app-mode');
-    });
-
-    // ===== CREATE APP HEADER =====
-    function createAppHeader() {
-        const containers = document.querySelectorAll('.course-container, .quiz-wrapper, .app');
-        containers.forEach(container => {
-            const h1 = container.querySelector('h1');
-            if (h1 && !container.querySelector('.app-header')) {
-                const header = document.createElement('div');
-                header.className = 'app-header';
-                header.innerHTML = h1.outerHTML;
-                h1.remove();
-                container.insertBefore(header, container.firstChild);
-            }
-        });
-    }
-
-    // ===== CREATE BOTTOM NAVIGATION =====
-    function createBottomNav() {
+<!-- ===== BOTTOM NAVIGATION ===== -->
+<script>
+    (function() {
+        // Bottom nav
         const nav = document.createElement('div');
         nav.className = 'app-nav';
-        
         const pages = [
             { name: 'Home', icon: 'home', file: 'index.html' },
             { name: 'Courses', icon: 'book', file: '#' },
@@ -1089,277 +672,38 @@ body {
             { name: 'Progress', icon: 'chart-line', file: '#' },
             { name: 'Profile', icon: 'user', file: '#' }
         ];
-        
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         nav.innerHTML = pages.map(page => {
-            const isActive = App.currentPage === page.file;
-            return `
-                <a href="${page.file}" class="nav-item ${isActive ? 'active' : ''}">
-                    <i class="fas fa-${page.icon}"></i>
-                    <span>${page.name}</span>
-                </a>
-            `;
+            const isActive = currentPage === page.file;
+            return `<a href="${page.file}" class="nav-item ${isActive ? 'active' : ''}"><i class="fas fa-${page.icon}"></i><span>${page.name}</span></a>`;
         }).join('');
-        
         document.body.appendChild(nav);
-    }
 
-    // ===== CREATE PROGRESS BAR =====
-    function createProgressBar() {
+        // Progress bar
         const progressBar = document.createElement('div');
         progressBar.className = 'progress-bar';
         progressBar.innerHTML = '<div class="progress-fill"></div>';
         document.body.insertBefore(progressBar, document.body.firstChild);
-        
-        window.addEventListener('scroll', updateProgressBar);
-        updateProgressBar();
-    }
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.progress-fill').style.width = scrolled + '%';
+        });
 
-    function updateProgressBar() {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        const fill = document.querySelector('.progress-fill');
-        if (fill) fill.style.width = scrolled + '%';
-    }
-
-    // ===== INIT COLLAPSIBLE TOPICS =====
-    function initCollapsibleTopics() {
+        // Collapsible topics
         document.querySelectorAll('.topic h2').forEach(header => {
             header.addEventListener('click', function() {
-                const content = this.nextElementSibling;
                 this.classList.toggle('collapsed');
-                content.classList.toggle('collapsed');
-                
-                // Save state to localStorage
-                const topicId = this.textContent.trim();
-                const isCollapsed = content.classList.contains('collapsed');
-                localStorage.setItem(`topic_${topicId}`, isCollapsed);
+                this.nextElementSibling.classList.toggle('collapsed');
             });
-            
-            // Restore state
-            const topicId = header.textContent.trim();
-            const wasCollapsed = localStorage.getItem(`topic_${topicId}`) === 'true';
-            if (wasCollapsed) {
-                header.classList.add('collapsed');
-                header.nextElementSibling.classList.add('collapsed');
-            }
         });
-    }
 
-    // ===== PULL TO REFRESH =====
-    function initPullToRefresh() {
-        let startY = 0;
-        let pulling = false;
-        
-        const pullIndicator = document.createElement('div');
-        pullIndicator.className = 'pull-indicator';
-        pullIndicator.innerHTML = '<i class="fas fa-arrow-down"></i> Pull to refresh';
-        document.body.insertBefore(pullIndicator, document.body.firstChild);
-        
-        window.addEventListener('touchstart', e => {
-            if (window.scrollY === 0) {
-                startY = e.touches[0].clientY;
-                pulling = true;
-            }
-        });
-        
-        window.addEventListener('touchmove', e => {
-            if (!pulling) return;
-            const currentY = e.touches[0].clientY;
-            const diff = currentY - startY;
-            
-            if (diff > 0 && diff < 100) {
-                pullIndicator.style.transform = `translateY(${diff}px)`;
-                if (diff > 60) {
-                    pullIndicator.innerHTML = '<i class="fas fa-sync-alt"></i> Release to refresh';
-                }
-            }
-        });
-        
-        window.addEventListener('touchend', e => {
-            if (pulling) {
-                const currentY = e.changedTouches[0].clientY;
-                const diff = currentY - startY;
-                
-                if (diff > 60) {
-                    pullIndicator.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 500);
-                }
-                
-                pullIndicator.style.transform = 'translateY(-100%)';
-                pulling = false;
-            }
-        });
-    }
-
-    // ===== SWIPE GESTURES =====
-    function initSwipeGestures() {
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const minSwipeDistance = 50;
-        
-        window.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        
-        window.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-        
-        function handleSwipe() {
-            const distance = touchEndX - touchStartX;
-            
-            if (Math.abs(distance) < minSwipeDistance) return;
-            
-            if (distance > 0) {
-                // Swipe right - go back
-                if (document.referrer) {
-                    window.history.back();
-                }
-            } else {
-                // Swipe left - go forward
-                // Optional: show bottom sheet with next topic
-                showBottomSheet('Quick Actions', ['Next Topic', 'Bookmark', 'Share']);
-            }
-        }
-    }
-
-    // ===== TOUCH FEEDBACK =====
-    function initTouchFeedback() {
-        document.querySelectorAll('.btn, .topic, .quiz-option, .nav-item').forEach(el => {
+        // Touch feedback
+        document.querySelectorAll('.topic, .nav-item').forEach(el => {
             el.classList.add('touch-feedback');
         });
-    }
-
-    // ===== BOTTOM SHEETS =====
-    function initBottomSheets() {
-        // Create bottom sheet container
-        const sheet = document.createElement('div');
-        sheet.className = 'bottom-sheet';
-        sheet.innerHTML = `
-            <div class="sheet-handle"></div>
-            <div class="sheet-content">
-                <h3>Quick Actions</h3>
-                <div class="sheet-actions"></div>
-            </div>
-        `;
-        document.body.appendChild(sheet);
-        
-        // Close on handle click
-        sheet.querySelector('.sheet-handle').addEventListener('click', () => {
-            sheet.classList.remove('active');
-        });
-    }
-
-    function showBottomSheet(title, actions) {
-        const sheet = document.querySelector('.bottom-sheet');
-        const content = sheet.querySelector('.sheet-actions');
-        const titleEl = sheet.querySelector('h3');
-        
-        titleEl.textContent = title;
-        content.innerHTML = actions.map(action => 
-            `<div class="btn" style="margin:0.5rem 0;" onclick="alert('${action}')">${action}</div>`
-        ).join('');
-        
-        sheet.classList.add('active');
-    }
-
-    // ===== SAFE AREA INSETS =====
-    function initSafeAreaInsets() {
-        if (window.navigator.standalone) {
-            document.body.style.paddingTop = 'env(safe-area-inset-top)';
-            document.body.style.paddingBottom = 'env(safe-area-inset-bottom)';
-        }
-    }
-
-    // ===== PREVENT OVERSCROLL =====
-    function preventOverscroll() {
-        document.body.addEventListener('touchmove', e => {
-            if (e.target === document.body) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-    }
-
-    // ===== ADD TO HOME SCREEN PROMPT =====
-    window.addEventListener('beforeinstallprompt', e => {
-        e.preventDefault();
-        const promptEvent = e;
-        
-        // Show custom install button
-        const installBtn = document.createElement('button');
-        installBtn.className = 'btn';
-        installBtn.innerHTML = '<i class="fas fa-download"></i> Install App';
-        installBtn.style.position = 'fixed';
-        installBtn.style.bottom = '80px';
-        installBtn.style.right = '20px';
-        installBtn.style.zIndex = '2000';
-        
-        installBtn.addEventListener('click', () => {
-            promptEvent.prompt();
-        });
-        
-        document.body.appendChild(installBtn);
-    });
-
-    // ===== LAZY LOAD IMAGES =====
-    function initLazyLoading() {
-        const images = document.querySelectorAll('img[data-src]');
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-        
-        images.forEach(img => imageObserver.observe(img));
-    }
-
-    // ===== OFFLINE DETECTION =====
-    window.addEventListener('online', updateOnlineStatus);
-    window.addEventListener('offline', updateOnlineStatus);
-    
-    function updateOnlineStatus() {
-        const status = navigator.onLine ? 'online' : 'offline';
-        const indicator = document.createElement('div');
-        indicator.className = `offline-indicator ${status}`;
-        indicator.textContent = navigator.onLine ? '📶 Back online' : '📴 Offline mode';
-        
-        if (!navigator.onLine) {
-            document.body.appendChild(indicator);
-            setTimeout(() => indicator.remove(), 3000);
-        }
-    }
-
-    // ===== HAPTIC FEEDBACK (if supported) =====
-    function hapticFeedback() {
-        if (window.navigator.vibrate) {
-            document.querySelectorAll('.btn, .quiz-option').forEach(el => {
-                el.addEventListener('click', () => {
-                    window.navigator.vibrate(10);
-                });
-            });
-        }
-    }
-
-    // ===== SCREENSHOT PREVENTION (optional) =====
-    // Uncomment if needed for exam mode
-    /*
-    document.addEventListener('keydown', e => {
-        if (e.key === 'PrintScreen') {
-            alert('Screenshots are disabled in exam mode');
-            e.preventDefault();
-        }
-    });
-    */
-})();</script>
+    })();
+</script>
 </body>
-
 </html>
