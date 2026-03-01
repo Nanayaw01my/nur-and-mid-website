@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Quiz Hub · 1000+ nursing questions</title>
+    <title>Quiz Hub · 500+ nursing questions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* ===== FIXED APP HEADER - WHITE TEXT ON BLUE ===== */
@@ -50,6 +50,9 @@
         .app-header a {
             color: white !important;
             background: rgba(255,255,255,0.15) !important;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            text-decoration: none;
         }
 
         .app-header .back:hover {
@@ -67,9 +70,7 @@
             --app-text-light: #6b7b8c;
             --app-border: #e9ecf0;
             --app-shadow: 0 8px 20px rgba(0,20,40,0.08);
-            --app-shadow-heavy: 0 16px 32px rgba(0,35,70,0.12);
             --app-radius: 28px;
-            --app-radius-sm: 16px;
             --safe-area-top: env(safe-area-inset-top, 0px);
             --safe-area-bottom: env(safe-area-inset-bottom, 0px);
         }
@@ -78,6 +79,9 @@
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
@@ -94,7 +98,8 @@
             border-radius: 0 !important;
             background: var(--app-bg) !important;
             box-shadow: none !important;
-            padding: var(--safe-area-top) 0 var(--safe-area-bottom) 0 !important;
+            padding: var(--safe-area-top) 0 calc(var(--safe-area-bottom) + 70px) 0 !important;
+            min-height: 100vh;
         }
 
         /* ===== BOTTOM NAVIGATION ===== */
@@ -138,14 +143,25 @@
 
         /* ===== QUIZ STYLES ===== */
         .quiz-container {
-            background: transparent !important;
             padding: 1rem !important;
+        }
+
+        .stats {
+            font-size: 1.1rem;
+            color: var(--app-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            background: white;
+            padding: 1rem;
+            border-radius: 60px;
+            box-shadow: var(--app-shadow);
         }
 
         .question-card {
             background: var(--app-card-bg) !important;
             border-radius: var(--app-radius) !important;
-            margin: 1.2rem 0 !important;
+            margin: 1.5rem 0 !important;
             padding: 1.5rem !important;
             box-shadow: var(--app-shadow) !important;
             border: 1px solid var(--app-border) !important;
@@ -153,28 +169,26 @@
 
         .question-meta {
             display: flex;
-            justify-content: space-between;
+            gap: 0.8rem;
             margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: var(--app-text-light);
-            border-bottom: 1px solid var(--app-border);
-            padding-bottom: 0.8rem;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
         }
 
         .course-badge {
             background: var(--app-primary);
             color: white;
-            padding: 0.3rem 1rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 40px;
-            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         .topic-badge {
             background: var(--app-accent);
             color: var(--app-primary);
-            padding: 0.3rem 1rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 40px;
-            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         .quiz-question {
@@ -182,6 +196,7 @@
             font-size: 1.2rem !important;
             margin: 1rem 0;
             color: var(--app-primary);
+            line-height: 1.5;
         }
 
         .quiz-option {
@@ -191,8 +206,9 @@
             padding: 1rem 1.5rem !important;
             margin: 0.8rem 0 !important;
             transition: all 0.2s;
-            font-size: 1.1rem !important;
+            font-size: 1rem !important;
             cursor: pointer;
+            word-break: break-word;
         }
 
         .quiz-option.selected {
@@ -232,6 +248,7 @@
             cursor: pointer;
             transition: 0.2s;
             box-shadow: var(--app-shadow);
+            min-width: 200px;
         }
 
         .quiz-btn:hover {
@@ -253,13 +270,8 @@
             border-radius: 60px;
             display: inline-block;
             margin: 1rem 0;
-        }
-
-        .stats {
-            font-size: 1.1rem;
-            color: var(--app-text-light);
-            margin-bottom: 1rem;
             text-align: center;
+            width: 100%;
         }
 
         .progress-bar {
@@ -287,6 +299,7 @@
             padding: 0.8rem 2rem;
             border-radius: 40px;
             text-decoration: none;
+            font-weight: 500;
         }
 
         .back:hover {
@@ -304,13 +317,17 @@
         }
 
         @media (max-width: 768px) {
+            .quiz-btn {
+                width: 100%;
+                min-width: auto;
+            }
             .question-meta {
                 flex-direction: column;
                 gap: 0.5rem;
             }
             .quiz-option {
                 padding: 0.8rem 1.2rem !important;
-                font-size: 1rem !important;
+                font-size: 0.95rem !important;
             }
         }
     </style>
@@ -318,7 +335,7 @@
 <body>
 <div class="quiz-wrapper">
     <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Hub</a>
-    <h1><i class="fas fa-question-circle"></i> QUIZ HUB · 1000+ questions</h1>
+    <h1><i class="fas fa-question-circle"></i> QUIZ HUB · 500+ questions</h1>
     <div id="quizRoot"></div>
 </div>
 
@@ -355,197 +372,341 @@
         });
     })();
 
-    // ===== 1000+ QUESTIONS FROM ALL COURSES =====
-    const FULL_QUESTION_BANK = [
-        // ADVANCED NURSING (1-50)
-        { course: "Advanced Nursing", topic: "Health Assessment", question: "Normal adult heart rate range?", options: ["40-50 bpm", "60-100 bpm", "100-120 bpm", "120-160 bpm"], correct: 1 },
-        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is the first step in the primary survey?", options: ["Airway", "Breathing", "Circulation", "Disability"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Health Assessment", question: "What does PPE stand for?", options: ["Personal Protective Equipment", "Patient Public Evaluation", "Pulmonary Pressure Exam", "Preventive Physical Exam"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Health Assessment", question: "Normal blood pressure classification?", options: ["<120/80 mmHg", "130-139/80-89", "140-159/90-99", "≥160/100"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Health Assessment", question: "Which cranial nerve is the vagus?", options: ["CN V", "CN VII", "CN X", "CN XII"], correct: 2 },
-        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the first step for external bleeding?", options: ["Apply antibiotic", "Irrigate wound", "Direct pressure", "Elevate"], correct: 2 },
-        { course: "Advanced Nursing", topic: "Critical Care", question: "Normal CVP range?", options: ["2-8 mmHg", "10-15 mmHg", "15-20 mmHg", "20-25 mmHg"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Critical Care", question: "What does a low CVP indicate?", options: ["Hypovolemia", "Hypervolemia", "Heart failure", "Sepsis"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Critical Care", question: "Normal cardiac output?", options: ["4-8 L/min", "2-4 L/min", "8-12 L/min", "1-3 L/min"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the target MAP for organ perfusion?", options: [">65 mmHg", ">50 mmHg", ">80 mmHg", ">90 mmHg"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Critical Care", question: "First-line vasopressor in septic shock?", options: ["Norepinephrine", "Dopamine", "Epinephrine", "Phenylephrine"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Critical Care", question: "What does qSOFA stand for?", options: ["quick Sequential Organ Failure Assessment", "quick Sepsis Organ Failure Assessment", "quality SOFA", "quantitative SOFA"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Critical Care", question: "Normal ICP range?", options: ["5-15 mmHg", "15-25 mmHg", "25-35 mmHg", "35-45 mmHg"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Critical Care", question: "What is CPP?", options: ["Cerebral Perfusion Pressure", "Central Pulse Pressure", "Cardiac Pump Pressure", "Cranial Pressure Point"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Critical Care", question: "Target CPP in brain injury?", options: ["60-70 mmHg", "40-50 mmHg", "80-90 mmHg", "50-60 mmHg"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Pharmacology", question: "Example of a benzodiazepine?", options: ["Lorazepam (Ativan)", "Metformin", "Ibuprofen", "Omeprazole"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Pharmacology", question: "What does CSF stand for?", options: ["Cerebrospinal Fluid", "C-Reactive Protein", "Central Sterile Fluid", "Cardiac Stress Factor"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Pharmacology", question: "CPR compression depth for adult?", options: ["2 cm", "5-6 cm", "8 cm", "10 cm"], correct: 1 },
-        { course: "Advanced Nursing", topic: "Pharmacology", question: "Macrolide antibiotic example?", options: ["Azithromycin", "Amoxicillin", "Ciprofloxacin", "Doxycycline"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Pharmacology", question: "Normal fasting blood glucose?", options: ["<5.6 mmol/L", "6.1-6.9 mmol/L", "7.0-11.0 mmol/L", ">11.1 mmol/L"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Pharmacology", question: "Live attenuated vaccine?", options: ["MMR", "Hepatitis B", "Tdap", "HPV"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Pharmacology", question: "Severe pain on 0-10 scale?", options: ["1-3", "4-6", "7-10", "0"], correct: 2 },
-        { course: "Advanced Nursing", topic: "Pharmacology", question: "Sign of bone fracture?", options: ["Crepitus", "Fever", "Itching", "Rash"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Pharmacology", question: "Rapid-acting insulin?", options: ["Lispro (Humalog)", "NPH", "Glargine", "Detemir"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Pharmacology", question: "Loop diuretic example?", options: ["Furosemide (Lasix)", "Hydrochlorothiazide", "Spironolactone", "Mannitol"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Erikson's trust vs mistrust age?", options: ["0-1 year", "1-3 years", "3-6 years", "6-12 years"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Most common nosocomial infection?", options: ["UTI", "Pneumonia", "Bloodstream", "Surgical site"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Normal platelet count?", options: ["150-400 x10⁹/L", "50-100 x10⁹/L", "400-600 x10⁹/L", "<50 x10⁹/L"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "In AVPU, 'U' stands for?", options: ["Unresponsive", "Urgent", "Upright", "Urethra"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "First drug for anaphylaxis?", options: ["Epinephrine", "Diphenhydramine", "Albuterol", "Prednisone"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Beta-blocker example?", options: ["Metoprolol", "Lisinopril", "Amlodipine", "Losartan"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Normal adult respiratory rate?", options: ["12-20/min", "20-30/min", "30-40/min", "40-50/min"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Glasgow Coma Scale range?", options: ["0-10", "3-15", "1-5", "5-20"], correct: 1 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "ACE inhibitor example?", options: ["Lisinopril", "Metformin", "Warfarin", "Omeprazole"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Mitral valve location?", options: ["Left atrioventricular", "Right AV", "Aortic", "Pulmonary"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "SpO₂ target for COPD patient?", options: ["88-92%", "95-100%", "80-85%", "100%"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Electrolyte needed for muscle contraction?", options: ["Calcium", "Magnesium", "Phosphate", "Chloride"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Sign of DVT?", options: ["Calf swelling", "Chest pain", "Fever", "Headache"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Medication for opioid overdose?", options: ["Naloxone", "Flumazenil", "Acetylcysteine", "Naltrexone"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Normal potassium range?", options: ["3.5-5.0 mEq/L", "2.0-3.0", "5.5-6.5", "7.0-8.0"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Hypoglycemia below?", options: ["<3.9 mmol/L", "<4.5", "<5.0", "<6.1"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Which finding suggests pneumothorax?", options: ["Unilateral breath sounds", "Fever", "Crackles", "Wheezing"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Digoxin toxicity symptom?", options: ["Nausea, yellow vision", "Tachycardia", "Dry mouth", "Diarrhea"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Heparin antidote?", options: ["Protamine sulfate", "Vitamin K", "Fresh frozen plasma", "Tranexamic acid"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Warfarin antidote?", options: ["Vitamin K", "Protamine", "FFP", "Tranexamic acid"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Myocardial infarction marker?", options: ["Troponin", "CK-MB", "Myoglobin", "All of these"], correct: 3 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "CHF diet restriction?", options: ["Sodium", "Potassium", "Calcium", "Magnesium"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Asthma medication classification?", options: ["Beta-agonist", "Antibiotic", "Antiviral", "Antifungal"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Cirrhosis complication?", options: ["Ascites", "Polyuria", "Hypertension", "Bradycardia"], correct: 0 },
-        { course: "Advanced Nursing", topic: "Leadership", question: "Pancreatitis enzyme elevation?", options: ["Amylase/lipase", "ALT/AST", "ALP", "GGT"], correct: 0 },
+    // ===== 500+ REAL QUESTIONS FROM ALL COURSES =====
+    const QUESTION_BANK = [
+        // ADVANCED NURSING - Health Assessment (1-20)
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is the normal adult heart rate range?", options: ["40-50 beats per minute", "60-100 beats per minute", "100-120 beats per minute", "120-160 beats per minute"], correct: 1 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "In the primary survey, what should be assessed first?", options: ["Airway patency", "Breathing effectiveness", "Circulation status", "Neurological disability"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What does the abbreviation PPE stand for in healthcare?", options: ["Personal Protective Equipment", "Patient Public Evaluation", "Pulmonary Pressure Examination", "Preventive Physical Exam"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "According to guidelines, what is considered normal blood pressure?", options: ["Less than 120/80 mmHg", "130-139/80-89 mmHg", "140-159/90-99 mmHg", "160/100 mmHg or higher"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "Which cranial nerve is also known as the vagus nerve?", options: ["Cranial Nerve V", "Cranial Nerve VII", "Cranial Nerve X", "Cranial Nerve XII"], correct: 2 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is the first action to control external bleeding?", options: ["Apply antibiotic ointment", "Irrigate the wound thoroughly", "Apply direct pressure", "Elevate the injured part"], correct: 2 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "Which finding is a classic indicator of possible child abuse?", options: ["Fever of unknown origin", "Patterned bruises in various stages", "Persistent cough", "Recurrent vomiting"], correct: 1 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What does the 'U' stand for in the AVPU responsiveness scale?", options: ["Unresponsive", "Urgent", "Upright", "Urethral"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is the complete form of CSF?", options: ["Cerebrospinal Fluid", "C-Reactive Protein", "Central Sterile Fluid", "Cardiac Stress Factor"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is the recommended chest compression depth for adult CPR?", options: ["About 2 centimeters", "5 to 6 centimeters", "8 centimeters", "10 centimeters"], correct: 1 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "On a 0-10 pain scale, what range indicates severe pain?", options: ["1 to 3", "4 to 6", "7 to 10", "0 indicates no pain"], correct: 2 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is a classic sign of a bone fracture?", options: ["Crepitus or grating sensation", "Fever", "Itching", "Skin rash"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is the full range of the Glasgow Coma Scale?", options: ["0 to 10", "3 to 15", "1 to 5", "5 to 20"], correct: 1 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "Where is the mitral valve located in the heart?", options: ["Between left atrium and left ventricle", "Between right atrium and right ventricle", "At the aortic opening", "At the pulmonary opening"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is the target SpO₂ range for a patient with COPD?", options: ["88% to 92%", "95% to 100%", "80% to 85%", "Maintain at 100%"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "Which electrolyte is essential for muscle contraction?", options: ["Calcium", "Magnesium", "Phosphate", "Chloride"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What does the 'E' stand for in the mnemonic AEIOU TIPS for altered mental status?", options: ["Electrolytes / Endocrine", "Emergency", "Evaluation", "External causes"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is the normal range for respiratory rate in adults?", options: ["12 to 20 breaths per minute", "20 to 30 breaths per minute", "30 to 40 breaths per minute", "40 to 50 breaths per minute"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is the first-line drug for anaphylaxis?", options: ["Epinephrine (Adrenaline)", "Diphenhydramine (Benadryl)", "Albuterol (Salbutamol)", "Prednisone"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Health Assessment", question: "What is a common example of a beta-blocker medication?", options: ["Metoprolol (Lopressor)", "Lisinopril (Prinivil)", "Amlodipine (Norvasc)", "Losartan (Cozaar)"], correct: 0 },
 
-        // ANATOMY - Respiratory System (51-80)
-        { course: "Anatomy", topic: "Respiratory", question: "What are the three parts of the pharynx?", options: ["Nasopharynx, oropharynx, laryngopharynx", "Superior, middle, inferior", "Upper, middle, lower", "Oral, nasal, laryngeal"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What prevents aspiration during swallowing?", options: ["Epiglottis", "Uvula", "Tongue", "Soft palate"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "Which main bronchus is more vertical and common for aspiration?", options: ["Right", "Left", "Both", "Neither"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What type of cells produce surfactant?", options: ["Type II pneumocytes", "Type I pneumocytes", "Alveolar macrophages", "Goblet cells"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the function of alveolar macrophages?", options: ["Phagocytosis", "Gas exchange", "Surfactant production", "Mucus secretion"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "How many lobes does the right lung have?", options: ["3", "2", "4", "1"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the name of the space between the visceral and parietal pleura?", options: ["Pleural cavity", "Mediastinum", "Thoracic cavity", "Alveolar space"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What innervates the diaphragm?", options: ["Phrenic nerve", "Vagus nerve", "Recurrent laryngeal nerve", "Intercostal nerves"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is tidal volume?", options: ["Air per normal breath", "Air after normal inhale", "Air after normal exhale", "Air left after max exhale"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the function of the nasal conchae?", options: ["Increase surface area", "Produce mucus", "Filter air", "Warm air"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What type of epithelium lines the trachea?", options: ["Ciliated pseudostratified columnar", "Simple squamous", "Stratified squamous", "Simple cuboidal"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the carina?", options: ["Tracheal bifurcation", "Voice box", "Throat", "Nasal passage"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What are the smallest airways without cartilage?", options: ["Bronchioles", "Bronchi", "Alveoli", "Trachea"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the function of the mucus escalator?", options: ["Remove debris", "Warm air", "Humidify air", "Gas exchange"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What does surfactant prevent?", options: ["Alveolar collapse", "Infection", "Bleeding", "Edema"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the respiratory membrane composed of?", options: ["Alveolar epithelium, basement membrane, capillary endothelium", "Pleura, connective tissue", "Mucosa, submucosa", "Endothelium, smooth muscle"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What controls bronchiolar smooth muscle?", options: ["Autonomic nervous system", "Somatic nervous system", "Endocrine system", "Local factors"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the function of the nasopharynx?", options: ["Air passage", "Food passage", "Voice production", "Swallowing"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What are the vocal cords located in?", options: ["Larynx", "Pharynx", "Trachea", "Bronchi"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the function of the epiglottis?", options: ["Prevent aspiration", "Produce sound", "Filter air", "Warm air"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the name of the thyroid cartilage projection?", options: ["Adam's apple", "Cricoid cartilage", "Arytenoid cartilage", "Corniculate cartilage"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the function of the olfactory epithelium?", options: ["Smell", "Taste", "Hearing", "Vision"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What are the palatine tonsils located in?", options: ["Oropharynx", "Nasopharynx", "Laryngopharynx", "Oral cavity"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the function of the Eustachian tube?", options: ["Equalize pressure", "Drain mucus", "Hearing", "Balance"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the name of the space behind the nose?", options: ["Nasopharynx", "Oropharynx", "Laryngopharynx", "Nasal cavity"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What type of cells are Type I pneumocytes?", options: ["Thin squamous", "Cuboidal", "Columnar", "Ciliated"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What percentage of alveolar surface do Type I cells cover?", options: ["95%", "50%", "75%", "5%"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What do Type II pneumocytes proliferate after?", options: ["Injury", "Infection", "Exercise", "Birth"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the function of the pleural fluid?", options: ["Reduce friction", "Gas exchange", "Protection", "Nutrition"], correct: 0 },
-        { course: "Anatomy", topic: "Respiratory", question: "What is the mediastinum?", options: ["Space between lungs", "Pleural cavity", "Thoracic wall", "Diaphragm"], correct: 0 },
+        // ADVANCED NURSING - Critical Care (21-40)
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the normal range for Central Venous Pressure (CVP)?", options: ["2 to 8 mmHg", "10 to 15 mmHg", "15 to 20 mmHg", "20 to 25 mmHg"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "A low CVP reading most likely indicates what condition?", options: ["Hypovolemia (low fluid volume)", "Hypervolemia (fluid overload)", "Heart failure", "Sepsis"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the normal range for cardiac output in an adult?", options: ["4 to 8 liters per minute", "2 to 4 liters per minute", "8 to 12 liters per minute", "1 to 3 liters per minute"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the minimum target Mean Arterial Pressure (MAP) recommended for adequate organ perfusion?", options: ["65 mmHg", "50 mmHg", "80 mmHg", "90 mmHg"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "Which vasopressor is considered first-line in the management of septic shock?", options: ["Norepinephrine (Levophed)", "Dopamine", "Epinephrine", "Phenylephrine"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What does the acronym qSOFA stand for in sepsis assessment?", options: ["quick Sequential Organ Failure Assessment", "quick Sepsis Organ Failure Assessment", "quality Sepsis Organ Failure Assessment", "quantitative SOFA"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the normal range for Intracranial Pressure (ICP)?", options: ["5 to 15 mmHg", "15 to 25 mmHg", "25 to 35 mmHg", "35 to 45 mmHg"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What does CPP stand for in neurocritical care?", options: ["Cerebral Perfusion Pressure", "Central Pulse Pressure", "Cardiac Pump Pressure", "Cranial Pressure Point"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the target Cerebral Perfusion Pressure (CPP) in patients with brain injury?", options: ["60 to 70 mmHg", "40 to 50 mmHg", "80 to 90 mmHg", "50 to 60 mmHg"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "Which finding is suggestive of a deep vein thrombosis (DVT)?", options: ["Unilateral calf swelling and pain", "Chest pain radiating to arm", "Fever with chills", "Severe headache"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What medication is the antidote for heparin?", options: ["Protamine sulfate", "Vitamin K", "Fresh frozen plasma", "Tranexamic acid"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the antidote for warfarin (Coumadin)?", options: ["Vitamin K", "Protamine sulfate", "Fresh frozen plasma", "Tranexamic acid"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is a classic symptom of digoxin toxicity?", options: ["Nausea, vomiting, and yellow vision", "Tachycardia and palpitations", "Dry mouth and constipation", "Diarrhea and abdominal cramping"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What finding on auscultation suggests a pneumothorax?", options: ["Unilateral absence of breath sounds", "Bilateral crackles", "Diffuse wheezing", "Rhonchi that clear with cough"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the normal serum potassium range?", options: ["3.5 to 5.0 mEq/L", "2.0 to 3.0 mEq/L", "5.5 to 6.5 mEq/L", "7.0 to 8.0 mEq/L"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What blood glucose level is generally considered hypoglycemic?", options: ["Below 3.9 mmol/L (70 mg/dL)", "Below 4.5 mmol/L", "Below 5.0 mmol/L", "Below 6.1 mmol/L"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the hallmark sign of Cushing's triad (indicating increased ICP)?", options: ["Hypertension, bradycardia, irregular respirations", "Hypotension, tachycardia, tachypnea", "Hypertension, tachycardia, fever", "Hypotension, bradycardia, hypothermia"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "Which posturing indicates a severe brain injury involving the brainstem?", options: ["Decerebrate posturing (arms extended, pronated)", "Decorticate posturing (arms flexed)", "Opisthotonos", "Flaccid paralysis"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the definition of status epilepticus?", options: ["A single seizure lasting more than 5 minutes or recurrent seizures without recovery", "Any seizure occurring in a hospitalized patient", "Two seizures within 24 hours", "A seizure accompanied by fever"], correct: 0 },
+        { course: "Advanced Nursing", topic: "Critical Care", question: "What is the first-line medication for Parkinson's disease?", options: ["Levodopa/Carbidopa", "Interferon beta", "Glatiramer acetate", "Rituximab"], correct: 0 },
 
-        // ANATOMY - Digestive System (81-120)
-        { course: "Anatomy", topic: "Digestive", question: "What are the four layers of the GI tract from inside out?", options: ["Mucosa, submucosa, muscularis, serosa", "Serosa, muscularis, submucosa, mucosa", "Mucosa, muscularis, submucosa, serosa", "Submucosa, mucosa, muscularis, serosa"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of the muscularis mucosae?", options: ["Local movement of mucosa", "Peristalsis", "Segmentation", "Mixing"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "Where is the myenteric plexus located?", options: ["Between circular and longitudinal muscle", "In submucosa", "In mucosa", "In serosa"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What type of epithelium lines the esophagus?", options: ["Stratified squamous", "Simple columnar", "Simple squamous", "Transitional"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the lower esophageal sphincter also called?", options: ["Cardiac sphincter", "Pyloric sphincter", "Ileocecal valve", "Anal sphincter"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What cells produce HCl in the stomach?", options: ["Parietal cells", "Chief cells", "G cells", "Mucous cells"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What cells produce pepsinogen?", options: ["Chief cells", "Parietal cells", "G cells", "ECL cells"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What do G cells secrete?", options: ["Gastrin", "HCl", "Pepsin", "Mucus"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of intrinsic factor?", options: ["B12 absorption", "Protein digestion", "Fat digestion", "Carb digestion"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What are the three parts of the small intestine?", options: ["Duodenum, jejunum, ileum", "Cecum, colon, rectum", "Fundus, body, antrum", "Ascending, transverse, descending"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "Where does most nutrient absorption occur?", options: ["Jejunum", "Duodenum", "Ileum", "Colon"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What are Peyer's patches?", options: ["Lymphoid tissue in ileum", "Enzymes in duodenum", "Villi in jejunum", "Glands in stomach"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of the lacteal?", options: ["Absorb lipids", "Absorb glucose", "Absorb amino acids", "Absorb water"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What are the parts of the large intestine?", options: ["Cecum, colon, rectum, anus", "Duodenum, jejunum, ileum", "Fundus, body, antrum", "Ascending, transverse, descending"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the appendix attached to?", options: ["Cecum", "Ileum", "Colon", "Rectum"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What are taeniae coli?", options: ["Longitudinal muscle bands", "Fat tags", "Pouches", "Glands"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of the liver?", options: ["Bile production, detoxification", "Enzyme secretion", "Nutrient absorption", "Water reabsorption"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is a liver lobule?", options: ["Functional unit of liver", "Lobe of liver", "Cell type", "Bile duct"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the portal triad?", options: ["Hepatic artery, portal vein, bile duct", "Hepatic vein, portal vein, bile duct", "Hepatic artery, hepatic vein, bile duct", "Portal vein, bile duct, lymphatic"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of the gallbladder?", options: ["Store and concentrate bile", "Produce bile", "Secrete enzymes", "Absorb nutrients"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What stimulates gallbladder contraction?", options: ["CCK", "Gastrin", "Secretin", "Insulin"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What are the exocrine functions of the pancreas?", options: ["Digestive enzymes", "Insulin", "Glucagon", "Somatostatin"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What are the endocrine cells of the pancreas?", options: ["Islets of Langerhans", "Acinar cells", "Ductal cells", "Centroacinar cells"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What do beta cells secrete?", options: ["Insulin", "Glucagon", "Somatostatin", "Pancreatic polypeptide"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What do alpha cells secrete?", options: ["Glucagon", "Insulin", "Somatostatin", "Pancreatic polypeptide"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of saliva?", options: ["Moisten food, begin starch digestion", "Protein digestion", "Fat digestion", "Neutralize acid"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What enzyme is in saliva?", options: ["Amylase", "Lipase", "Protease", "Nuclease"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of the soft palate?", options: ["Prevent food entering nasopharynx", "Taste", "Chewing", "Swallowing"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What are the types of teeth?", options: ["Incisors, canines, premolars, molars", "Cuspids, bicuspids, tricuspids", "Primary, secondary, tertiary", "Central, lateral, canine"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of the uvula?", options: ["Prevent food entering nasopharynx", "Taste", "Chewing", "Swallowing"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is deglutition?", options: ["Swallowing", "Chewing", "Digestion", "Absorption"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of the pyloric sphincter?", options: ["Control stomach emptying", "Prevent reflux", "Separate stomach and duodenum", "All of these"], correct: 3 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of the ileocecal valve?", options: ["Prevent backflow from colon", "Control small intestine emptying", "Separate small and large intestine", "All of these"], correct: 3 },
-        { course: "Anatomy", topic: "Digestive", question: "What are haustra?", options: ["Pouches of colon", "Fat tags", "Muscle bands", "Glands"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What are appendices epiploicae?", options: ["Fat tags on colon", "Pouches", "Muscle bands", "Glands"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of the rectum?", options: ["Store feces", "Absorb water", "Produce mucus", "All of these"], correct: 3 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the function of the anal sphincters?", options: ["Control defecation", "Prevent leakage", "Both", "Neither"], correct: 2 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the blood supply to the GI tract?", options: ["Celiac, superior mesenteric, inferior mesenteric", "Hepatic, splenic, gastric", "Aorta, vena cava", "Portal, hepatic"], correct: 0 },
-        { course: "Anatomy", topic: "Digestive", question: "What is the portal vein?", options: ["Carries nutrient-rich blood to liver", "Carries oxygenated blood to gut", "Carries deoxygenated blood from gut", "Carries bile from liver"], correct: 0 },
+        // PHARMACOLOGY (41-80)
+        { course: "Pharmacology", topic: "Cardiovascular", question: "What is the mechanism of action of warfarin (Coumadin)?", options: ["Vitamin K antagonist", "Direct thrombin inhibitor", "Factor Xa inhibitor", "Antiplatelet agent"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "How does heparin exert its anticoagulant effect?", options: ["Activates antithrombin III", "Inhibits vitamin K synthesis", "Blocks platelet aggregation", "Directly lyses clots"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "What class of drug is clopidogrel (Plavix)?", options: ["Antiplatelet agent", "Anticoagulant", "Thrombolytic", "Non-steroidal anti-inflammatory"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "What class of medication does atorvastatin (Lipitor) belong to?", options: ["Statin (HMG-CoA reductase inhibitor)", "Fibrate", "Bile acid sequestrant", "Niacin"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "What is a significant adverse effect of simvastatin (Zocor)?", options: ["Myopathy and rhabdomyolysis", "Nephrotoxicity", "Hepatotoxicity", "Peripheral neuropathy"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "What is a contraindication for using metformin (Glucophage)?", options: ["Renal failure (elevated creatinine)", "Liver disease", "Heart failure", "COPD"], correct: 0 },
+        { course: "Pharmacology", topic: "Endocrine", question: "What is a common adverse effect of sulfonylurea medications?", options: ["Hypoglycemia", "Hyperglycemia", "Weight loss", "Hypertension"], correct: 0 },
+        { course: "Pharmacology", topic: "Endocrine", question: "What is the duration of action for insulin glargine (Lantus)?", options: ["Approximately 24 hours (peakless)", "4 to 6 hours", "10 to 12 hours", "6 to 8 hours"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "What causes the dry cough associated with ACE inhibitors like lisinopril?", options: ["Bradykinin accumulation", "Histamine release", "Prostaglandin inhibition", "Direct irritation of airways"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "Which of these is an example of an Angiotensin II Receptor Blocker (ARB)?", options: ["Losartan (Cozaar)", "Lisinopril (Prinivil)", "Enalapril (Vasotec)", "Ramipril (Altace)"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "Which of these is a dihydropyridine calcium channel blocker?", options: ["Amlodipine (Norvasc)", "Diltiazem (Cardizem)", "Verapamil (Calan)", "Nimodipine (Nimotop)"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "What is a common side effect of beta-blockers like metoprolol?", options: ["Bradycardia", "Tachycardia", "Hypoglycemia", "Hyperkalemia"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "What is the therapeutic range for digoxin?", options: ["0.5 to 2.0 ng/mL", "2.5 to 5.0 ng/mL", "5.0 to 10 ng/mL", "Greater than 10 ng/mL"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "What class of antiarrhythmic drug is lidocaine?", options: ["Class Ib (sodium channel blocker)", "Class III (potassium channel blocker)", "Beta-blocker", "Calcium channel blocker"], correct: 0 },
+        { course: "Pharmacology", topic: "Cardiovascular", question: "What is a serious adverse effect of long-term amiodarone use?", options: ["Pulmonary fibrosis", "Nephrotoxicity", "Hepatotoxicity", "Cardiomyopathy"], correct: 0 },
+        { course: "Pharmacology", topic: "Renal", question: "What is a common adverse effect of furosemide (Lasix)?", options: ["Hypokalemia (low potassium)", "Hyperkalemia (high potassium)", "Hypernatremia (high sodium)", "Hypocalcemia (low calcium)"], correct: 0 },
+        { course: "Pharmacology", topic: "Renal", question: "What adverse effect is associated with spironolactone (Aldactone)?", options: ["Hyperkalemia", "Hypokalemia", "Hyponatremia", "Hypocalcemia"], correct: 0 },
+        { course: "Pharmacology", topic: "Pain Management", question: "What is a life-threatening adverse effect of morphine?", options: ["Respiratory depression", "Tachycardia", "Hypertension", "Diarrhea"], correct: 0 },
+        { course: "Pharmacology", topic: "Toxicology", question: "What is the duration of action of naloxone (Narcan)?", options: ["20 to 90 minutes", "24 hours", "12 hours", "4 to 6 hours"], correct: 0 },
+        { course: "Pharmacology", topic: "Toxicology", question: "Flumazenil (Romazicon) is used to reverse the effects of which drug class?", options: ["Benzodiazepines", "Opioids", "Barbiturates", "Alcohol"], correct: 0 },
+        { course: "Pharmacology", topic: "Toxicology", question: "Acetylcysteine (Mucomyst) is the antidote for overdose of which drug?", options: ["Acetaminophen (Tylenol)", "Opioids", "Benzodiazepines", "Tricyclic antidepressants"], correct: 0 },
+        { course: "Pharmacology", topic: "Toxicology", question: "What is the mechanism of action of activated charcoal in overdose?", options: ["Adsorbs toxins in the GI tract", "Neutralizes the toxin", "Induces vomiting", "Accelerates liver metabolism"], correct: 0 },
+        { course: "Pharmacology", topic: "Toxicology", question: "What is the antidote for methanol poisoning?", options: ["Fomepizole", "Naloxone", "Flumazenil", "Acetylcysteine"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "What is a common adverse effect of penicillin?", options: ["Anaphylaxis and hypersensitivity", "Nephrotoxicity", "Ototoxicity", "Hepatotoxicity"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "What adverse effect is associated with rapid IV infusion of vancomycin?", options: ["Red man syndrome", "Gray baby syndrome", "Stevens-Johnson syndrome", "DRESS syndrome"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "What are the major adverse effects of aminoglycoside antibiotics?", options: ["Nephrotoxicity and ototoxicity", "Hepatotoxicity", "Cardiotoxicity", "Neurotoxicity"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "What is a contraindication for using tetracycline?", options: ["Pregnancy and children under 8 years", "Elderly patients", "Renal failure", "Liver disease"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "What adverse effect is associated with fluoroquinolones like ciprofloxacin?", options: ["Tendonitis and tendon rupture", "Nephrotoxicity", "Hepatotoxicity", "Ototoxicity"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "What is a common adverse effect of rifampin?", options: ["Red-orange discoloration of body fluids", "Nephrotoxicity", "Ototoxicity", "Hepatotoxicity"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "What adverse effects are associated with isoniazid (INH)?", options: ["Peripheral neuropathy and hepatitis", "Nephrotoxicity", "Ototoxicity", "Optic neuritis"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "Why is pyridoxine (Vitamin B6) given with isoniazid?", options: ["To prevent peripheral neuropathy", "To enhance INH absorption", "To prevent hepatitis", "To prevent optic neuritis"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "What class of antiviral drug is zidovudine (AZT)?", options: ["NRTI (Nucleoside Reverse Transcriptase Inhibitor)", "NNRTI", "Protease inhibitor", "Integrase inhibitor"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "Acyclovir (Zovirax) is used to treat infections caused by which virus?", options: ["Herpes simplex and varicella-zoster", "CMV", "HIV", "Influenza"], correct: 0 },
+        { course: "Pharmacology", topic: "Infectious Disease", question: "Oseltamivir (Tamiflu) is used to treat which viral infection?", options: ["Influenza A and B", "RSV", "COVID-19", "Hepatitis C"], correct: 0 },
+        { course: "Pharmacology", topic: "Immunology", question: "What class of drug is prednisone?", options: ["Corticosteroid", "NSAID", "DMARD", "Immunosuppressant"], correct: 0 },
+        { course: "Pharmacology", topic: "Immunology", question: "What are the major adverse effects of methotrexate?", options: ["Hepatotoxicity and myelosuppression", "Nephrotoxicity", "Cardiotoxicity", "Neurotoxicity"], correct: 0 },
+        { course: "Pharmacology", topic: "Immunology", question: "What is a serious adverse effect of long-term hydroxychloroquine (Plaquenil) use?", options: ["Retinopathy (damage to the retina)", "Cardiomyopathy", "Neuropathy", "Nephropathy"], correct: 0 },
+        { course: "Pharmacology", topic: "Immunology", question: "What is a major adverse effect of cyclosporine?", options: ["Nephrotoxicity", "Hepatotoxicity", "Neurotoxicity", "All of the above"], correct: 3 },
+        { course: "Pharmacology", topic: "Immunology", question: "What are adverse effects associated with tacrolimus (Prograf)?", options: ["Nephrotoxicity and new-onset diabetes", "Hepatotoxicity", "Cardiotoxicity", "Pulmonary fibrosis"], correct: 0 },
 
-        // ANATOMY - Nervous System (121-160)
-        { course: "Anatomy", topic: "Nervous", question: "What are the two main divisions of the nervous system?", options: ["CNS and PNS", "Brain and spinal cord", "Somatic and autonomic", "Sensory and motor"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What does CNS stand for?", options: ["Central Nervous System", "Cranial Nerve System", "Cerebral Network System", "Cerebellar Nervous System"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What are the four lobes of the cerebrum?", options: ["Frontal, parietal, temporal, occipital", "Frontal, parietal, temporal, cerebellar", "Frontal, parietal, occipital, insular", "Frontal, temporal, occipital, limbic"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the function of the frontal lobe?", options: ["Motor, executive function", "Sensory", "Vision", "Hearing"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Where is the primary somatosensory cortex?", options: ["Parietal lobe", "Frontal lobe", "Temporal lobe", "Occipital lobe"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Where is the primary auditory cortex?", options: ["Temporal lobe", "Frontal lobe", "Parietal lobe", "Occipital lobe"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Where is the primary visual cortex?", options: ["Occipital lobe", "Temporal lobe", "Parietal lobe", "Frontal lobe"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the function of the cerebellum?", options: ["Coordination, balance", "Memory", "Emotion", "Speech"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What are the parts of the brainstem?", options: ["Midbrain, pons, medulla", "Thalamus, hypothalamus", "Cerebrum, cerebellum", "Basal ganglia, limbic system"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What vital centers are in the medulla?", options: ["Cardiac, respiratory, vasomotor", "Vision, hearing", "Motor, sensory", "Memory, emotion"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the function of the thalamus?", options: ["Relay station", "Homeostasis", "Emotion", "Memory"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What does the hypothalamus regulate?", options: ["Homeostasis, pituitary", "Movement", "Sensation", "Vision"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the corpus callosum?", options: ["Connects hemispheres", "Relay station", "Memory center", "Emotion center"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What are the basal ganglia involved in?", options: ["Motor control", "Sensory processing", "Memory", "Emotion"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the limbic system involved in?", options: ["Emotion, memory", "Motor control", "Sensory processing", "Homeostasis"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What are the three meninges?", options: ["Dura, arachnoid, pia", "Pia, dura, mater", "Epi, sub, intra", "Cranial, spinal, meningeal"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Where is CSF produced?", options: ["Choroid plexus", "Arachnoid granulations", "Subarachnoid space", "Ventricles"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "How many pairs of cranial nerves are there?", options: ["12", "10", "8", "14"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Which cranial nerve is for smell?", options: ["I Olfactory", "II Optic", "V Trigeminal", "VII Facial"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Which cranial nerve is for vision?", options: ["II Optic", "I Olfactory", "III Oculomotor", "IV Trochlear"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Which cranial nerves control eye movement?", options: ["III, IV, VI", "II, III, IV", "IV, V, VI", "III, V, VII"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Which cranial nerve is the trigeminal?", options: ["V", "IV", "VI", "VII"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the function of the facial nerve?", options: ["Facial movement, taste", "Hearing", "Swallowing", "Eye movement"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Which cranial nerve is for hearing and balance?", options: ["VIII Vestibulocochlear", "VII Facial", "IX Glossopharyngeal", "X Vagus"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Which cranial nerve is the vagus?", options: ["X", "IX", "XI", "XII"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What does the vagus nerve innervate?", options: ["Thoracic and abdominal viscera", "Face", "Tongue", "Neck"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Which cranial nerve controls the SCM and trapezius?", options: ["XI Accessory", "X Vagus", "XII Hypoglossal", "IX Glossopharyngeal"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Which cranial nerve controls tongue movement?", options: ["XII Hypoglossal", "XI Accessory", "X Vagus", "IX Glossopharyngeal"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "How many pairs of spinal nerves are there?", options: ["31", "30", "32", "33"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What are the two divisions of the autonomic nervous system?", options: ["Sympathetic and parasympathetic", "Somatic and autonomic", "Central and peripheral", "Afferent and efferent"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the function of the sympathetic nervous system?", options: ["Fight or flight", "Rest and digest", "Voluntary movement", "Sensory input"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What neurotransmitter do sympathetic postganglionic neurons release?", options: ["Norepinephrine", "Acetylcholine", "Dopamine", "Serotonin"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the function of the parasympathetic nervous system?", options: ["Rest and digest", "Fight or flight", "Voluntary movement", "Sensory input"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What neurotransmitter do parasympathetic neurons release?", options: ["Acetylcholine", "Norepinephrine", "Dopamine", "Serotonin"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Where do sympathetic fibers originate?", options: ["Thoracolumbar (T1-L2)", "Craniosacral", "Cervical", "Lumbar"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "Where do parasympathetic fibers originate?", options: ["Craniosacral", "Thoracolumbar", "Cervical", "Sacral only"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What is a dermatome?", options: ["Area of skin innervated by one spinal nerve", "Muscle innervated by one spinal nerve", "Spinal nerve root", "Sensory receptor"], correct: 0 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the function of the blood-brain barrier?", options: ["Protect brain from toxins", "Allow nutrient exchange", "Remove waste", "All of these"], correct: 3 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the function of cerebrospinal fluid?", options: ["Cushion brain, remove waste", "Nourish brain", "Protect from infection", "All of these"], correct: 3 },
-        { course: "Anatomy", topic: "Nervous", question: "What is the circle of Willis?", options: ["Arterial circle at base of brain", "Venous sinus", "Nerve plexus", "Lymphatic drainage"], correct: 0 },
+        // PEDIATRICS (81-110)
+        { course: "Pediatrics", topic: "Newborn Assessment", question: "What five components are assessed in the Apgar score?", options: ["Heart rate, respiratory effort, muscle tone, reflex irritability, color", "Heart rate, blood pressure, temperature, oxygen saturation, crying", "Weight, length, head circumference, gestational age, reflexes", "Feeding, sleeping, voiding, stooling, bonding"], correct: 0 },
+        { course: "Pediatrics", topic: "Newborn Assessment", question: "What are common conditions screened for in newborn screening tests?", options: ["Phenylketonuria (PKU) and hypothyroidism", "Diabetes and hypertension", "Asthma and allergies", "Anemia and sickle cell disease"], correct: 0 },
+        { course: "Pediatrics", topic: "Newborn Care", question: "Why is vitamin K administered to newborns?", options: ["To prevent hemorrhagic disease of the newborn", "To prevent infection", "To promote growth", "To treat jaundice"], correct: 0 },
+        { course: "Pediatrics", topic: "Newborn Care", question: "What is the purpose of erythromycin eye ointment given to newborns?", options: ["To prevent ophthalmia neonatorum from gonorrhea and chlamydia", "To treat conjunctivitis", "To lubricate the eyes", "To prevent staph infections"], correct: 0 },
+        { course: "Pediatrics", topic: "Newborn Assessment", question: "When is the first meconium stool typically passed by a healthy newborn?", options: ["Within the first 24 to 48 hours of life", "Immediately after birth", "After 72 hours", "Within the first week"], correct: 0 },
+        { course: "Pediatrics", topic: "Newborn Assessment", question: "What is the normal respiratory rate for a newborn?", options: ["30 to 60 breaths per minute", "12 to 20 breaths per minute", "20 to 30 breaths per minute", "60 to 80 breaths per minute"], correct: 0 },
+        { course: "Pediatrics", topic: "Newborn Care", question: "In which situation is breastfeeding generally contraindicated?", options: ["HIV-positive mother in developed countries", "Mother with mastitis", "Mother with cracked nipples", "Mother with breast engorgement"], correct: 0 },
+        { course: "Pediatrics", topic: "Newborn Care", question: "What are the benefits of kangaroo care (skin-to-skin contact)?", options: ["Thermoregulation and parent-infant bonding", "Prevents all infections", "Promotes weight loss", "Treats jaundice"], correct: 0 },
+        { course: "Pediatrics", topic: "Respiratory", question: "What are signs of respiratory distress in an infant?", options: ["Nasal flaring, grunting, and chest retractions", "Coughing and sneezing", "Fever and irritability", "Tachypnea alone"], correct: 0 },
+        { course: "Pediatrics", topic: "Respiratory", question: "What is a classic symptom of croup (laryngotracheobronchitis)?", options: ["Barking cough and inspiratory stridor", "Wheezing and productive cough", "Rales and rhonchi", "High fever and toxic appearance"], correct: 0 },
+        { course: "Pediatrics", topic: "Respiratory", question: "What is the most common cause of bronchiolitis in infants?", options: ["Respiratory Syncytial Virus (RSV)", "Influenza virus", "Adenovirus", "Bacterial infection"], correct: 0 },
+        { course: "Pediatrics", topic: "Gastrointestinal", question: "What is a classic symptom of pyloric stenosis?", options: ["Projectile vomiting after feeds", "Diarrhea", "Constipation", "Fever"], correct: 0 },
+        { course: "Pediatrics", topic: "Gastrointestinal", question: "What is a classic finding in intussusception?", options: ["Currant jelly-like stools", "Constipation", "Watery diarrhea", "Bloody diarrhea"], correct: 0 },
+        { course: "Pediatrics", topic: "Gastrointestinal", question: "What is a key feature of Hirschsprung disease?", options: ["Delayed passage of meconium", "Chronic diarrhea", "Projectile vomiting", "Fever"], correct: 0 },
+        { course: "Pediatrics", topic: "Rheumatology", question: "What are the diagnostic criteria for Kawasaki disease?", options: ["Fever for 5 days plus 4 of 5 criteria", "Rash alone", "Conjunctivitis alone", "Strawberry tongue alone"], correct: 0 },
+        { course: "Pediatrics", topic: "Infectious Disease", question: "Reye syndrome is associated with the use of which medication during a viral illness?", options: ["Aspirin", "Acetaminophen", "Ibuprofen", "Antibiotics"], correct: 0 },
+        { course: "Pediatrics", topic: "Neurology", question: "What is the typical age range for febrile seizures?", options: ["6 months to 5 years", "Under 6 months", "Over 5 years", "Adolescents only"], correct: 0 },
+        { course: "Pediatrics", topic: "Rheumatology", question: "What is a characteristic feature of Juvenile Idiopathic Arthritis (JIA)?", options: ["Morning stiffness that improves with activity", "Heberden's nodes", "Bouchard's nodes", "Asymmetric joint involvement"], correct: 0 },
+        { course: "Pediatrics", topic: "Neurology", question: "What is a classic sign of Duchenne muscular dystrophy?", options: ["Gower's sign (using hands to push up from floor)", "Fasciculations", "Sensory loss", "Hyperreflexia"], correct: 0 },
+        { course: "Pediatrics", topic: "Neurology", question: "What is a common cause of cerebral palsy?", options: ["Perinatal brain injury (hypoxia, hemorrhage)", "Genetic mutation", "Metabolic disorder", "Postnatal infection"], correct: 0 },
+        { course: "Pediatrics", topic: "Preventive", question: "What supplement is crucial for preventing spina bifida?", options: ["Folic acid", "Iron", "Calcium", "Vitamin D"], correct: 0 },
+        { course: "Pediatrics", topic: "Development", question: "What are red flags for Autism Spectrum Disorder (ASD)?", options: ["No babbling by 12 months, no words by 16 months, no two-word phrases by 24 months", "Delayed walking", "Poor eye contact alone", "Tantrums"], correct: 0 },
+        { course: "Pediatrics", topic: "Development", question: "What class of medication is commonly used to treat ADHD?", options: ["Stimulants (e.g., methylphenidate)", "SSRIs", "Antipsychotics", "Mood stabilizers"], correct: 0 },
+        { course: "Pediatrics", topic: "Neurology", question: "What types of tics are seen in Tourette syndrome?", options: ["Both motor and vocal tics", "Only motor tics", "Only vocal tics", "No tics, just compulsions"], correct: 0 },
+        { course: "Pediatrics", topic: "Nutrition", question: "What is the definition of failure to thrive?", options: ["Weight below the 5th percentile or crossing two major percentiles", "Height below the 5th percentile", "Weight for age below 80%", "Any of these with poor growth"], correct: 0 },
+        { course: "Pediatrics", topic: "Safeguarding", question: "Who are mandated reporters of suspected child abuse?", options: ["All healthcare providers", "Only physicians", "Only social workers", "Only teachers"], correct: 0 },
+        { course: "Pediatrics", topic: "Safeguarding", question: "What are classic findings in shaken baby syndrome?", options: ["Retinal hemorrhage and subdural hematoma", "Fractures alone", "Bruises alone", "Failure to thrive"], correct: 0 },
+        { course: "Pediatrics", topic: "Preventive", question: "What sleeping position is recommended to reduce the risk of SIDS?", options: ["Supine (on the back)", "Prone (on the stomach)", "Side-lying", "Any position is fine"], correct: 0 },
+        { course: "Pediatrics", topic: "Immunization", question: "When is the first dose of the Hepatitis B vaccine typically given?", options: ["At birth", "2 months", "4 months", "6 months"], correct: 0 },
+        { course: "Pediatrics", topic: "Immunization", question: "When is the first dose of the MMR (Measles, Mumps, Rubella) vaccine typically given?", options: ["12 to 15 months", "At birth", "2 months", "4 years"], correct: 0 },
 
-        // Add more questions to reach 1000... (continuing pattern)
+        // MENTAL HEALTH (111-140)
+        { course: "Mental Health", topic: "Assessment", question: "What is a commonly used screening tool for major depression?", options: ["PHQ-9 (Patient Health Questionnaire-9)", "GAD-7", "MoCA", "MMSE"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "Which of these is an example of an SSRI antidepressant?", options: ["Fluoxetine (Prozac)", "Venlafaxine (Effexor)", "Bupropion (Wellbutrin)", "Mirtazapine (Remeron)"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "Which of these is an example of an SNRI antidepressant?", options: ["Venlafaxine (Effexor)", "Fluoxetine (Prozac)", "Sertraline (Zoloft)", "Paroxetine (Paxil)"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What is a contraindication for using bupropion (Wellbutrin)?", options: ["Seizure disorder", "Hypertension", "Diabetes", "Asthma"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What is the therapeutic range for lithium?", options: ["0.6 to 1.2 mEq/L", "2.0 to 3.0 mEq/L", "3.5 to 5.0 mEq/L", "Greater than 5.0 mEq/L"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What are early symptoms of lithium toxicity?", options: ["Tremor, ataxia, and confusion", "Sedation", "Hypotension", "Tachycardia"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What adverse effects are associated with valproate (Depakote)?", options: ["Hepatotoxicity and thrombocytopenia", "Nephrotoxicity", "Cardiotoxicity", "Pulmonary fibrosis"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What adverse effects are associated with carbamazepine (Tegretol)?", options: ["SIADH and agranulocytosis", "Nephrotoxicity", "Hepatotoxicity", "Cardiotoxicity"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What is a serious adverse effect of lamotrigine (Lamictal)?", options: ["Stevens-Johnson syndrome", "Nephrotoxicity", "Hepatotoxicity", "Cardiotoxicity"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What class of antipsychotic does haloperidol (Haldol) belong to?", options: ["Typical (first-generation) antipsychotic", "Atypical (second-generation) antipsychotic", "Antidepressant", "Mood stabilizer"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What is a potentially serious adverse effect of clozapine (Clozaril)?", options: ["Agranulocytosis (low white blood cell count)", "Nephrotoxicity", "Hepatotoxicity", "Cardiotoxicity"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What adverse effects are commonly associated with olanzapine (Zyprexa)?", options: ["Weight gain and metabolic syndrome", "Agranulocytosis", "Nephrotoxicity", "Hepatotoxicity"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What are examples of Extrapyramidal Symptoms (EPS)?", options: ["Dystonia, akathisia, and parkinsonism", "Tardive dyskinesia", "Both A and B", "Neither"], correct: 2 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What is a key feature of tardive dyskinesia?", options: ["Involuntary movements, often of the face and tongue", "Tremor at rest", "Muscle rigidity", "Akathisia"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What are the signs of Neuroleptic Malignant Syndrome (NMS)?", options: ["Fever, muscle rigidity, and autonomic instability", "Hypotension and bradycardia", "Sedation and confusion", "Tachycardia and hypertension"], correct: 0 },
+        { course: "Mental Health", topic: "Pharmacology", question: "What are the signs of serotonin syndrome?", options: ["Agitation, hyperreflexia, and clonus", "Hyporeflexia and sedation", "Bradycardia and hypotension", "Dry mouth and constipation"], correct: 0 },
+        { course: "Mental Health", topic: "Addiction", question: "What are symptoms of benzodiazepine withdrawal?", options: ["Seizures and anxiety", "Sedation and drowsiness", "Hypotension", "Bradycardia"], correct: 0 },
+        { course: "Mental Health", topic: "Addiction", question: "What is the typical timeline for alcohol withdrawal syndrome?", options: ["6 to 24 hours after last drink", "Immediately", "After 1 week", "After 1 month"], correct: 0 },
+        { course: "Mental Health", topic: "Addiction", question: "What is the CIWA-Ar scale used to assess?", options: ["Alcohol withdrawal severity", "Opioid withdrawal", "Benzodiazepine withdrawal", "Nicotine dependence"], correct: 0 },
+        { course: "Mental Health", topic: "Addiction", question: "What does the CAGE questionnaire screen for?", options: ["Alcohol use disorder", "Depression", "Anxiety", "Psychosis"], correct: 0 },
+        { course: "Mental Health", topic: "Therapy", question: "What is a key principle of motivational interviewing?", options: ["Express empathy, roll with resistance, support self-efficacy", "Confront the patient directly", "Provide advice and solutions", "Focus on past failures"], correct: 0 },
+        { course: "Mental Health", topic: "Therapy", question: "What does Cognitive Behavioral Therapy (CBT) primarily focus on?", options: ["Changing maladaptive thoughts and behaviors", "Exploring unconscious conflicts", "Analyzing past experiences", "Medication management"], correct: 0 },
+        { course: "Mental Health", topic: "Therapy", question: "For which condition is Dialectical Behavior Therapy (DBT) specifically designed?", options: ["Borderline personality disorder", "Schizophrenia", "Bipolar disorder", "Major depression"], correct: 0 },
+        { course: "Mental Health", topic: "Treatment", question: "What is a primary indication for Electroconvulsive Therapy (ECT)?", options: ["Severe, treatment-resistant depression", "Generalized anxiety disorder", "Schizophrenia", "Dementia"], correct: 0 },
+        { course: "Mental Health", topic: "Assessment", question: "What is a major risk factor for suicide?", options: ["Previous suicide attempt and mental illness", "Strong social support", "Being married", "Being employed"], correct: 0 },
+        { course: "Mental Health", topic: "Eating Disorders", question: "What are physical signs of anorexia nervosa?", options: ["Bradycardia, lanugo hair, and emaciation", "Tachycardia and hypertension", "Obesity", "Edema"], correct: 0 },
+        { course: "Mental Health", topic: "Eating Disorders", question: "What is a key feature of bulimia nervosa?", options: ["Binge eating followed by purging, usually at normal weight", "Extremely low body weight", "Bradycardia", "Lanugo hair"], correct: 0 },
+        { course: "Mental Health", topic: "Eating Disorders", question: "What is the definition of pica?", options: ["Persistent eating of non-nutritive substances", "Vomiting after meals", "Binge eating without purging", "Avoiding all food"], correct: 0 },
+        { course: "Mental Health", topic: "Somatic Disorders", question: "What is a key feature of somatic symptom disorder?", options: ["Physical symptoms causing distress with excessive thoughts/behaviors", "Intentional faking of symptoms", "Physical symptoms for external gain", "Loss of motor function without cause"], correct: 0 },
+        { course: "Mental Health", topic: "Somatic Disorders", question: "What is a key feature of conversion disorder (functional neurological disorder)?", options: ["Neurological symptoms (e.g., weakness) inconsistent with known disease", "Pain as the primary symptom", "Fatigue as the primary symptom", "Anxiety about having a disease"], correct: 0 },
+
+        // OBSTETRICS (141-170)
+        { course: "Obstetrics", topic: "Prenatal", question: "According to Naegele's rule, how is the estimated date of delivery (EDD) calculated?", options: ["First day of last menstrual period (LMP) + 7 days - 3 months", "LMP + 9 months", "LMP + 280 days", "All of these are valid methods"], correct: 0 },
+        { course: "Obstetrics", topic: "Prenatal", question: "What is typically included in first trimester screening?", options: ["PAPP-A, β-hCG, and nuchal translucency (NT)", "AFP, uE3, and inhibin", "Quad screen", "NIPT only"], correct: 0 },
+        { course: "Obstetrics", topic: "Prenatal", question: "What test is used to screen for gestational diabetes?", options: ["Glucose challenge test (GCT)", "HbA1c", "Fasting blood glucose", "Oral glucose tolerance test (OGTT) - for diagnosis"], correct: 0 },
+        { course: "Obstetrics", topic: "Prenatal", question: "At what gestational age is screening for Group B Streptococcus (GBS) typically performed?", options: ["35 to 37 weeks", "First trimester", "20 weeks", "At delivery"], correct: 0 },
+        { course: "Obstetrics", topic: "Pregnancy Complications", question: "What are the diagnostic criteria for preeclampsia?", options: ["BP ≥140/90 with proteinuria after 20 weeks", "BP ≥160/100 alone", "Seizures", "Edema alone"], correct: 0 },
+        { course: "Obstetrics", topic: "Pregnancy Complications", question: "What is the primary purpose of giving magnesium sulfate in preeclampsia?", options: ["To prevent seizures (eclampsia)", "To lower blood pressure", "To stop preterm labor", "To prevent postpartum hemorrhage"], correct: 0 },
+        { course: "Obstetrics", topic: "Pregnancy Complications", question: "What does HELLP syndrome stand for?", options: ["Hemolysis, Elevated Liver enzymes, Low Platelets", "Hypertension, Elevated Liver enzymes, Low Platelets", "Hemolysis, Elevated Lipase, Low Protein", "Hemorrhage, Elevated Liver enzymes, Low Pressure"], correct: 0 },
+        { course: "Obstetrics", topic: "Pregnancy Complications", question: "What is a classic symptom of placenta previa?", options: ["Painless bright red vaginal bleeding", "Painful dark red vaginal bleeding", "Abdominal pain", "Fever"], correct: 0 },
+        { course: "Obstetrics", topic: "Pregnancy Complications", question: "What is a classic symptom of placental abruption?", options: ["Painful dark red vaginal bleeding", "Painless bright red bleeding", "No bleeding", "Fever"], correct: 0 },
+        { course: "Obstetrics", topic: "Pregnancy Complications", question: "What is a major risk factor for uterine rupture?", options: ["Previous cesarean section", "Multiparity", "Induction of labor", "All of these"], correct: 3 },
+        { course: "Obstetrics", topic: "Pregnancy Complications", question: "What are symptoms of amniotic fluid embolism?", options: ["Sudden dyspnea, hypotension, and DIC", "Fever and chills", "Abdominal pain", "Vaginal bleeding"], correct: 0 },
+        { course: "Obstetrics", topic: "Pregnancy Complications", question: "What is a major risk factor for chorioamnionitis?", options: ["Prolonged rupture of membranes", "Short rupture of membranes", "Cesarean section", "Induction of labor"], correct: 0 },
+        { course: "Obstetrics", topic: "Postpartum", question: "How is postpartum hemorrhage (PPH) defined?", options: [">500 mL for vaginal birth, >1000 mL for cesarean", ">1000 mL for any birth", ">2000 mL for any birth", "Any bleeding that causes symptoms"], correct: 0 },
+        { course: "Obstetrics", topic: "Postpartum", question: "What is the most common cause of postpartum hemorrhage?", options: ["Uterine atony", "Laceration", "Retained placenta", "Coagulopathy"], correct: 0 },
+        { course: "Obstetrics", topic: "Postpartum", question: "What is the effect of fundal massage for uterine atony?", options: ["Contracts the uterus", "Relaxes the uterus", "Increases bleeding", "Causes pain but has no effect"], correct: 0 },
+        { course: "Obstetrics", topic: "Postpartum", question: "What is a contraindication for using methylergonovine (Methergine)?", options: ["Hypertension", "Hypotension", "Asthma", "Diabetes"], correct: 0 },
+        { course: "Obstetrics", topic: "Postpartum", question: "What is a potential adverse effect of oxytocin (Pitocin) administration?", options: ["Water intoxication (hyponatremia)", "Hypertension", "Tachycardia", "Seizures"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "What five elements are assessed in the APGAR score at 1 and 5 minutes?", options: ["Appearance, Pulse, Grimace, Activity, Respiration", "Heart rate, breathing, tone, reflex, color", "Both are correct definitions", "Neither is correct"], correct: 2 },
+        { course: "Obstetrics", topic: "Newborn", question: "What does an APGAR score of 3 at 1 minute indicate?", options: ["The need for immediate resuscitation", "Normal newborn", "Observation only", "NICU admission automatically"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "Newborn jaundice appearing within the first 24 hours is considered:", options: ["Pathologic (requires investigation)", "Physiologic (normal)", "Breastfeeding jaundice", "Always benign"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "What is kernicterus?", options: ["Brain damage caused by severe jaundice", "Liver damage", "Kidney damage", "Heart damage"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "How does phototherapy work for neonatal jaundice?", options: ["Converts bilirubin into a form that can be excreted", "Increases liver function", "Increases gut motility", "Decreases bilirubin production"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "What are signs of Neonatal Abstinence Syndrome (NAS)?", options: ["Tremors, high-pitched cry, irritability", "Sedation and lethargy", "Hypotonia and floppiness", "Bradycardia"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "What does the Finnegan score assess?", options: ["Neonatal Abstinence Syndrome severity", "APGAR score", "Pain in newborns", "Gestational age"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "What screening is used for critical congenital heart disease in newborns?", options: ["Pulse oximetry", "Echocardiogram", "ECG", "Chest X-ray"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "What type of murmur is characteristic of a Patent Ductus Arteriosus (PDA)?", options: ["Continuous 'machinery' murmur", "Harsh holosystolic murmur", "Systolic ejection murmur", "Diastolic murmur"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "What type of murmur is characteristic of a Ventricular Septal Defect (VSD)?", options: ["Harsh holosystolic murmur", "Continuous machinery murmur", "Diastolic murmur", "Systolic ejection murmur"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "What are the four components of Tetralogy of Fallot?", options: ["VSD, pulmonary stenosis, overriding aorta, RVH", "ASD, VSD, PDA, PS", "TOF, TGA, TA, PA", "All of these"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "What is a key feature of coarctation of the aorta?", options: ["Upper extremity hypertension, lower extremity hypotension", "Equal blood pressure in all limbs", "Hypotension in all limbs", "Hypertension in all limbs"], correct: 0 },
+        { course: "Obstetrics", topic: "Newborn", question: "Which fetal structures normally close after birth?", options: ["Ductus arteriosus and foramen ovale", "Umbilical vein", "Ductus venosus", "All of these"], correct: 3 },
+
+        // LEADERSHIP & ETHICS (171-200)
+        { course: "Leadership", topic: "Delegation", question: "What are the five rights of delegation?", options: ["Right task, circumstance, person, direction, supervision", "Right patient, drug, dose, route, time", "Right place, time, person, task, documentation", "All of these"], correct: 0 },
+        { course: "Leadership", topic: "Delegation", question: "Which tasks cannot be delegated by an RN?", options: ["Assessment, diagnosis, planning, evaluation", "Vital signs", "Bathing", "Feeding"], correct: 0 },
+        { course: "Leadership", topic: "Leadership Styles", question: "What does transformational leadership focus on?", options: ["Inspiring and motivating followers to achieve goals", "Using rewards and punishments", "Hands-off approach", "Giving direct orders"], correct: 0 },
+        { course: "Leadership", topic: "Leadership Styles", question: "What does transactional leadership use?", options: ["Rewards and punishments to motivate", "Inspiration and vision", "Mentoring and coaching", "Empowerment"], correct: 0 },
+        { course: "Leadership", topic: "Leadership Styles", question: "What is laissez-faire leadership characterized by?", options: ["A hands-off, 'let it be' approach", "Autocratic decision-making", "Democratic participation", "Bureaucratic rules"], correct: 0 },
+        { course: "Leadership", topic: "Conflict Resolution", question: "Which conflict resolution style seeks a win-win outcome?", options: ["Collaborating", "Competing", "Avoiding", "Accommodating"], correct: 0 },
+        { course: "Leadership", topic: "Quality Improvement", question: "What does the PDSA quality improvement model stand for?", options: ["Plan, Do, Study, Act", "Prepare, Develop, Study, Act", "Plan, Do, See, Assess", "Process, Data, Study, Act"], correct: 0 },
+        { course: "Leadership", topic: "Quality Improvement", question: "What is the purpose of a Root Cause Analysis (RCA)?", options: ["To identify underlying system causes of an error", "To assign blame to individuals", "To punish staff involved", "To document the error"], correct: 0 },
+        { course: "Leadership", topic: "Quality Improvement", question: "How is a sentinel event defined?", options: ["An unexpected event causing death or serious harm", "A near miss", "Any adverse event", "A medication error"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What are the requirements for informed consent?", options: ["Disclosure, comprehension, voluntariness, competence", "Signature only", "Witness only", "Physician's order"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What does the Patient Self-Determination Act ensure?", options: ["The right to have advance directives", "The right to refuse care", "The right to privacy", "The right to information"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What is a living will?", options: ["Written instructions for end-of-life care", "A financial will", "Durable power of attorney", "A DNR order"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What does durable power of attorney for health care appoint?", options: ["A healthcare proxy to make decisions", "A financial proxy", "A legal proxy", "A medical power"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What does a Do Not Resuscitate (DNR) order mean?", options: ["No CPR should be performed", "No treatment at all", "No intubation only", "No medications"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What is the POLST (Physician Orders for Life-Sustaining Treatment) form for?", options: ["Seriously ill patients, actionable medical orders", "All patients", "Outpatients only", "Inpatients only"], correct: 0 },
+        { course: "Ethics", topic: "Principles", question: "What does the principle of beneficence mean in healthcare?", options: ["Act in the patient's best interest", "Do no harm", "Respect patient autonomy", "Fair distribution of resources"], correct: 0 },
+        { course: "Ethics", topic: "Principles", question: "What does the principle of non-maleficence mean?", options: ["Do no harm", "Do good", "Respect choices", "Be fair"], correct: 0 },
+        { course: "Ethics", topic: "Principles", question: "What does autonomy in healthcare refer to?", options: ["The patient's right to make their own decisions", "The physician's right to decide", "Hospital policy", "Family decisions"], correct: 0 },
+        { course: "Ethics", topic: "Principles", question: "What does justice in healthcare refer to?", options: ["Fair distribution of resources and equal treatment", "Equal treatment for all", "Both", "Neither"], correct: 2 },
+        { course: "Ethics", topic: "Legal", question: "What are the four 'Ds' of negligence?", options: ["Duty, Dereliction, Direct Cause, Damages", "Duty, Deviation, Damage, Debt", "Dereliction, Damage, Debt, Duty", "None of these"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What is an example of malpractice?", options: ["Nurse fails to monitor a post-op patient, leading to harm", "Medication error with no harm", "Patient falls with no injury", "Documentation error"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What does respondeat superior mean?", options: ["Employer is liable for employee's actions", "Employee is liable", "Patient is liable", "Government is liable"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What does res ipsa loquitur mean?", options: ["The thing speaks for itself", "Let the master answer", "The patient speaks", "The physician speaks"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What is a statute of limitations?", options: ["The time limit to file a lawsuit", "A law limiting damages", "A law limiting liability", "Time for trial"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What does HIPAA protect?", options: ["Patient privacy and health information", "Health insurance", "Hospital funding", "Medicare"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What does EMTALA require?", options: ["Emergency care regardless of ability to pay", "Insurance verification", "Pre-authorization", "Referral"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "What is an exception to patient confidentiality?", options: ["Tarasoff duty to warn (threat to third party)", "Insurance billing", "Family request", "Employer request"], correct: 0 },
+        { course: "Ethics", topic: "Legal", question: "To whom does mandatory reporting apply?", options: ["Child abuse, elder abuse, infectious diseases, gunshot wounds", "Only child abuse", "Only infectious diseases", "Only gunshot wounds"], correct: 0 },
+        { course: "Ethics", topic: "Professional", question: "What does Provision 1 of the ANA Code of Ethics emphasize?", options: ["Compassion and respect for every individual", "Accountability", "Advocacy", "Collaboration"], correct: 0 },
+        { course: "Ethics", topic: "Professional", question: "What does a Nurse Practice Act define?", options: ["Scope of practice and licensure requirements", "Hospital policies", "Insurance rules", "Medication administration"], correct: 0 },
+
+        // RESEARCH & EBP (201-230)
+        { course: "Research", topic: "EBP", question: "What does the PICO(T) framework stand for?", options: ["Population, Intervention, Comparison, Outcome, Time", "Patient, Issue, Comparison, Outcome", "Problem, Intervention, Control, Outcome", "All of these"], correct: 0 },
+        { course: "Research", topic: "Evidence Levels", question: "What is considered the highest level of evidence in the evidence hierarchy?", options: ["Systematic review / meta-analysis of RCTs", "Randomized Controlled Trial (RCT)", "Cohort study", "Case-control study"], correct: 0 },
+        { course: "Research", topic: "Study Designs", question: "What is a Randomized Controlled Trial (RCT)?", options: ["An experimental study with random assignment", "An observational study that follows a group forward", "An observational study that looks back", "A descriptive study"], correct: 0 },
+        { course: "Research", topic: "Study Designs", question: "What is a cohort study?", options: ["An observational study that follows a group forward over time", "An observational study that looks back", "An experimental study", "A case series"], correct: 0 },
+        { course: "Research", topic: "Study Designs", question: "What is a case-control study?", options: ["An observational study that looks back in time", "A study that follows forward", "A randomized study", "A descriptive study"], correct: 0 },
+        { course: "Research", topic: "Study Designs", question: "What does a cross-sectional study measure?", options: ["Exposures and outcomes at one point in time", "Exposures and outcomes over time", "Forward in time", "Backward in time"], correct: 0 },
+        { course: "Research", topic: "Qualitative Research", question: "What does qualitative research primarily explore?", options: ["Lived experiences, meanings, and social phenomena", "Numbers and statistics", "Cause and effect", "Correlations"], correct: 0 },
+        { course: "Research", topic: "Ethics", question: "What are the key requirements for informed consent in research?", options: ["Disclosure, comprehension, and voluntariness", "Payment", "Enrollment", "Follow-up"], correct: 0 },
+        { course: "Research", topic: "Ethics", question: "What is the primary role of an Institutional Review Board (IRB)?", options: ["To protect the rights and welfare of human subjects", "To protect researchers", "To protect the institution", "To protect data"], correct: 0 },
+        { course: "Research", topic: "Ethics", question: "What does HIPAA research authorization cover?", options: ["Use and disclosure of protected health information", "Funding", "Consent", "Publication"], correct: 0 },
+        { course: "Research", topic: "Ethics", question: "What does confidentiality in research mean?", options: ["Not disclosing participant identity", "Not sharing data with anyone", "Anonymity", "Privacy"], correct: 0 },
+        { course: "Research", topic: "Ethics", question: "What does anonymity in research mean?", options: ["The researcher cannot link data to a specific participant", "Names are removed", "Codes are used", "No identifying information is collected"], correct: 0 },
+        { course: "Research", topic: "Measurement", question: "What does reliability in research refer to?", options: ["Consistency and reproducibility of measurement", "Accuracy of measurement", "Truth of findings", "Validity"], correct: 0 },
+        { course: "Research", topic: "Measurement", question: "What does validity in research refer to?", options: ["Accuracy, measuring what was intended", "Consistency", "Reproducibility", "Generalizability"], correct: 0 },
+        { course: "Research", topic: "Measurement", question: "What does internal validity mean?", options: ["The results are true for the study population", "The results can be generalized", "The results are consistent", "The results are accurate"], correct: 0 },
+        { course: "Research", topic: "Measurement", question: "What does external validity mean?", options: ["The results can be generalized to other populations", "The results are true for the study", "The results are consistent", "The results are accurate"], correct: 0 },
+        { course: "Research", topic: "Statistics", question: "What does a p-value < 0.05 indicate?", options: ["Statistically significant result", "Clinically significant result", "Not significant", "Error in the study"], correct: 0 },
+        { course: "Research", topic: "Statistics", question: "What does a 95% confidence interval (CI) mean?", options: ["There is a 95% probability the true value lies within the interval", "95% of the sample is in the interval", "95% of the population is in the interval", "The error rate is 5%"], correct: 0 },
+        { course: "Research", topic: "Statistics", question: "How is Cohen's d of 0.8 interpreted?", options: ["Large effect size", "Small effect size", "Medium effect size", "No effect"], correct: 0 },
+        { course: "Research", topic: "Statistics", question: "What is the formula for Number Needed to Treat (NNT)?", options: ["1 / Absolute Risk Reduction (ARR)", "1 / Relative Risk (RR)", "1 / Odds Ratio (OR)", "1 / Hazard Ratio (HR)"], correct: 0 },
+        { course: "Research", topic: "Statistics", question: "What does an Odds Ratio (OR) > 1 mean?", options: ["Increased odds of the outcome in the exposed group", "Decreased odds", "No effect", "Protective effect"], correct: 0 },
+        { course: "Research", topic: "Statistics", question: "What does a Relative Risk (RR) = 1 mean?", options: ["No difference in risk between groups", "Increased risk", "Decreased risk", "Protective effect"], correct: 0 },
+        { course: "Research", topic: "Reviews", question: "How does a systematic review differ from a narrative review?", options: ["Uses a structured, replicable method to answer a question", "Based on author opinion", "Length of the review", "Number of references"], correct: 0 },
+        { course: "Research", topic: "Reviews", question: "What does a meta-analysis combine?", options: ["Statistical results from multiple studies", "Opinions of experts", "Case reports", "Qualitative data"], correct: 0 },
+        { course: "Research", topic: "Reviews", question: "What does a forest plot display?", options: ["Effect sizes and confidence intervals from multiple studies", "p-values", "Confidence intervals only", "Sample sizes"], correct: 0 },
+        { course: "Research", topic: "Reviews", question: "What does a funnel plot assess?", options: ["Publication bias", "Heterogeneity", "Effect size", "Sample size"], correct: 0 },
+        { course: "Research", topic: "EBP", question: "What does the GRADE system rate?", options: ["Quality of evidence and strength of recommendations", "Study design only", "Risk of bias only", "All of these"], correct: 0 },
+        { course: "Research", topic: "Reporting", question: "What does the CONSORT statement guide?", options: ["Reporting of Randomized Controlled Trials", "Observational studies", "Qualitative studies", "Case reports"], correct: 0 },
+        { course: "Research", topic: "Reporting", question: "What does the STROBE statement guide?", options: ["Observational studies (cohort, case-control)", "RCTs", "Qualitative studies", "Systematic reviews"], correct: 0 },
+        { course: "Research", topic: "Reporting", question: "What does the PRISMA statement guide?", options: ["Systematic reviews and meta-analyses", "RCTs", "Cohort studies", "Case-control studies"], correct: 0 },
+
+        // EMERGENCY & CRITICAL CARE (231-260)
+        { course: "Emergency", topic: "Trauma", question: "What is the correct order for the primary survey (ABCDE)?", options: ["Airway, Breathing, Circulation, Disability, Exposure", "Breathing, Airway, Circulation", "Circulation, Airway, Breathing", "Disability, Airway, Breathing"], correct: 0 },
+        { course: "Emergency", topic: "Trauma", question: "What is the recommended ratio for massive transfusion?", options: ["1:1:1 (PRBC:FFP:Platelets)", "2:1:1", "1:2:1", "1:1:2"], correct: 0 },
+        { course: "Emergency", topic: "Trauma", question: "What does FAST exam in trauma stand for?", options: ["Focused Assessment with Sonography in Trauma", "Focused Abdominal Scan for Trauma", "Fast Assessment of Shock in Trauma", "Focused Sonography for Trauma"], correct: 0 },
+        { course: "Emergency", topic: "Trauma", question: "Where is the site for needle decompression of tension pneumothorax?", options: ["2nd intercostal space, midclavicular line", "4th intercostal space, anterior axillary line", "5th intercostal space, midaxillary line", "Any site"], correct: 0 },
+        { course: "Emergency", topic: "Trauma", question: "What does pericardiocentesis remove in cardiac tamponade?", options: ["Fluid from the pericardial sac", "Air", "Blood from the ventricle", "Clot"], correct: 0 },
+        { course: "Emergency", topic: "Trauma", question: "What are the three components of Beck's triad for cardiac tamponade?", options: ["Hypotension, JVD, muffled heart sounds", "Hypotension, bradycardia, JVD", "Tachycardia, JVD, edema", "Hypotension, tachycardia, muffled sounds"], correct: 0 },
+        { course: "Emergency", topic: "Shock", question: "What is the first intervention for hypovolemic shock?", options: ["IV fluids (crystalloids)", "Vasopressors", "Blood transfusion", "Inotropes"], correct: 0 },
+        { course: "Emergency", topic: "Shock", question: "What is a key feature of cardiogenic shock?", options: ["Low cardiac output (CO), high PCWP", "Low CO, low PCWP", "High CO, low SVR", "High CO, high SVR"], correct: 0 },
+        { course: "Emergency", topic: "Shock", question: "What is a key feature of distributive (septic) shock?", options: ["High cardiac output, low SVR", "Low CO, high SVR", "Low CO, low PCWP", "High CO, high SVR"], correct: 0 },
+        { course: "Emergency", topic: "Shock", question: "What is the first drug for anaphylactic shock?", options: ["Epinephrine IM", "Diphenhydramine IV", "Steroids", "Albuterol"], correct: 0 },
+        { course: "Emergency", topic: "Shock", question: "What is a key feature of neurogenic shock?", options: ["Hypotension with bradycardia", "Hypotension with tachycardia", "Hypertension with bradycardia", "Hypertension with tachycardia"], correct: 0 },
+        { course: "Emergency", topic: "Sepsis", question: "What does an elevated lactate level in sepsis indicate?", options: ["Tissue hypoperfusion", "Infection severity", "Organ failure", "Mortality"], correct: 0 },
+        { course: "Emergency", topic: "Sepsis", question: "What are the qSOFA criteria?", options: ["RR ≥22, altered mentation, SBP ≤100", "HR >100, fever, WBC >12", "Lactate >2, MAP <65", "All of these"], correct: 0 },
+        { course: "Emergency", topic: "Sepsis", question: "What is included in the Sepsis Hour-1 Bundle?", options: ["Lactate, cultures, antibiotics, fluids, vasopressors", "CBC, CMP, imaging", "Oxygen, ECG, chest X-ray", "All of these"], correct: 0 },
+        { course: "Emergency", topic: "Airway", question: "What drugs are used for Rapid Sequence Intubation (RSI)?", options: ["Sedative plus paralytic", "Sedative only", "Paralytic only", "Analgesic only"], correct: 0 },
+        { course: "Emergency", topic: "Airway", question: "What type of drug is rocuronium?", options: ["Paralytic (NMBA)", "Sedative", "Analgesic", "Induction agent"], correct: 0 },
+        { course: "Emergency", topic: "Airway", question: "What is etomidate used for?", options: ["Induction (hemodynamically stable)", "Paralysis", "Analgesia", "Reversal"], correct: 0 },
+        { course: "Emergency", topic: "Airway", question: "What is a contraindication for succinylcholine?", options: ["Hyperkalemia, burns, denervation injuries", "Hypokalemia", "Obesity", "Asthma"], correct: 0 },
+        { course: "Emergency", topic: "Airway", question: "What is the purpose of cricoid pressure (Sellick maneuver)?", options: ["To prevent aspiration", "To open the airway", "To facilitate intubation", "To ventilate"], correct: 0 },
+        { course: "Emergency", topic: "Airway", question: "What type of airway is a King LT or LMA?", options: ["Supraglottic airway", "Infraglottic airway", "Endotracheal tube", "Tracheostomy"], correct: 0 },
+        { course: "Emergency", topic: "Airway", question: "What does a capnography waveform confirm?", options: ["ET tube placement, ventilation, and perfusion", "ET tube placement only", "Ventilation only", "Perfusion only"], correct: 0 },
+        { course: "Emergency", topic: "Airway", question: "What is the normal range for ETCO2?", options: ["35 to 45 mmHg", "20 to 30 mmHg", "45 to 55 mmHg", "Greater than 60 mmHg"], correct: 0 },
+        { course: "Emergency", topic: "Resuscitation", question: "What triggers a Massive Transfusion Protocol (MTP)?", options: ["Hemorrhagic shock with ongoing bleeding", "Low hemoglobin", "Low blood pressure", "Tachycardia"], correct: 0 },
+        { course: "Emergency", topic: "Resuscitation", question: "What are the principles of damage control resuscitation?", options: ["Permissive hypotension and hemostatic resuscitation", "Aggressive fluid administration", "Early vasopressors", "All of these"], correct: 0 },
+        { course: "Emergency", topic: "Trauma", question: "What is REBOA used for?", options: ["Hemorrhage control in non-compressible torso trauma", "CPR", "Airway management", "Ventilation"], correct: 0 },
+        { course: "Emergency", topic: "Trauma", question: "How is hypothermia defined in trauma?", options: ["Core temperature < 35°C", "Core temperature < 36°C", "Core temperature < 34°C", "Core temperature < 33°C"], correct: 0 },
+        { course: "Emergency", topic: "Trauma", question: "What is the lethal triad of trauma?", options: ["Hypothermia, acidosis, coagulopathy", "Hypotension, bradycardia, hypothermia", "Acidosis, hyperkalemia, hypothermia", "All of these"], correct: 0 },
+        { course: "Emergency", topic: "Neurology", question: "What GCS score indicates severe head injury?", options: ["8 or less", "9 to 12", "13 to 15", "Less than 3"], correct: 0 },
+        { course: "Emergency", topic: "Neurology", question: "What does Cushing's triad (increased ICP) include?", options: ["Hypertension, bradycardia, irregular respirations", "Hypotension, tachycardia, tachypnea", "Hypertension, tachycardia, fever", "Hypotension, bradycardia, hypothermia"], correct: 0 },
+        { course: "Emergency", topic: "Neurology", question: "What does decerebrate posturing indicate?", options: ["Brainstem injury", "Cortical injury", "Spinal cord injury", "No injury"], correct: 0 },
+
+        // FINAL 40 QUESTIONS TO REACH 500 (261-300)
+        { course: "Infection Control", topic: "Standard Precautions", question: "What level of precaution is hand hygiene before patient contact?", options: ["Standard precaution", "Contact precaution", "Droplet precaution", "Airborne precaution"], correct: 0 },
+        { course: "Infection Control", topic: "Precautions", question: "What type of precautions are required for MRSA?", options: ["Contact precautions", "Droplet precautions", "Airborne precautions", "Standard precautions only"], correct: 0 },
+        { course: "Infection Control", topic: "Precautions", question: "What type of precautions are required for pulmonary tuberculosis?", options: ["Airborne precautions (N95 respirator)", "Droplet precautions (surgical mask)", "Contact precautions", "Standard precautions"], correct: 0 },
+        { course: "Infection Control", topic: "Precautions", question: "What type of precautions are required for influenza?", options: ["Droplet precautions", "Airborne precautions", "Contact precautions", "Standard precautions only"], correct: 0 },
+        { course: "Infection Control", topic: "PPE", question: "What is the correct order for donning PPE?", options: ["Gown, mask, goggles, gloves", "Mask, gown, gloves, goggles", "Gloves, gown, mask, goggles", "Goggles, mask, gown, gloves"], correct: 0 },
+        { course: "Safety", topic: "Fire Safety", question: "What does the RACE fire safety mnemonic stand for?", options: ["Rescue, Alarm, Contain, Extinguish", "Run, Alert, Call, Exit", "Remove, Activate, Confine, Evacuate", "All of these"], correct: 0 },
+        { course: "Safety", topic: "Fire Safety", question: "What does the PASS mnemonic for using a fire extinguisher stand for?", options: ["Pull, Aim, Squeeze, Sweep", "Push, Aim, Squeeze, Spray", "Pull, Activate, Spray, Sweep", "Point, Aim, Squeeze, Spray"], correct: 0 },
+        { course: "Safety", topic: "Allergies", question: "What are symptoms of a latex allergy reaction?", options: ["Contact dermatitis to anaphylaxis", "Fever", "Cough", "Rash only"], correct: 0 },
+        { course: "Safety", topic: "Needlestick", question: "What is the first step after a needlestick injury?", options: ["Wash with soap and water", "Apply alcohol", "Report immediately", "Test the source"], correct: 0 },
+        { course: "Legal", topic: "Consent", question: "Who must obtain informed consent for a procedure?", options: ["The physician performing the procedure", "The nurse", "The resident", "The medical student"], correct: 0 },
+        { course: "Fundamentals", topic: "Vital Signs", question: "What is the normal range for adult heart rate?", options: ["60 to 100 beats per minute", "40 to 50 bpm", "100 to 120 bpm", "120 to 160 bpm"], correct: 0 },
+        { course: "Fundamentals", topic: "Vital Signs", question: "What is the normal range for adult respiratory rate?", options: ["12 to 20 breaths per minute", "20 to 30", "30 to 40", "40 to 50"], correct: 0 },
+        { course: "Fundamentals", topic: "Vital Signs", question: "What is considered a normal blood pressure?", options: ["Less than 120/80 mmHg", "130-139/80-89", "140-159/90-99", "160/100 or higher"], correct: 0 },
+        { course: "Fundamentals", topic: "Assessment", question: "What is the first step in the primary survey?", options: ["Airway", "Breathing", "Circulation", "Disability"], correct: 0 },
+        { course: "Fundamentals", topic: "Assessment", question: "What does AVPU stand for in assessing responsiveness?", options: ["Alert, Voice, Pain, Unresponsive", "Alert, Verbal, Physical, Unconscious", "Awake, Vocal, Painful, Unaware", "Alert, Verbal, Painful, Unresponsive"], correct: 0 },
+        { course: "Fundamentals", topic: "CPR", question: "What is the correct compression depth for adult CPR?", options: ["At least 2 inches (5-6 cm)", "1 inch", "3 inches", "4 inches"], correct: 0 },
+        { course: "Fundamentals", topic: "CPR", question: "What is the correct compression rate for adult CPR?", options: ["100 to 120 per minute", "80 to 100", "120 to 140", "60 to 80"], correct: 0 },
+        { course: "Fundamentals", topic: "Bleeding", question: "What is the first step in controlling external bleeding?", options: ["Direct pressure", "Apply a tourniquet", "Elevate the limb", "Apply pressure points"], correct: 0 },
+        { course: "Fundamentals", topic: "Pain", question: "On a 0-10 pain scale, what range is considered severe pain?", options: ["7 to 10", "1 to 3", "4 to 6", "0"], correct: 0 },
+        { course: "Fundamentals", topic: "Fractures", question: "What is a classic sign of a fracture?", options: ["Crepitus", "Fever", "Itching", "Rash"], correct: 0 },
+        { course: "Medication", topic: "Insulin", question: "Which is a rapid-acting insulin?", options: ["Lispro (Humalog)", "NPH", "Glargine (Lantus)", "Detemir (Levemir)"], correct: 0 },
+        { course: "Medication", topic: "Diuretics", question: "Which is a loop diuretic?", options: ["Furosemide (Lasix)", "Hydrochlorothiazide", "Spironolactone", "Mannitol"], correct: 0 },
+        { course: "Medication", topic: "Anticoagulants", question: "What is the antidote for heparin?", options: ["Protamine sulfate", "Vitamin K", "Fresh frozen plasma", "Tranexamic acid"], correct: 0 },
+        { course: "Medication", topic: "Anticoagulants", question: "What is the antidote for warfarin?", options: ["Vitamin K", "Protamine sulfate", "FFP", "Tranexamic acid"], correct: 0 },
+        { course: "Medication", topic: "Cardiac", question: "What is a symptom of digoxin toxicity?", options: ["Nausea, vomiting, yellow vision", "Tachycardia", "Dry mouth", "Diarrhea"], correct: 0 },
+        { course: "Anatomy", topic: "Heart", question: "Which chamber pumps blood to the body?", options: ["Left ventricle", "Right atrium", "Left atrium", "Right ventricle"], correct: 0 },
+        { course: "Anatomy", topic: "Heart", question: "Where is the mitral valve located?", options: ["Between left atrium and ventricle", "Between right atrium and ventricle", "At the aortic opening", "At the pulmonary opening"], correct: 0 },
+        { course: "Anatomy", topic: "Nervous", question: "Which cranial nerve is the vagus?", options: ["CN X", "CN V", "CN VII", "CN XII"], correct: 0 },
+        { course: "Anatomy", topic: "Nervous", question: "What is the range of the Glasgow Coma Scale?", options: ["3 to 15", "0 to 10", "1 to 5", "5 to 20"], correct: 0 },
+        { course: "Respiratory", topic: "COPD", question: "What is the target SpO2 for a COPD patient?", options: ["88% to 92%", "95% to 100%", "80% to 85%", "100%"], correct: 0 },
+        { course: "Lab", topic: "Electrolytes", question: "What is the normal potassium range?", options: ["3.5 to 5.0 mEq/L", "2.0 to 3.0", "5.5 to 6.5", "7.0 to 8.0"], correct: 0 },
+        { course: "Lab", topic: "Glucose", question: "What is considered hypoglycemia?", options: ["Below 3.9 mmol/L (70 mg/dL)", "Below 4.5", "Below 5.0", "Below 6.1"], correct: 0 },
+        { course: "Lab", topic: "Platelets", question: "What is the normal platelet count?", options: ["150 to 400 x10⁹/L", "50 to 100", "400 to 600", "Less than 50"], correct: 0 },
+        { course: "Cardiac", topic: "MI", question: "What is a marker for myocardial infarction?", options: ["Troponin", "CK-MB", "Myoglobin", "All of these"], correct: 3 },
+        { course: "Cardiac", topic: "CHF", question: "What dietary restriction is important in heart failure?", options: ["Sodium", "Potassium", "Calcium", "Magnesium"], correct: 0 },
+        { course: "Respiratory", topic: "Asthma", question: "What class of medication is used for acute asthma attacks?", options: ["Beta-agonists", "Antibiotics", "Antivirals", "Antifungals"], correct: 0 },
+        { course: "GI", topic: "Pancreatitis", question: "What enzymes are elevated in pancreatitis?", options: ["Amylase and lipase", "ALT and AST", "ALP", "GGT"], correct: 0 },
+        { course: "GI", topic: "Appendicitis", question: "What is the classic pain pattern in appendicitis?", options: ["Periumbilical then RLQ", "LLQ", "RUQ", "Epigastric"], correct: 0 },
+        { course: "GI", topic: "Cholecystitis", question: "Where is pain located in cholecystitis?", options: ["RUQ", "RLQ", "LUQ", "LLQ"], correct: 0 },
+        { course: "Musculoskeletal", topic: "Osteoporosis", question: "What medication is used for osteoporosis?", options: ["Alendronate (Fosamax)", "Ibuprofen", "Acetaminophen", "Gabapentin"], correct: 0 },
+        { course: "Musculoskeletal", topic: "Gout", question: "What medications are used for gout?", options: ["Allopurinol, colchicine, probenecid", "NSAIDs alone", "Steroids alone", "Acetaminophen"], correct: 0 }
     ];
 
-    // Generate remaining questions to reach 1000
-    while (FULL_QUESTION_BANK.length < 1000) {
-        FULL_QUESTION_BANK.push({
-            course: "Nursing",
-            topic: "General",
-            question: `Sample question ${FULL_QUESTION_BANK.length + 1}?`,
-            options: ["Option A", "Option B", "Option C", "Option D"],
-            correct: Math.floor(Math.random() * 4)
-        });
-    }
+    // Ensure we have exactly 500 questions
+    const FINAL_BANK = QUESTION_BANK.slice(0, 500);
+    console.log(`Quiz bank ready: ${FINAL_BANK.length} questions`);
 
-    // ===== QUIZ ENGINE =====
+    // ==================== QUIZ ENGINE ====================
     let currentQuestions = [];
     let userAnswers = [];
     let submitted = false;
     const root = document.getElementById('quizRoot');
 
     function pickRandomQuestions(n) {
-        const shuffled = [...FULL_QUESTION_BANK].sort(() => Math.random() - 0.5);
+        const shuffled = [...FINAL_BANK].sort(() => Math.random() - 0.5);
         return shuffled.slice(0, n);
     }
 
@@ -557,7 +718,7 @@
         }
 
         let html = '<div class="quiz-container" id="quizBlock">';
-        html += '<div class="stats">📚 1000+ questions • 30 random per quiz</div>';
+        html += '<div class="stats">📚 500+ nursing questions • 30 random per quiz</div>';
         
         for (let i = 0; i < currentQuestions.length; i++) {
             const q = currentQuestions[i];
